@@ -1,0 +1,122 @@
+TEAM CONTRACT
+
+PURPOSE OF THIS CONTRACT:
+
+The purpose of this contract is to help you and your team decide how to manage
+your final project for this class. Particularly, how you will meet, and how you 
+will collaborate on code, and how you will communicate. 
+
+Please meet regularly as a team. I suggest that you use a recurring in person, 
+(or Zoom) meeting for this. It is especially important that each member be 
+present for the initial meeting. 
+
+Discuss a strategy for working on the project. In the first phase, you will 
+design the database together. The second phase is implementation (SQL, PHP, and 
+HTML). You may need to adjust your strategy as you move from the first 
+phase to the second; modify this contract accordingly, committing the agreed-upon
+changes to your Git repository containing this document.
+
+
+INSTRUCTIONS:
+
+One of you should create a repo for your team on our GitLab (https://code.centre.edu). 
+Call it csc362-proj-[YOUR TEAM NAME]. This project should be different from your 
+labs. (See instructions for Lab01.)  As usual, add me as a "Developer". This 
+time also add all other members of the team. You should edit this contract on one 
+computer and then commit it to git, where each of you can sign your name in a 
+separate commit.
+
+Decide on a regular meeting time--at least one regular meeting per week. Come 
+to a consensus on when and how. Be realistic. If you cannot be attend, discuss 
+this openly as a team.  Also consider the schedule for the term project and how 
+it relates to your other commitments (classes, clubs, sports, religious activities, 
+etc.)  If there will be points during the semester when it will be difficult or
+impossible for you to contribute to the project, you should discuss
+this as a team.  For example, you may want to decide now that you will
+need to submit a particular deliverable early.
+
+If you make changes to this contract, all team members should come to
+agreement. Then commit the revised contract via git. 
+
+
+
+TEAM NAME [type your team name here]: 
+
+JMAN
+
+TEAM MEMBERS AND CONTACT INFO:
+
+   MEMBER              MOBILE PHONE           PREFERRED EMAIL
+1.Newcomb Maddux	      270-484-4432	  newcomb.maddux@centre.edu
+2.
+3.
+4.
+
+
+
+AGREED MEETING TIME/PLACE/LINK FOR REGULAR WEEKLY TEAM MEETINGS/WORK:
+
+Meetings will be held Mondays from 3-4pm in Olin.
+
+
+
+OUR PLAN FOR SUBMITTING THE DELIVERABLES:
+
+[Note: The deadlines are listed below, and it is OK to leave these
+unchanged.  However, your team may need to submit one or more
+deliverables early due to your team members' constraints and other
+commitments.  Of course, you could also choose as a team to submit a
+deliverable late--but keep in mind that this will result in a reduced
+score of 10 points (out of 100) per day or part of a day late.  The
+reason for the penalty is to help teams stay on track and have greater
+success in completing the project as a whole.]
+
+PHASE 1: DESIGN
+0. Team Contract 					09/08
+1. Mission & Objectives					09/15
+2. Tables, Fields, & PKs					09/22
+3. Table Relationships					09/29
+4. Business Rules					10/06
+5. Views, UI Flow (FINAL DESIGN)				10/20
+
+PHASE 2: IMPLEMENTATION
+1. Coding Plan						10/27
+2. SQL Scripts						11/03
+3. First PHP pages					11/10
+4. More PHP pages					11/17
+5. Final Delivery					11/24
+
+
+WE ALSO AGREE:
+
+[Type anything else that as a team you decide should be included in
+your covenant.  It is OK to leave this blank.]
+
+If work is not finished and an extra gathering is needed we will assemble Wednesdays at 3pm in Olin.
+
+
+WE HELD OUR INITIAL TEAM MEETING ON [enter date and time]:
+AT [type location/provide meeting link of meeting; e.g., Olin 208]:
+
+9/8 at 3pm in upstairs Olin.
+
+
+"BY TYPING OUR NAMES, EACH OF US INDICATES OUR AGREEMENT WITH THIS
+CONTRACT. WE UNDERSTAND THAT TO MODIFY THIS COVENANT, WE WILL HAVE TO
+HAVE UNANIMOUS AGREEMENT AT A MEETING WHEN ALL MEMBERS ARE PRESENT."
+
+SIGNED (Full name and date):
+
+Newcomb Maddux
+
+[Type your name to indicate agreement.  Note: Each team member should
+type and commit his or her own name.  Please do not sign this agreement on behalf
+of someone else.]
+
+ 
+
+
+
+
+
+
