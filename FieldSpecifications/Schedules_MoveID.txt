@@ -8,17 +8,17 @@ Specification Type:
   Unique:  X 
   Generic: _ 
   Replica: _ 
-Parent Table:         _ 
+Parent Table:         Schedules 
 Label:                Move # 
 Source Specification: Move ID from the Moves table 
-Shared By:            _ 
+Shared By:            KnownMoves, ForgottenMoves, Moves, PokemasterRatings, RatingsCount
 Aliases:              _ 
 Description:          Different moves of the Pokemon in the database. The values in this field enable us to keep track of different moves.
 
 
 PHYSICAL ELEMENTS
 
-Data Type:            Numeric 
+Data Type:            INT
 Length:               _ 
 Decimal Places:       0
 Input Mask:           _ 
@@ -64,9 +64,9 @@ Edit Rule:
   Not determined at this time:    _ 
 
 Comparisons Allowed:
-  Same Field:   _ 
+  Same Field:   X
                 ALL  _ 
-                =    _ 
+                =    X 
                 >    _ 
                 >=   _ 
                 !=   _ 
