@@ -1,0 +1,117 @@
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:         WhenTaught 
+
+Specification Type:
+  Unique:  X 
+  Generic: _ 
+  Replica: _ 
+Parent Table:         _ 
+Label:                When Taught # 
+Source Specification: WhenTaught from the Schedules table
+Shared By:            _ 
+Aliases:              _ 
+Description:         When a move was taught by a trainer in the database. This value keeps track of the time when a move was, is and will be taught by a trainer.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            DATETIME 
+Length:               _
+Decimal Places:       _
+Input Mask:           _ 
+Display Format:      _ 
+Character Support:
+  Letters (A-Z):      X 
+  Numbers (0-9):      X 
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X 
+               Primary:    _ 
+               Foreign:    _
+               Alternate:  _ 
+
+Key Structure: Simple:     X 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X 
+
+Null Support:  Nulls OK:   _
+               No nulls:   X
+
+Values Entered By: User:   _
+                   System: X
+
+Required Value:    No:     _
+                   Yes:    X
+
+Default Value:     _ 
+
+Range of Values:   _ 
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+Comparisons Allowed:
+  Same Field:   _ 
+                ALL  _ 
+                =    _ 
+                >    _ 
+                >=   _ 
+                !=   _ 
+                <    _ 
+                <=   _ 
+
+  Other Fields: _
+                ALL  _ 
+                =    _ 
+                >    _ 
+                >=   _ 
+                !=   _ 
+                <    _ 
+                <=   _ 
+
+  Value Expr.:  _ 
+                ALL  _ 
+                =    _ 
+                >    _ 
+                >=   _ 
+                !=   _ 
+                <    _ 
+                <=   _ 
+
+Operations Allowed:
+  Same Field:   _ 
+                ALL  _ 
+                +    _ 
+                -    _ 
+                *    _ 
+                /    _ 
+
+  Other Fields: _ 
+                ALL  _ 
+                +    _ 
+                -    _ 
+                *    _ 
+                /    _ 
+
+  Value Expr.:  _ 
+                ALL  _ 
+                +    _ 
+                -    _ 
+                *    _ 
+                /    _ 
+
+NOTES:
+
