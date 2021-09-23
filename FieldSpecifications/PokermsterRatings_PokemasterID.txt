@@ -5,10 +5,10 @@ GENERAL ELEMENTS
 Field Name:           PokemasterID 
 
 Specification Type:
-  Unique:  X 
+  Unique:  _
   Generic: _ 
-  Replica: _ 
-Parent Table:         _ 
+  Replica: X 
+Parent Table:         PokemasterRatings
 Label:                Pokermaster # 
 Source Specification: PokerMaster ID from the PokerMasters table
 Shared By:            _ 
@@ -18,7 +18,7 @@ Description:          The address of the trainers in the database. The values in
 
 PHYSICAL ELEMENTS
 
-Data Type:            Numeric 
+Data Type:            INT 
 Length:              _ 
 Decimal Places:       0
 Input Mask:           _ 
@@ -64,9 +64,9 @@ Edit Rule:
   Not determined at this time:    _ 
 
 Comparisons Allowed:
-  Same Field:   _ 
+  Same Field:   X 
                 ALL  _ 
-                =    _ 
+                =    X
                 >    _ 
                 >=   _ 
                 !=   _ 
