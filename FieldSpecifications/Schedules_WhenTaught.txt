@@ -8,7 +8,7 @@ Specification Type:
   Unique:  X 
   Generic: _ 
   Replica: _ 
-Parent Table:         _ 
+Parent Table:         Schedules
 Label:                When Taught # 
 Source Specification: WhenTaught from the Schedules table
 Shared By:            _ 
