@@ -8,7 +8,7 @@ Specification Type:
   Unique:  X 
   Generic: _ 
   Replica: _ 
-Parent Table:         _ 
+Parent Table:         Schedules 
 Label:                Rating Count # 
 Source Specification: Count of ratings from the PokermasterRatings table
 Shared By:            _ 
@@ -18,7 +18,7 @@ Description:          The count of ratings of the Pokernaster trainers' already 
 
 PHYSICAL ELEMENTS
 
-Data Type:            Numeric 
+Data Type:            INT 
 Length:               1000000
 Decimal Places:       0
 Input Mask:           _ 
