@@ -1,0 +1,117 @@
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:          StarRating 
+
+Specification Type:
+  Unique:  X 
+  Generic: _ 
+  Replica: _ 
+Parent Table:         _ 
+Label:                Star rating # 
+Source Specification: Star ratings from the PokermasterRatings table
+Shared By:            _ 
+Aliases:              _ 
+Description:          The ratings of the Pokernaster trainers' already taught moves. These values help keep track of the rating of the moves.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            Numeric 
+Length:               5 
+Decimal Places:       0
+Input Mask:           _ 
+Display Format:       0 
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X 
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X 
+               Primary:    _ 
+               Foreign:    _
+               Alternate:  _ 
+
+Key Structure: Simple:     X 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X 
+
+Null Support:  Nulls OK:   _
+               No nulls:   _
+
+Values Entered By: User:   X 
+                   System: _ 
+
+Required Value:    No:     X
+                   Yes:    _
+
+Default Value:     _ 
+
+Range of Values:   _ 
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+Comparisons Allowed:
+  Same Field:   _ 
+                ALL  _ 
+                =    _ 
+                >    _ 
+                >=   _ 
+                !=   _ 
+                <    _ 
+                <=   _ 
+
+  Other Fields: _
+                ALL  _ 
+                =    _ 
+                >    _ 
+                >=   _ 
+                !=   _ 
+                <    _ 
+                <=   _ 
+
+  Value Expr.:  _ 
+                ALL  _ 
+                =    _ 
+                >    _ 
+                >=   _ 
+                !=   _ 
+                <    _ 
+                <=   _ 
+
+Operations Allowed:
+  Same Field:   _ 
+                ALL  _ 
+                +    _ 
+                -    _ 
+                *    _ 
+                /    _ 
+
+  Other Fields: _ 
+                ALL  _ 
+                +    _ 
+                -    _ 
+                *    _ 
+                /    _ 
+
+  Value Expr.:  _ 
+                ALL  _ 
+                +    _ 
+                -    _ 
+                *    _ 
+                /    _ 
+
+NOTES:
+
