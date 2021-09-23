@@ -8,7 +8,7 @@ Specification Type:
   Unique:  X 
   Generic: _ 
   Replica: _ 
-Parent Table:         _ 
+Parent Table:         PokemasterRatings
 Label:                Star rating # 
 Source Specification: Star ratings from the PokermasterRatings table
 Shared By:            _ 
@@ -18,7 +18,7 @@ Description:          The ratings of the Pokernaster trainers' already taught mo
 
 PHYSICAL ELEMENTS
 
-Data Type:            Numeric 
+Data Type:            INT
 Length:               5 
 Decimal Places:       0
 Input Mask:           _ 
