@@ -11,7 +11,7 @@ Specification Type:
 Parent Table:         PokemasterRatings
 Label:                Pokermaster # 
 Source Specification: PokerMaster ID from the PokerMasters table
-Shared By:            _ 
+Shared By:            Pokemasters, OwnedPokemon 
 Aliases:              _ 
 Description:          The address of the trainers in the database. The values in this field enable us to keep track of the trainers.
 
