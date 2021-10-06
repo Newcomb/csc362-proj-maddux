@@ -1,0 +1,53 @@
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement:  A move cannot be taught to a Pokemon with different type
+
+Constraint: An attempted teaching of a move to a Pokemon is not allowed if the type of the move and the type of the Pokemon are different.
+
+Type:     Database Oriented:     X 
+          Application Oriented   _
+
+Category: Field Specific:        _ 
+          Relationship Specific: X 
+
+Test On:  Insert:                X 
+          Delete:                _ 
+          Update:                X
+
+
+STRUCTURES AFFECTED
+
+Field Names: MoveType, TypeName, TypeID
+
+Table Names:  Moves, Types, PokemonTypes
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:           _ 
+                   Length:              _ 
+                   Decimal Places:      _ 
+                   Character Support:   _ 
+                   Input Mask:          _ 
+                   Display Format:      _ 
+
+Logical Elements:  Key Type:            _ 
+                   Key Structure:       _ 
+                   Uniqueness:          _ 
+                   Null Support:        _ 
+                   Values Entered By:   X 
+                   Default Value:       _ 
+                   Range of Values:     X 
+                   Comparisons Allowed: _ 
+                   Operations Allowed:  _
+                   Edit Rule:           X 
+
+
+ACTION TAKEN
+
+If Pokemaster attempts to teach an OwnedPokemon a Move but with different type from the OwnedPokemon, reject that insert or update.
+
+
+NOTES: _
