@@ -1,0 +1,54 @@
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement:  A normal move cannot be taught to a Ghost type Pokemon. 
+
+Constraint: An attempted teaching of a move to an OwnedPokemon with Ghost type will not be allowed if the move type is normal.
+
+Type:     Database Oriented:     _ 
+          Application Oriented   X 
+
+Category: Field Specific:        _ 
+          Relationship Specific: X 
+
+Test On:  Insert:                X 
+          Delete:                _ 
+          Update:                X
+
+
+STRUCTURES AFFECTED
+
+Field Names: move_id
+
+Table Names: KnownMoves
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:           _ 
+                   Length:              _ 
+                   Decimal Places:      _ 
+                   Character Support:   _ 
+                   Input Mask:          _ 
+                   Display Format:      _ 
+
+Logical Elements:  Key Type:            _ 
+                   Key Structure:       _ 
+                   Uniqueness:          _ 
+                   Null Support:        _ 
+                   Values Entered By:   X 
+                   Default Value:       _ 
+                   Range of Values:     X 
+                   Comparisons Allowed: _ 
+                   Operations Allowed:  _
+                   Edit Rule:           X 
+
+
+ACTION TAKEN
+
+If Pokemaster attempts to teach an OwnedPokemon with Ghost type a normal type move or enter a Ghost type OwnedPokemon with a Normal type KnownMove, reject the update or insertion. 
+
+
+NOTES: _
+
