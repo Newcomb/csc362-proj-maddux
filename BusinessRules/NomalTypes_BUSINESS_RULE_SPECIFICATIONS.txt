@@ -1,0 +1,53 @@
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement:  All pokemon, except ghosts, can learn Normal-type moves 
+
+Constraint: Every pokemon can learn normal-type moves yet ghost cannot learn normal types 
+
+Type:     Database Oriented:    _
+          Application Oriented   X 
+
+Category: Field Specific:        X
+          Relationship Specific: _ 
+
+Test On:  Insert:                X
+          Delete:                _ 
+          Update:                X
+
+
+STRUCTURES AFFECTED
+
+Field Names: MoveType / TypeID/ PokemonType 
+
+Table Names: Moves
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:           VARCHAR
+                   Length:              _ 
+                   Decimal Places:      _ 
+                   Character Support:   _ 
+                   Input Mask:          _ 
+                   Display Format:      _ 
+
+Logical Elements:  Key Type:    Simple
+                   Key Structure:       _ 
+                   Uniqueness:          _ 
+                   Null Support:        _ 
+                   Values Entered By:   _ 
+                   Default Value:       _ 
+                   Range of Values:     _ 
+                   Comparisons Allowed: _ 
+                   Operations Allowed:  _ 
+                   Edit Rule:           Not determined at this time
+
+
+ACTION TAKEN:
+The action taken here is that we would need to use a trigger in order to make sure that the MoveType matches the TypeName and  that the TypeName matches with the PokemonType. 
+
+
+NOTES: 
+
