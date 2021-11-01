@@ -16,7 +16,7 @@ CREATE TABLE schedule (
     when_taught          DATETIME,
     teaching_duration    INT NOT NULL,
     offered              BIT NOT NULL,
-    FOREIGN KEY move_id REFERENCES moves (move_id)
+    FOREIGN KEY move_id REFERENCES moves (move_id) ON DELETE RESTRICT
 );
 
 /*Fill the table with values (according to national pokedex)
