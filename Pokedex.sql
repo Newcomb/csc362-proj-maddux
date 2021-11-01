@@ -1,3 +1,13 @@
+/*
+  Move Tutor Database
+  Team JMAN
+  Josh West
+
+  The script creates a validation table that lists all PokemonIDs and their associated PokemonNames.
+
+  Created 10-31-21
+*/
+
 /*Make sure the correct db is being used*/
 USE pokemon_db;
 

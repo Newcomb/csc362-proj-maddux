@@ -1,3 +1,12 @@
+/*
+  Move Tutor Database
+  Team JMAN
+  Josh West
+
+  The script creates a linking table connecting the OwnedPokemon and Moves tables.
+
+  Created 11-01-21
+*/
 /*Make sure the correct db is being used*/
 USE pokemon_db;
 
