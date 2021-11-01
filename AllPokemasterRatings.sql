@@ -11,5 +11,6 @@
 USE pokemon_db;
 
 /*Select all Pokemasters and their ratings*/
-SELECT PokemasterID, MoveID, StarRating AS AllPokemasterRatings
-    FROM PokemasterRatings;
+SELECT pokemaster_id, move_id, star_rating AS allPokemasterRatings
+    FROM pokemaster_ratings;
+    

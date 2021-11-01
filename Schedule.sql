@@ -9,16 +9,14 @@
   Created 11-01-21
 */
 
-/*Make sure the correct db is being used*/
-USE pokemon_db;
 
 /*Make the table*/
-CREATE TABLE Schedule (
-    MoveID              INT NOT NULL,
-    WhenTaught          DATETIME,
-    TeachingDuration    INT NOT NULL,
-    Offered             BIT NOT NULL,
-    FOREIGN KEY MoveID REFERENCES Moves.MoveID
+CREATE TABLE schedule (
+    move_id              INT NOT NULL,
+    when_taught          DATETIME,
+    teaching_duration    INT NOT NULL,
+    offered              BIT NOT NULL,
+    FOREIGN KEY move_id REFERENCES moves.move_id
 );
 
 /*Fill the table with values (according to national pokedex)
