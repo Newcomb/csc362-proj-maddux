@@ -4,5 +4,6 @@ CREATE TABLE rating_counts (
     rating_count_id     INT NOT NULL,
     raing_count         INT,
     move_id             INT NOT NULL,
-    FOREIGN KEY (move_id) REFERENCES moves (move_id),
+    FOREIGN KEY (move_id) REFERENCES moves (move_id)
+    ON DELETE RESTRICT,
 );
