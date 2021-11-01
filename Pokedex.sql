@@ -1,5 +1,5 @@
 /*Make sure the correct db is being used*/
-USE move_tutor;
+USE pokemon_db;
 
 /*Make the table*/
 CREATE TABLE Pokedex (
