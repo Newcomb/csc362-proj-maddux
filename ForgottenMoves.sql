@@ -7,15 +7,13 @@
 
   Created 11-01-21
 */
-/*Make sure the correct db is being used*/
-USE pokemon_db;
 
 /*Make the table*/
-CREATE TABLE ForgottenMoves (
-    OwnedPokemonID      INT NOT NULL,
-    MoveID              INT NOT NULL,
-    FOREIGN KEY OwnedPokemonID REFERENCES OwnedPokemon.OwnedPokemonID,
-    FOREIGN KEY MoveID REFERENCES Moves.MoveID
+CREATE TABLE forgotten_moves (
+    owned_pokemon_id      INT NOT NULL,
+    move_id              INT NOT NULL,
+    FOREIGN KEY owned_pokemon_id REFERENCES owned_pokemon (owned_pokemon_id) ON DELETE RESTRICT,
+    FOREIGN KEY move_id REFERENCES moves (move_id) ON DELETE RESTRICT
 );
 
 /*Fill the table with values (according to national pokedex)
