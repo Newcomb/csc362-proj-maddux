@@ -25,4 +25,5 @@ BEFORE
 INSERT | UPDATE
 ON knownMoveType  
 FOR EACH ROW 
-[trigger_body] /*Implement logic that matches type_id with move_type; if ghost: only ghost can match*/
+[trigger_body] 
+/*Implement logic that matches type_id with move_type; if ghost: only ghost can match*/

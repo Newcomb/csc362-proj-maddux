@@ -15,32 +15,19 @@ CREATE DATABASE pokemon_db;
 USE pokemon_db;
 
 --Source all sql files
-SOURCE PokeMaster.sql;
+SOURCE Pokemasters.sql;
+SOURCE Types.sql;
 SOURCE Moves.sql;
 SOURCE Pokedex.sql;
-SOURCE Types.sql;
 SOURCE OwnedPokemon.sql;
-SOURCE Schedules.sql;
+SOURCE Schedule.sql;
 SOURCE PokemonTypes.sql;
 SOURCE KnownMoves.sql;
 SOURCE ForgottenMoves.sql;
 SOURCE RatingCounts.sql; 
 SOURCE PokemasterRatings.sql;
-SOURCE AllPokemasterRatings.sql;
-SOURCE DeleteForgottenMoves.sql;
-SOURCE DeleteKnownMoves.sql;
-SOURCE DeleteOwnedPokemon.sql;
-SOURCE DeletePokedex.sql;
-SOURCE InsertForgottenMoves.sql;
-SOURCE InsertKnownMoves.sql;
-SOURCE InsertMoveDefaultStatus.sql;
-SOURCE InsertMoveStatusGiven.sql;
-SOURCE InsertPokemasters.sql;
-SOURCE InsertPokemon.sql;
-SOURCE InsertPokemonTypes.sql;
-SOURCE InsertTypes.sql;
-SOURCE T_checkMoveType.sql;
-SOURCE UpdateOwnedPokemonOwner.sql;
+
+--Generate views
 SOURCE ViewForgottenMoves.sql;
 SOURCE ViewKnownMoves.sql;
 SOURCE ViewOwnedPokemon.sql;

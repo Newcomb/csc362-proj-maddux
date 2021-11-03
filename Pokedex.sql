@@ -17,7 +17,7 @@ CREATE TABLE pokedex (
 );
 
 /*Fill the table with values (according to national pokedex)
-link: https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number*/
+link: https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number
 INSERT INTO pokedex (pokemon_name)
 VALUES('Bulbasaur',
 'Ivysaur',
@@ -33,3 +33,4 @@ VALUES('Bulbasaur',
 'Butterfree');
 
 
+*/
