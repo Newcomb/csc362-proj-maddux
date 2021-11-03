@@ -7,6 +7,6 @@ CREATE TABLE known_moves
     FOREIGN KEY owned_pokemon REFERENCES owned_pokemon(owned_pokemon_id),
     
     -- Setting up primary key
-    PRIMARY KEY (move_id, owned_pokemon_id);
+    PRIMARY KEY (move_id, owned_pokemon_id)
 
-)
+);

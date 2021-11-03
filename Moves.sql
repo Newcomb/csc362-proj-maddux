@@ -9,5 +9,5 @@ CREATE TABLE moves
     hidden_move VARCHAR (10) NOT NULL,
     taught_status  VARCHAR (11) NOT NULL,
     FOREIGN KEY (Types) REFERENCES Types(type_id),
-    PRIMARY KEY(move_id);
-)
+    PRIMARY KEY(move_id)
+);
