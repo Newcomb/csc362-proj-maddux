@@ -6,4 +6,4 @@ CREATE TABLE known_moves
     FOREIGN KEY (move_id) REFERENCES moves(move_id),
     PRIMARY KEY (move_id, owned_pokemon_id)
 
-)
+);
