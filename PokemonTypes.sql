@@ -12,6 +12,6 @@
 CREATE TABLE pokemon_types (
     pokemon_id      INT NOT NULL,
     type_id         INT NOT NULL,
-    FOREIGN KEY pokemon_id REFERENCES Pokedex.pokemon_id,
-    FOREIGN KEY type_id REFERENCES Types.type_id
+    FOREIGN KEY pokemon_id REFERENCES Pokedex.pokemon_id ON DELETE RESTRICT,
+    FOREIGN KEY type_id REFERENCES Types.type_id ON DELETE RESTRICT
 );
