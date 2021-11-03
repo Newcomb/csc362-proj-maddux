@@ -11,12 +11,7 @@
 /*Make the table*/
 CREATE TABLE forgotten_moves (
     owned_pokemon_id      INT NOT NULL,
-    move_id              INT NOT NULL,
-    FOREIGN KEY owned_pokemon_id REFERENCES owned_pokemon (owned_pokemon_id) ON DELETE RESTRICT,
-    FOREIGN KEY move_id REFERENCES moves (move_id) ON DELETE RESTRICT
+    move_id               INT NOT NULL,
+    FOREIGN KEY (owned_pokemon_id) REFERENCES owned_pokemon (owned_pokemon_id) ON DELETE RESTRICT,
+    FOREIGN KEY (move_id) REFERENCES moves (move_id) ON DELETE RESTRICT
 );
-
-/*Fill the table with values (according to national pokedex)
-link: https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number*/
-/*INSERT INTO ForgottenMoves (OwnedPokemonID, MoveID)
-VALUES();*/
