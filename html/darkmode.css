@@ -1,0 +1,11 @@
+h1, h2, h3, p, pre, table, ul, li {
+    color: white;
+}
+
+table, th, td {
+    border: 1px solid white;
+}
+
+body {
+    background-color: black;
+}
