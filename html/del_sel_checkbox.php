@@ -1,16 +1,7 @@
 <?php
 function del_sel_checkbox($table, $fileName) {
-    $host = "localhost";
-    $user = "newcomb";
-    $pass = "YoloSwag13";
-    $dbse = "pokemon_db";
-
-    //Open mysqli connection and check for errors
-    if (!$conn = new mysqli($host, $user, $pass, $dbse)){
-        echo "Error: Failed to make a MySQL connection: " . "<br>";
-        echo "Errno: $conn->connect_errno; i.e. $conn->connect_error \n";
-        exit;
-    }
+    // establish conn as the global conn
+    $conn = $GLOBALS['conn'];
 // Establish query for getting all current pokemon
     $sql_query = "SELECT * FROM " . $table;
 
@@ -38,7 +29,6 @@ function del_sel_checkbox($table, $fileName) {
             $flag = TRUE;
         }
     }
-    $conn->close();
     if ($flag) {
         header('Location: http://34.135.39.226/pokemonTable.php', true, 303);
         die();

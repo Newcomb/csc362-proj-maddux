@@ -41,6 +41,7 @@
         </p>
 </body>
 <?php
+
 // Check if cookie has been toggled and reset the page
 if(isset($_POST['toggle'])){
     if($_COOKIE['dark_mode'] == FALSE){
@@ -52,17 +53,17 @@ if(isset($_POST['toggle'])){
     die();
 }
 
-$host = "localhost";
-$user = "newcomb";
-$pass = "YoloSwag13";
-$dbse = "pokemon_db";
+// Log in to database using configured file
+$path = dirname(__FILE__);
+$path_array = explode('/',$path, 4);
 
-//Open mysqli connection and check for errors
-if (!$conn = new mysqli($host, $user, $pass, $dbse)){
-    echo "Error: Failed to make a MySQL connection: " . "<br>";
-    echo "Errno: $conn->connect_errno; i.e. $conn->connect_error \n";
-    exit;
-}
+$config = parse_ini_file('/home/' . $path_array[2] .'/mysql.ini');
+$dbname = 'pokemon_db';
+$conn = new mysqli(
+            $config['mysqli.default_host'],
+            $config['mysqli.default_user'],
+            $config['mysqli.default_pw'],
+            $dbname);
 
 // Insert a pokemon
 if (isset($_POST['pokeName'])) {
