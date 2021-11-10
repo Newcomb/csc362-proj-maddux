@@ -109,8 +109,8 @@
 <?php
 //Instantiate mysqli data
 $host = "localhost"; //CHANGE ME
-$user = "USERNAME";
-$pass = "****";
+$user = "joshw";
+$pass = "lion362";
 $dbase = "pokemon_db";
 
 //Open mysqli connection and check for errors
