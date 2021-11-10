@@ -25,12 +25,20 @@
 <body>
     <h1>Manage Pokemon</h1>
     <h3>Add a new Pokemon</h3>
-    <p>
-        <form method=POST>
-            <input type=text name=pokeName placeholder='Enter name...' required/>
-            <input type=submit value='Add New Pokemon'/>
-        </form>
-</p>
+        <p>
+            <form method=POST>
+                <input type=text name=pokeName placeholder='Enter name...' required/>
+                <input type=submit value='Add New Pokemon'/>
+            </form>
+        </p>
+    <h3>Update an existing Pokemon</h3>
+        <p>
+            <form method="POST">
+                <input type="text" name=pokeID placeholder='Enter pokemon_id...' required>
+                <input type=text name=newName placeholder='Enter new name...' required/>
+                <input type=submit value='Update Pokemon'/>
+            </form>
+        </p>
 </body>
 <?php
 // Check if cookie has been toggled and reset the page
@@ -63,6 +71,17 @@ if (isset($_POST['pokeName'])) {
     $stmt = $conn->prepare(file_get_contents("InsertPokemon.sql"));
     $stmt->bind_param('s', $_POST['pokeName']);
 
+    $stmt->execute();
+    header('Location: http://34.135.39.226/pokemonTable.php', true, 303);
+    die();
+}
+
+// Update a pokemon
+if (isset($_POST['newName'])) {
+
+    // Prepare the delete statement
+    $stmt = $conn->prepare(file_get_contents("UpdatePokedex.sql"));
+    $stmt->bind_param('si', $_POST['newName'], $_POST['pokeID']);
     $stmt->execute();
     header('Location: http://34.135.39.226/pokemonTable.php', true, 303);
     die();
