@@ -38,6 +38,8 @@
         <div class="subnav-content">
         <a href="#train">Train</a>
         <a href="#move-deletion">Move Deletion</a>
+        <a href="pokemasterTable.php">View Database</a>
+        <a href="pokemonTable.php">Edit Database</a>
         </div>
     </div>
     <div class="subnav">
