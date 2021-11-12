@@ -1,4 +1,4 @@
---SQL for creating pokemaster ratings table
+-- SQL for creating pokemaster ratings table
 CREATE TABLE pokemaster_ratings (
     pokemaster_id           INT,
     move_id                 INT,

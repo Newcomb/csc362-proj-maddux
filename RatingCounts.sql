@@ -1,4 +1,4 @@
---SQL file for creating rating counts table
+-- SQL file for creating rating counts table
 CREATE TABLE rating_counts (
     PRIMARY KEY (rating_count_id),
     rating_count_id     INT NOT NULL AUTO_INCREMENT,

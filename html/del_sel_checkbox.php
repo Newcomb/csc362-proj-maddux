@@ -29,9 +29,6 @@ function del_sel_checkbox($table, $fileName) {
             $flag = TRUE;
         }
     }
-    if ($flag) {
-        header('Location: http://34.135.39.226/pokemonTable.php', true, 303);
-        die();
-    }
+    return $flag;
 }
 ?>

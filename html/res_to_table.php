@@ -8,7 +8,7 @@ function res_to_table($res) {
     <p>
     <?php echo $num_cols; ?> columns, <?php echo $num_rows; ?> rows.
     </p>
-    <form action="deleteFromTable.php" method=POST>
+    <form action="pokemonTable.php" method=POST>
         <table>
         <thead>
         <tr>
@@ -53,7 +53,7 @@ function res_to_table($res) {
     <p><input type="checkbox"  name="deleteAll"/>Delete all records</p>
     <input type="submit" value="Delete Selected Records"/><br><br>
     </form>
-    <form action="deleteFromTable.php" method=POST>
+    <form action="pokemonTable.php" method=POST>
         <input type="submit" name="toggle" value="Toggle Light/Dark Mode"/>
     </form> 
 <?php

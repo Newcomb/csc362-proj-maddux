@@ -14,7 +14,7 @@ CREATE DATABASE pokemon_db;
 
 USE pokemon_db;
 
---Source all sql files
+-- Source all sql files
 SOURCE Pokemasters.sql;
 SOURCE Types.sql;
 SOURCE Moves.sql;
@@ -27,7 +27,7 @@ SOURCE ForgottenMoves.sql;
 SOURCE RatingCounts.sql; 
 SOURCE PokemasterRatings.sql;
 
---Generate views
+-- Generate views
 SOURCE ViewForgottenMoves.sql;
 SOURCE ViewKnownMoves.sql;
 SOURCE ViewOwnedPokemon.sql;

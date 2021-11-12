@@ -49,7 +49,7 @@ if(isset($_POST['toggle'])){
     } else {
         setcookie('dark_mode', FALSE);
     }
-    header('Location: http://34.135.39.226/pokemonTable.php', true, 303);
+    header('Location: http://34.135.39.226/team/pokemonTable.php', true, 303);
     die();
 }
 
@@ -73,7 +73,7 @@ if (isset($_POST['pokeName'])) {
     $stmt->bind_param('s', $_POST['pokeName']);
 
     $stmt->execute();
-    header('Location: http://34.135.39.226/pokemonTable.php', true, 303);
+    header('Location: http://34.135.39.226/team/pokemonTable.php', true, 303);
     die();
 }
 
@@ -84,12 +84,17 @@ if (isset($_POST['newName'])) {
     $stmt = $conn->prepare(file_get_contents("UpdatePokedex.sql"));
     $stmt->bind_param('si', $_POST['newName'], $_POST['pokeID']);
     $stmt->execute();
-    header('Location: http://34.135.39.226/pokemonTable.php', true, 303);
+    header('Location: http://34.135.39.226/team/pokemonTable.php', true, 303);
     die();
 }
 
-//Delete all checked items
-del_sel_checkbox("pokedex", "DeletePokemon.sql");
+// Delete all checked items
+if (del_sel_checkbox("pokedex", "DeletePokemon.sql")) {
+    header('Location: http://34.135.39.226/team/pokemonTable.php', true, 303);
+    die();
+}
+
+
 
 // Establish query for getting all current instruments
 $sql_query = "SELECT pokemon_id, pokemon_name FROM pokedex";

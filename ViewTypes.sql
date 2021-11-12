@@ -1,2 +1,2 @@
---Show all fields in types
+-- Show all fields in types
 SELECT * FROM types;

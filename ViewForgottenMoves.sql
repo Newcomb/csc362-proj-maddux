@@ -1,2 +1,2 @@
---Show all fields in forgotten_moves
+-- Show all fields in forgotten_moves
 SELECT * FROM forgotten_moves;
