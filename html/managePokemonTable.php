@@ -49,15 +49,15 @@ if(isset($_POST['toggle'])){
     } else {
         setcookie('dark_mode', FALSE);
     }
-    header('Location: http://34.135.39.226/team/pokemonTable.php', true, 303);
+    header('Location: http://34.135.39.226/team/managePokemonTable.php', true, 303);
     die();
 }
 
 // Log in to database using configured file
-$path = dirname(__FILE__);
-$path_array = explode('/',$path, 4);
+$login_path = dirname(dirname(__DIR__));
+echo dirname(__DIR__);
 
-$config = parse_ini_file('/home/' . $path_array[2] .'/mysql.ini');
+$config = parse_ini_file($login_path .'/mysql.ini');
 $dbname = 'pokemon_db';
 $conn = new mysqli(
             $config['mysqli.default_host'],
@@ -65,15 +65,18 @@ $conn = new mysqli(
             $config['mysqli.default_pw'],
             $dbname);
 
+// Get base of sql path
+$sql_path = dirname(__DIR__);
+
 // Insert a pokemon
 if (isset($_POST['pokeName'])) {
 
     // Prepare the delete statement
-    $stmt = $conn->prepare(file_get_contents("InsertPokemon.sql"));
+    $stmt = $conn->prepare(file_get_contents($sql_path . "/InsertPokemon.sql"));
     $stmt->bind_param('s', $_POST['pokeName']);
 
     $stmt->execute();
-    header('Location: http://34.135.39.226/team/pokemonTable.php', true, 303);
+    header('Location: http://34.135.39.226/team/managePokemonTable.php', true, 303);
     die();
 }
 
@@ -81,16 +84,16 @@ if (isset($_POST['pokeName'])) {
 if (isset($_POST['newName'])) {
 
     // Prepare the delete statement
-    $stmt = $conn->prepare(file_get_contents("UpdatePokedex.sql"));
+    $stmt = $conn->prepare(file_get_contents($sql_path . "/UpdatePokedex.sql"));
     $stmt->bind_param('si', $_POST['newName'], $_POST['pokeID']);
     $stmt->execute();
-    header('Location: http://34.135.39.226/team/pokemonTable.php', true, 303);
+    header('Location: http://34.135.39.226/team/managePokemonTable.php', true, 303);
     die();
 }
 
 // Delete all checked items
-if (del_sel_checkbox("pokedex", "DeletePokemon.sql")) {
-    header('Location: http://34.135.39.226/team/pokemonTable.php', true, 303);
+if (del_sel_checkbox("pokedex", $sql_path . "/DeletePokemon.sql")) {
+    header('Location: http://34.135.39.226/team/managePokemonTable.php', true, 303);
     die();
 }
 
@@ -101,7 +104,7 @@ $sql_query = "SELECT pokemon_id, pokemon_name FROM pokedex";
 // Query the database using the select statement
 $result = $conn->query($sql_query);
 //Print result on page
-res_to_table($result);
+res_to_table($result, 'managePokemonTable.php');
 $conn->close();
 ?>    
 </html>

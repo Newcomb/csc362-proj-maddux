@@ -1,5 +1,5 @@
 <?php
-function res_to_table($res) {
+function res_to_table($res,$path) {
     // Get array of table vals set up
     $num_rows = $res->num_rows;
     $num_cols = $res->field_count;
@@ -8,7 +8,7 @@ function res_to_table($res) {
     <p>
     <?php echo $num_cols; ?> columns, <?php echo $num_rows; ?> rows.
     </p>
-    <form action="pokemonTable.php" method=POST>
+    <form action=<?php echo $path ?>  method=POST>
         <table>
         <thead>
         <tr>
@@ -53,7 +53,7 @@ function res_to_table($res) {
     <p><input type="checkbox"  name="deleteAll"/>Delete all records</p>
     <input type="submit" value="Delete Selected Records"/><br><br>
     </form>
-    <form action="pokemonTable.php" method=POST>
+    <form action=<?php echo $path ?> method=POST>
         <input type="submit" name="toggle" value="Toggle Light/Dark Mode"/>
     </form> 
 <?php
