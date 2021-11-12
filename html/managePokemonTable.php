@@ -72,7 +72,7 @@ $sql_path = dirname(__DIR__);
 if (isset($_POST['pokeName'])) {
 
     // Prepare the delete statement
-    $stmt = $conn->prepare(file_get_contents($sql_path . "/InsertPokemon.sql"));
+    $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertPokemon.sql"));
     $stmt->bind_param('s', $_POST['pokeName']);
 
     $stmt->execute();
@@ -84,7 +84,7 @@ if (isset($_POST['pokeName'])) {
 if (isset($_POST['newName'])) {
 
     // Prepare the delete statement
-    $stmt = $conn->prepare(file_get_contents($sql_path . "/UpdatePokedex.sql"));
+    $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdatePokedex.sql"));
     $stmt->bind_param('si', $_POST['newName'], $_POST['pokeID']);
     $stmt->execute();
     header('Location: http://34.135.39.226/team/managePokemonTable.php', true, 303);
@@ -92,7 +92,7 @@ if (isset($_POST['newName'])) {
 }
 
 // Delete all checked items
-if (del_sel_checkbox("pokedex", $sql_path . "/DeletePokemon.sql")) {
+if (del_sel_checkbox("pokedex", $sql_path . "/DML/DeletePokemon.sql")) {
     header('Location: http://34.135.39.226/team/managePokemonTable.php', true, 303);
     die();
 }

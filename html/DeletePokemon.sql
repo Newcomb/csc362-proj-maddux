@@ -1,1 +1,0 @@
-DELETE FROM pokedex WHERE pokemon_id = ?;
