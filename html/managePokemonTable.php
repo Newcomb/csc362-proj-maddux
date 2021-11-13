@@ -70,8 +70,7 @@ $sql_path = dirname(__DIR__);
 
 // Insert a pokemon
 if (isset($_POST['pokeName'])) {
-
-    // Prepare the delete statement
+    // Prepare the insert statement
     $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertPokemon.sql"));
     $stmt->bind_param('s', $_POST['pokeName']);
 
@@ -83,9 +82,9 @@ if (isset($_POST['pokeName'])) {
 // Update a pokemon
 if (isset($_POST['newName'])) {
 
-    // Prepare the delete statement
+    // Prepare the insert statement
     $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdatePokedex.sql"));
-    $stmt->bind_param('s', $_POST['newName']);
+    $stmt->bind_param('ss', $_POST['newName'], $_POST['pokeID']);
     $stmt->execute();
     header('Location: http://34.135.39.226/team/managePokemonTable.php', true, 303);
     die();

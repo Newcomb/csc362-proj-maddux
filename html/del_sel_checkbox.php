@@ -14,7 +14,7 @@ function del_sel_checkbox($table, $fileName) {
 
     // Prepare the delete statement
     $stmt = $conn->prepare(file_get_contents($fileName));
-    $stmt->bind_param('i', $id);
+    $stmt->bind_param('s', $id);
     $flag = FALSE;
     // Loop through all the records in the table and check if their checkbox was clicked for deletion
     for($i = 0; $i < $record_rows; $i++) {
