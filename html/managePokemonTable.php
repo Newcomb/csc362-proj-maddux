@@ -34,7 +34,7 @@
     <h3>Update an existing Pokemon</h3>
         <p>
             <form method="POST">
-                <input type="text" name=pokeID placeholder='Enter pokemon_id...' required>
+                <input type="text" name=pokeID placeholder='Enter old name...' required>
                 <input type=text name=newName placeholder='Enter new name...' required/>
                 <input type=submit value='Update Pokemon'/>
             </form>
@@ -85,7 +85,7 @@ if (isset($_POST['newName'])) {
 
     // Prepare the delete statement
     $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdatePokedex.sql"));
-    $stmt->bind_param('si', $_POST['newName'], $_POST['pokeID']);
+    $stmt->bind_param('s', $_POST['newName']);
     $stmt->execute();
     header('Location: http://34.135.39.226/team/managePokemonTable.php', true, 303);
     die();
@@ -100,7 +100,7 @@ if (del_sel_checkbox("pokedex", $sql_path . "/DML/DeletePokemon.sql")) {
 
 
 // Establish query for getting all current instruments
-$sql_query = "SELECT pokemon_id, pokemon_name FROM pokedex";
+$sql_query = "SELECT pokemon_id AS PokemonName FROM pokedex";
 // Query the database using the select statement
 $result = $conn->query($sql_query);
 //Print result on page
