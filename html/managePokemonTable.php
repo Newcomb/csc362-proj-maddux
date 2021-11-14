@@ -31,12 +31,12 @@
                 <input type=submit value='Add New Pokemon'/>
             </form>
         </p>
-    <h3>Update an existing Pokemon</h3>
+    <h3>Update an existing Pokemon by Name</h3>
         <p>
             <form method="POST">
-                <input type="text" name=pokeID placeholder='Enter old name...' required>
+                <input type="text" name=pokeID placeholder='Enter existing name or id...' required>
                 <input type=text name=newName placeholder='Enter new name...' required/>
-                <input type=submit value='Update Pokemon'/>
+                <input type=submit value='Update Pokemon by Name'/>
             </form>
         </p>
 </body>
@@ -55,7 +55,6 @@ if(isset($_POST['toggle'])){
 
 // Log in to database using configured file
 $login_path = dirname(dirname(__DIR__));
-echo dirname(__DIR__);
 
 $config = parse_ini_file($login_path .'/mysql.ini');
 $dbname = 'pokemon_db';
@@ -80,11 +79,16 @@ if (isset($_POST['pokeName'])) {
 }
 
 // Update a pokemon
-if (isset($_POST['newName'])) {
-
-    // Prepare the insert statement
-    $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdatePokedex.sql"));
-    $stmt->bind_param('ss', $_POST['newName'], $_POST['pokeID']);
+if (isset($_POST['pokeID'])) {
+    if(is_numeric($_POST['pokeID'])){
+        // Prepare the insert statement
+        $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdatePokedexGivenID.sql"));
+        $stmt->bind_param('si', $_POST['newName'], intval($_POST['pokeID']));
+    } else {
+        // Prepare the insert statement
+        $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdatePokedexGivenName.sql"));
+        $stmt->bind_param('ss', $_POST['newName'], $_POST['pokeID']); 
+    }
     $stmt->execute();
     header('Location: http://34.135.39.226/team/managePokemonTable.php', true, 303);
     die();
@@ -99,9 +103,10 @@ if (del_sel_checkbox("pokedex", $sql_path . "/DML/DeletePokemon.sql")) {
 
 
 // Establish query for getting all current instruments
-$sql_query = "SELECT pokemon_id AS PokemonName FROM pokedex";
+$sql_query =  file_get_contents($sql_path . "/DML/ViewPokedex.sql");
 // Query the database using the select statement
 $result = $conn->query($sql_query);
+echo '<p>Pokemon 1-12 unable to delete due to RESTRICT. Will crash page.</p>';
 //Print result on page
 res_to_table($result, 'managePokemonTable.php');
 $conn->close();

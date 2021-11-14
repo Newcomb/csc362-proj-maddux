@@ -1,6 +1,7 @@
+-- Table for types
 CREATE TABLE types
 (
-    type_id INT NOT NULL AUTO_INCREMENT,
-    type_name VARCHAR(50) NOT NULL, 
-    PRIMARY KEY(type_id)
+    PRIMARY KEY(type_id),
+    type_id   INT AUTO_INCREMENT,
+    type_name VARCHAR(12) NOT NULL
 );
