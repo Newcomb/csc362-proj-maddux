@@ -1,1 +1,1 @@
-DELETE FROM pokedex WHERE pokemon_id = ?;
+DELETE FROM pokedex WHERE pokemon_id = (?);

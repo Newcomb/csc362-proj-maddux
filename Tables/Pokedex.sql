@@ -12,7 +12,8 @@
 /*Make the table*/
 CREATE TABLE pokedex (
     PRIMARY KEY (pokemon_id),
-    pokemon_id   VARCHAR(12) NOT NULL
+    pokemon_id   INT AUTO_INCREMENT,
+    pokemon_name VARCHAR(12) NOT NULL
 );
 
 /*Fill the table with values (according to national pokedex)

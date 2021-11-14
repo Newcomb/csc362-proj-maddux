@@ -27,18 +27,25 @@
     <h3>Add a new Owned Pokemon</h3>
         <p>
             <form method=POST>
-                <input type=text name=pokeID placeholder='Enter pokemon_id...' required/>
-                <input type="text" name=pokemasterID placeholder='Enter pokemaster_id' required/>
-                <input type=submit value='Add New Owned Pokemon'/>
+                <input type=text name=pokeID placeholder='Enter existing pokemon_id...' required/>
+                <input type="text" name=pokemasterID placeholder='Enter existing pokemaster_id' required/>
+                <input type=submit value='Add A New Owned Pokemon'/>
             </form>
         </p>
-    <h3>Update an existing Owned Pokemon</h3>
+    <h3>Update an existing Owned Pokemon's Pokemon ID</h3>
         <p>
             <form method="POST">
                 <input type="text" name=ownedPokeID placeholder='Enter owned_pokemon_id...' required>
-                <input type=text name=newPokeID placeholder='Enter new pokemon_id...' />
-                <input type="text" name=newPokemaster placeholder='Enter pokemaster_id'/>
-                <input type=submit value='Update Pokemon'/>
+                <input type=text name=newPokeID placeholder='Enter new pokemon_id...' required/>
+                <input type=submit value='Update Pokemon ID'/>
+            </form>
+        </p>
+    <h3>Update an existing Owned Pokemon's Pokemaster</h3>
+        <p>
+            <form method="POST">
+                <input type="text" name=ownedPokeID2 placeholder='Enter owned_pokemon_id...' required>
+                <input type=text name=pokemasterID2 placeholder='Enter new pokemaster_id...' required/>
+                <input type=submit value='Update Pokemaster'/>
             </form>
         </p>
 </body>
@@ -57,7 +64,6 @@ if(isset($_POST['toggle'])){
 
 // Log in to database using configured file
 $login_path = dirname(dirname(__DIR__));
-echo dirname(__DIR__);
 
 $config = parse_ini_file($login_path .'/mysql.ini');
 $dbname = 'pokemon_db';
@@ -71,18 +77,16 @@ $conn = new mysqli(
 $sql_path = dirname(__DIR__);
 
 // Insert an owned pokemon
-if (isset($_POST['pokeID'])) {
-
+if (isset($_POST['pokeID']) && isset($_POST['pokemasterID'])) {
     // Prepare the delete statement
-    $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertPokemon.sql"));
+    $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertOwnedPokemon.sql"));
     $stmt->bind_param('ii', $_POST['pokemasterID'], $_POST['pokeID']);
-
     $stmt->execute();
     header('Location: http://34.135.39.226/team/manageOwnedPokemonTable.php', true, 303);
     die();
 }
 
-// Update an owned pokemons name
+// Update an owned pokemons pokemon id
 if (isset($_POST['newPokeID'])) {
 
     // Prepare the update statement
@@ -93,18 +97,19 @@ if (isset($_POST['newPokeID'])) {
     die();
 }
 
-if (isset($_POST['newPokemaster'])){
 
+// Update an owned pokemons pokemaster id
+if (isset($_POST['pokemasterID2'])){
     // Prepare the update statement
     $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateOwnedPokemonOwner.sql"));
-    $stmt->bind_param('ii', $_POST['newPokemaster'], $_POST['ownedPokeID']);
+    $stmt->bind_param('ii', $_POST['pokemasterID2'], $_POST['ownedPokeID2']);
     $stmt->execute();
     header('Location: http://34.135.39.226/team/manageOwnedPokemonTable.php', true, 303);
     die();
 }
 
 // Delete all checked items
-if (del_sel_checkbox("owned_pokemon", $sql_path . "/DML/DeletePokemon.sql")) {
+if (del_sel_checkbox("owned_pokemon", $sql_path . "/DML/DeleteOwnedPokemon.sql")) {
     header('Location: http://34.135.39.226/team/manageOwnedPokemonTable.php', true, 303);
     die();
 }
@@ -112,7 +117,7 @@ if (del_sel_checkbox("owned_pokemon", $sql_path . "/DML/DeletePokemon.sql")) {
 
 
 // Establish query for getting all current instruments
-$sql_query = "SELECT owned_pokemon_id, pokemaster_id, pokemon_id FROM owned_pokemon";
+$sql_query = "SELECT * FROM owned_pokemon_join";
 // Query the database using the select statement
 $result = $conn->query($sql_query);
 //Print result on page
