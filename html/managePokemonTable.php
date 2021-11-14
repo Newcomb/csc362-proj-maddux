@@ -6,7 +6,7 @@
 <?php 
     include "res_to_table.php";
     include "del_sel_checkbox.php";
-
+    include "drop_down_options.php";
     // Check if cookie has been toggled and reset the page
     if(isset($_POST['toggle'])){
         if($_COOKIE['dark_mode'] == FALSE){
@@ -91,13 +91,11 @@
             </form>
         </p>
     <h3>Update an existing Pokemon by Name</h3>
-        <p>
             <form method="POST">
-                <input type="text" name=pokeID placeholder='Enter existing name or id...' required>
+                <?php drop_down_options('/DML/ViewPokedex.sql', 1, $sql_path, 'Choose a Pokemon', 'pokeID'); ?>
                 <input type=text name=newName placeholder='Enter new name...' required/>
                 <input type=submit value='Update Pokemon by Name'/>
             </form>
-        </p>
 </body>
 <?php
 

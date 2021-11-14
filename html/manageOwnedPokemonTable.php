@@ -61,11 +61,18 @@ if (isset($_POST['Update2'])){
     die();
 }
 
+if (isset($_POST['deleteAll'])){
+    $conn->query(file_get_contents($sql_path . "/DML/TruncateOwnedPokemon.sql"));
+    header('Location: http://34.135.39.226/team/manageOwnedPokemonTable.php', true, 303);
+    die();
+}
+
 // Delete all checked items
 if (del_sel_checkbox("owned_pokemon", $sql_path . "/DML/DeleteOwnedPokemon.sql")) {
     header('Location: http://34.135.39.226/team/manageOwnedPokemonTable.php', true, 303);
     die();
 }
+
  
  ?>
 </head>
