@@ -1,2 +1,2 @@
 -- Delete all from owned pokemon table
-DELETE * FROM owned_pokemon;
+TRUNCATE TABLE owned_pokemon;
