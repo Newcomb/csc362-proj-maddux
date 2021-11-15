@@ -3,6 +3,14 @@
 <link rel="stylesheet" href="menu.css">
 </head>
 <body>
+
+<div class=menu>
+<?php
+//Create the menu on this page 
+include "menu.php";
+?>
+</div>
+
 <h1>About</h1>
 <div id=about> 
         <p>Bill's Move Tutoring TM has been a trusted training service for over 20 years. 
@@ -10,6 +18,7 @@
             <br>
             Please reach out to him at billboss@aol.com for more information or schedule his services on this site today.
         </p>
-    </div>
+</div>
+
 </body>
 </html>
