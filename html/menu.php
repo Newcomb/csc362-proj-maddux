@@ -27,28 +27,29 @@
 </head>
 <body>
     <h1>Welcome to Bill's Move Tutor Site</h1>
-    
+
     <!-- Load font awesome icons -->
     <link rel="stylesheet" href="menu.css">
     <!-- The navigation menu -->
     <div class="navbar">
     <a href="#home">Home</a>
     <div class="subnav">
-        <button class="subnavbtn">Services <i class="fa fa-caret-down"></i></button>
+        <button class="subnavbtn">Services<i class="fa fa-caret-down"></i></button>
         <div class="subnav-content">
         <a href="#train">Train</a>
         <a href="#move-deletion">Move Deletion</a>
         <a href="pokemasterTable.php">View Database</a>
-        <a href="pokemonTable.php">Edit Database</a>
+        <a href="managePokemonTable.php">Manage All Pokemon</a>
+        <a href="manageOwnedPokemonTable.php">Manage Owned Pokemon</a>
         </div>
     </div>
     <div class="subnav">
-        <button class="subnavbtn">Schedule <i class="fa fa-caret-down"></i></button>
+        <button class="subnavbtn">Schedule<i class="fa fa-caret-down"></i></button>
         <div class="subnav-content">
         <a href="#move-schedule">Move Schedule</a>
         </div>
     </div>
-    <a href="#contact">Rate My Services</a>
+    <a href="#rate-services">Rate My Services</a>
     <a href="about.php">About</a>
     </div>
     <?php
@@ -125,21 +126,6 @@ if (!$conn = new mysqli($host, $user, $pass, $dbase)){
     exit;
 }
 
-// Establish query for getting all current instruments
-$sql_query = "SELECT * FROM instruments";
- 
-// Query the database using the select statement
-$result = $conn->query($sql_query);
-
-//Get all records that could be deleted into array format
-$records = $result->fetch_all();
-
-$record_rows = $result->num_rows;
-
-// Prepare the delete statement
-$stmt = $conn->prepare("DELETE FROM instruments WHERE instrument_id = ?");
-$stmt->bind_param('i', $id);
-
 $reload = false;
 
 // Loop through all the records in the table and check if their checkbox was clicked for deletion
@@ -172,6 +158,7 @@ for($i = 0; $i < $record_rows; $i++) {
 // If the checkbox for adding more values is checked then add values
 if(isset($_POST["reset"])) {
 
+    //change the contents of this query and it stills functions
     $conn->query("INSERT INTO instruments (instrument_type)
 
                         VALUES  ('Guitar'),
@@ -195,9 +182,7 @@ if(isset($_POST["reset"])) {
                  ");
 
     // Header to prevent re adding values with the refresh of page after the
-
     // initial post.
-
     $reload = true;
 
 }
@@ -205,7 +190,7 @@ if(isset($_POST["reset"])) {
 // If the checkbox for deleting all the records is clicked then delte all records
 if(isset($_POST["deleteAll"])) {
 
-    $conn->query("DELETE FROM instruments");
+    $conn->query("DELETE FROM instruments"); //change the query and this still works
 
     $reload = true;
 
