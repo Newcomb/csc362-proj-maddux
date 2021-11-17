@@ -1,3 +1,7 @@
+<?php
+ini_set ("display_errors",1);
+error_reporting(E_ALL);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +11,7 @@
     include "drop_down_options.php";
     // Log in to database using configured file
     $login_path = dirname(dirname(__DIR__));
+
     // Get base of sql path
     $sql_path = dirname(__DIR__);
     $config = parse_ini_file($login_path .'/mysql.ini');
@@ -94,6 +99,11 @@ if (del_sel_checkbox("owned_pokemon", $sql_path . "/DML/DeleteOwnedPokemon.sql")
     }
     ?>
 <body>
+    <?php 
+    //create menu
+    include 'menu.php';
+    ?>
+    <?php echo '<p>' . dirname(dirname(__DIR__)) . '</p>'?>
     <h1>Manage Owned Pokemon</h1>
     <h3>Add a new Owned Pokemon</h3>
     <form method="POST" action='manageOwnedPokemonTable.php'>
