@@ -20,7 +20,7 @@
 
     // Log in to database using configured file
     $login_path = dirname(dirname(__DIR__));
-
+    
     $config = parse_ini_file($login_path .'/mysql.ini');
     $dbname = 'pokemon_db';
     $conn = new mysqli(
