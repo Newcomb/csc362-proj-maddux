@@ -12,7 +12,7 @@ error_reporting(E_ALL);
 ?>
 </head>
 <body>
-    <h1>View Pokedex Table</h1>
+    <h1>View Moves Table</h1>
     
 </body>
 <?php
@@ -40,7 +40,7 @@ if (!$conn = new mysqli($host, $user, $pass, $dbse)){
 }
 
 // Establish query for getting all current instruments
-$sql_query = "SELECT pokemon_id, pokemon_name FROM pokedex";
+$sql_query = "SELECT * FROM moves";
 // Query the database using the select statement
 $result = $conn->query($sql_query);
 //Print result on page

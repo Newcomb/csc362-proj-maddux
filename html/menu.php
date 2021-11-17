@@ -22,7 +22,18 @@
             <div class="subnav-content">
             <a href="#train">Train</a>
             <a href="#move-deletion">Move Deletion</a>
-            <a href="pokemasterTable.php">View Database</a>
+            <a href="pokemasterTable.php">View Database Pages</a>
+            <div class="subnav">
+                <div class="dropdown">
+                <button class="dropbtn">Dropdown<i class="fa fa-caret-down"></i></button>
+                
+                    <div class="dropdown-content">
+                        <a href="pokedexTable.php">Pokedex Table</a>
+                        <a href="pokemasterTable.php">Pokemaster Table</a>
+                        <a href="movesTable.php">Moves Table</a>
+                    </div>
+                </div> 
+            </div>
             <a href="managePokemonTable.php">Manage All Pokemon</a>
             <a href="manageOwnedPokemonTable.php">Manage Owned Pokemon</a>
             </div>
