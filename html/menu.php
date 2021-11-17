@@ -44,7 +44,7 @@
             <a href="#move-schedule">Move Schedule</a>
             </div>
         </div>
-        <a href="#rate-services">Rate My Services</a>
+        <a href="#rate-services">Rate Bill's Services</a>
         <a href="about.php">About</a>
         </div>
     <?php
