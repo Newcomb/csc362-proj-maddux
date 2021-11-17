@@ -16,36 +16,34 @@
         <link rel="stylesheet" href="menu.css">
         <!-- The navigation menu -->
         <div class="navbar">
-        <a href="home.php">Home</a>
-        <div class="subnav">
-            <button class="subnavbtn">Services <i class="fa fa-caret-down"></i></button>
-            <div class="subnav-content">
-            <a href="#train">Train</a>
-            <a href="#move-deletion">Move Deletion</a>
-            <a href="pokemasterTable.php">View Database Pages</a>
+            <a href="home.php">Home</a>
             <div class="subnav">
-                <div class="dropdown">
-                <button class="dropbtn">Dropdown<i class="fa fa-caret-down"></i></button>
-                
-                    <div class="dropdown-content">
-                        <a href="pokedexTable.php">Pokedex Table</a>
-                        <a href="pokemasterTable.php">Pokemaster Table</a>
-                        <a href="movesTable.php">Moves Table</a>
-                    </div>
-                </div> 
+                <button class="subnavbtn">Services <i class="fa fa-caret-down"></i></button>
+                <div class="subnav-content">
+                    <a href="#train">Train</a>
+                    <a href="#move-deletion">Move Deletion</a>
+                    <a href="managePokemonTable.php">Manage All Pokemon</a>
+                    <a href="manageOwnedPokemonTable.php">Manage Owned Pokemon</a>
+                        <div class="dropdown">
+                            <button class="dropbtn">View Database Pages
+                            <i class="fa fa-caret-down"></i>
+                            </button>
+                            <div class="dropdown-content">
+                                <a href="pokedexTable.php">Pokedex Table</a>
+                                <a href="pokemasterTable.php">Pokemaster Table</a>
+                                <a href="movesTable.php">Moves Table</a>
+                            </div>
+                        </div> 
+                </div>
             </div>
-            <a href="managePokemonTable.php">Manage All Pokemon</a>
-            <a href="manageOwnedPokemonTable.php">Manage Owned Pokemon</a>
+            <div class="subnav">
+                <button class="subnavbtn">Schedule <i class="fa fa-caret-down"></i></button>
+                <div class="subnav-content">
+                    <a href="#move-schedule">Move Schedule</a>
+                </div>
             </div>
-        </div>
-        <div class="subnav">
-            <button class="subnavbtn">Schedule <i class="fa fa-caret-down"></i></button>
-            <div class="subnav-content">
-            <a href="#move-schedule">Move Schedule</a>
-            </div>
-        </div>
-        <a href="#rate-services">Rate Bill's Services</a>
-        <a href="about.php">About</a>
+                <a href="#rate-services">Rate Bill's Services</a>
+                <a href="about.php">About</a>
         </div>
     <?php
     }
