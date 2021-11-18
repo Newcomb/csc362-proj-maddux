@@ -7,7 +7,9 @@ error_reporting(E_ALL);
 <head>
 </head>
 <body>
+
 <?php 
+    include 'menu.php';
     include "res_to_table.php";    
 ?>
 </head>

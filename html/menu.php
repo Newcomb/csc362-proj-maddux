@@ -14,6 +14,7 @@
     ?>
         <!-- Load font awesome icons -->
         <link rel="stylesheet" href="menu.css">
+        <h1>Bill's Move Tutor Site</h1>
         <!-- The navigation menu -->
         <div class="navbar">
             <a href="home.php">Home</a>
@@ -32,6 +33,7 @@
                                 <a href="pokedexTable.php">Pokedex Table</a>
                                 <a href="pokemasterTable.php">Pokemaster Table</a>
                                 <a href="movesTable.php">Moves Table</a>
+                                <a href="typesTable.php">Types Table</a>
                             </div>
                         </div> 
                 </div>

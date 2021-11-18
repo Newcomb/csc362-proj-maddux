@@ -1,7 +1,7 @@
 <h1> Pokemasters </h1>
 
 <?php
-
+    include 'menu.php';
     include "res_to_table.php";
    
    // first we will check if the cookie has not been created 
