@@ -68,7 +68,7 @@ if (!$conn = new mysqli($host, $user, $pass, $dbse)){
 }
 
 // Establish query for getting all records in the table 
-$sql_query = "SELECT pokemonmaster_id, pokemaster_first_name, pokemaster_last_name FROM pokemasters";
+$sql_query = "SELECT pokemon_id, type_id FROM pokemon_types";
 // Query the database with query statement
 $result = $conn->query($sql_query);
 //call function which will print the table
