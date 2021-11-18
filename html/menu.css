@@ -59,7 +59,8 @@ h1, h2, h3{
   
   /* Add a yellow background color to navigation links on hover */
   .navbar a:hover, .subnav:hover .subnavbtn {
-    background-color: #F2C006;
+    /*background-color: #F2C006;*/
+    background-image: linear-gradient(rgb(85, 84, 84),rgb(47, 47, 47));
   }
   
   /* Style the subnav content - positioned absolute */
@@ -67,7 +68,7 @@ h1, h2, h3{
     display: none;
     position: absolute;
     left: 0;
-    background-color: #F2C006;
+    background-image: linear-gradient(#e6c85f,#F2C006);
     width: 100%;
     z-index: 1;
   }
@@ -89,3 +90,53 @@ h1, h2, h3{
   .subnav:hover .subnav-content {
     display: block;
   } 
+
+  /*Dropdown Styling*/
+  .dropdown {
+    float: left;
+    overflow: hidden;
+  }
+  
+  .dropdown .dropbtn {
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-image: linear-gradient(#333, black);
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: lightgray;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  #viewdb:hover{
+    background-image: linear-gradient(#333, black);
+  }

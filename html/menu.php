@@ -25,7 +25,7 @@
                     <a href="managePokemonTable.php">Manage All Pokemon</a>
                     <a href="manageOwnedPokemonTable.php">Manage Owned Pokemon</a>
                         <div class="dropdown">
-                            <button class="dropbtn">View Database Pages
+                            <button class="dropbtn" id="viewdb">View Database Pages
                             <i class="fa fa-caret-down"></i>
                             </button>
                             <div class="dropdown-content">
