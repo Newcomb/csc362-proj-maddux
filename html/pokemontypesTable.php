@@ -1,4 +1,4 @@
-<h1> Pokemasters </h1>
+<h1> PokemonTypes </h1>
 
 <?php
 
