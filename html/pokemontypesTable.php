@@ -1,8 +1,4 @@
-</head>
-<body>
-    <h1>View PokemonTypes Table</h1>
-    
-</body>
+
 
 <?php
     include 'menu.php';
@@ -21,6 +17,12 @@
      if(isset($_COOKIE['dark_mode']))
     {
 ?>
+         <head>
+                <body>
+                    <h1>View Pokemaster Table</h1>
+    
+                </body>
+            </head>
          <link rel="stylesheet" href="darkmode.css">
    
   <?php  

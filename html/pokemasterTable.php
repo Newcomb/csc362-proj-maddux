@@ -1,11 +1,7 @@
-</head>
-<body>
-    <h1>View Pokemaster Table</h1>
-    
-</body>
+
 
 <?php
-    include 'menu.php';
+    include 'menu.php';  
     include "res_to_table.php";
    
    // first we will check if the cookie has not been created 
@@ -21,6 +17,13 @@
      if(isset($_COOKIE['dark_mode']))
     {
 ?>
+          <head>
+                <body>
+                    <h1>View Pokemaster Table</h1>
+    
+                </body>
+            </head>
+            
          <link rel="stylesheet" href="darkmode.css">
    
   <?php  
