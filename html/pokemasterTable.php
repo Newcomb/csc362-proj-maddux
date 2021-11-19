@@ -1,4 +1,8 @@
-<h1> Pokemasters </h1>
+</head>
+<body>
+    <h1>View Pokemaster Table</h1>
+    
+</body>
 
 <?php
     include 'menu.php';

@@ -1,4 +1,8 @@
-<h1> PokemonTypes </h1>
+</head>
+<body>
+    <h1>View PokemonTypes Table</h1>
+    
+</body>
 
 <?php
     include 'menu.php';
