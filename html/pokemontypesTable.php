@@ -3,7 +3,14 @@
 <?php
     include 'menu.php';
     include "res_to_table.php";
-   
+ ?>
+    <head>
+        <body>
+             <h1>View Pokemon Types Table</h1>
+    
+        </body>
+    </head>
+ <?php 
    // first we will check if the cookie has not been created 
     if(!isset($_COOKIE['dark_mode']))
     {
@@ -17,12 +24,7 @@
      if(isset($_COOKIE['dark_mode']))
     {
 ?>
-         <head>
-                <body>
-                    <h1>View Pokemaster Table</h1>
-    
-                </body>
-            </head>
+         
          <link rel="stylesheet" href="darkmode.css">
    
   <?php  
@@ -74,7 +76,7 @@ if (!$conn = new mysqli($host, $user, $pass, $dbse)){
 }
 
 // Establish query for getting all records in the table 
-$sql_query = "SELECT pokemon_id, type_id FROM pokemon_types";
+$sql_query = "SELECT * FROM pokemon_types";
 // Query the database with query statement
 $result = $conn->query($sql_query);
 //call function which will print the table
