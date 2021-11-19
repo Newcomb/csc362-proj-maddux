@@ -72,7 +72,7 @@ $sql_query = "SELECT pokemonmaster_id, pokemaster_first_name, pokemaster_last_na
 // Query the database with query statement
 $result = $conn->query($sql_query);
 //call function which will print the table
-res_to_table($result);
+res_to_table($result, $_SERVER['REQUEST_URI']);
 
 
 ?>
