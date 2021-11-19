@@ -26,7 +26,6 @@
     
 </head>
 <body>
-    <h1>Welcome to Bill's Move Tutor Site</h1>
     <?php
     //Create menu
     include "menu.php";

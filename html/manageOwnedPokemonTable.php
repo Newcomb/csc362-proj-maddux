@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 <html>
 <head>
     <?php
+    include 'menu.php';
     include "res_to_table.php";
     include "del_sel_checkbox.php";
     include "drop_down_options.php";

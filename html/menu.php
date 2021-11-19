@@ -14,6 +14,7 @@
     ?>
         <!-- Load font awesome icons -->
         <link rel="stylesheet" href="menu.css">
+        <h1>Bill's Move Tutor Site</h1>
         <!-- The navigation menu -->
         <div class="navbar">
             <a href="home.php">Home</a>
@@ -31,7 +32,9 @@
                             <div class="dropdown-content">
                                 <a href="pokedexTable.php">Pokedex Table</a>
                                 <a href="pokemasterTable.php">Pokemaster Table</a>
+                                <a href="pokemasterRatingsTable.php">Pokemaster Ratings Table</a>
                                 <a href="movesTable.php">Moves Table</a>
+                                <a href="typesTable.php">Types Table</a>
                             </div>
                         </div> 
                 </div>
@@ -42,7 +45,7 @@
                     <a href="#move-schedule">Move Schedule</a>
                 </div>
             </div>
-                <a href="#rate-services">Rate Bill's Services</a>
+                <a href="rateMyServices.php">Rate Bill's Services</a>
                 <a href="about.php">About</a>
         </div>
     <?php

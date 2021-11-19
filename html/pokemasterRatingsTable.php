@@ -7,14 +7,13 @@ error_reporting(E_ALL);
 <head>
 </head>
 <body>
-
 <?php 
     include 'menu.php';
     include "res_to_table.php";    
 ?>
 </head>
 <body>
-    <h1>View Moves Table</h1>
+    <h1>View PokemasterRatings Table</h1>
     
 </body>
 <?php
@@ -42,7 +41,7 @@ if (!$conn = new mysqli($host, $user, $pass, $dbse)){
 }
 
 // Establish query for getting all current instruments
-$sql_query = "SELECT * FROM moves";
+$sql_query = "SELECT * FROM pokemaster_ratings";
 // Query the database using the select statement
 $result = $conn->query($sql_query);
 //Print result on page
