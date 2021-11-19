@@ -56,7 +56,7 @@
 
             }
 
-            header('Location: http://34.135.39.226/deleteFromTable.php', true, 303);
+            header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
             exit();
     
     }
