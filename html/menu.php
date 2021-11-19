@@ -32,6 +32,7 @@
                             <div class="dropdown-content">
                                 <a href="pokedexTable.php">Pokedex Table</a>
                                 <a href="pokemasterTable.php">Pokemaster Table</a>
+                                <a href="pokemasterRatingsTable.php">Pokemaster Ratings Table</a>
                                 <a href="movesTable.php">Moves Table</a>
                                 <a href="typesTable.php">Types Table</a>
                             </div>
