@@ -27,6 +27,15 @@ error_reporting(E_ALL);
     //         $config['mysqli.default_pw'],
     //         $dbname);
 
+    if (isset($_POST['InsertRating'])) {
+        // Prepare the delete statement
+        $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertPokemasterRatings.sql"));
+        $stmt->bind_param('iii', $_POST['pokemasterID'], $_POST['moveID']);
+        $stmt->execute();
+        header('Location: http://35.193.74.68/team/rateMyServices.php', true, 303);
+        die();
+    }
+
     ?>
 </head>
 <body>
@@ -40,6 +49,7 @@ error_reporting(E_ALL);
         header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
+
     ?>
     <h1>Rate My Services</h1>
     <h3>Give new rating</h3>
@@ -48,14 +58,14 @@ error_reporting(E_ALL);
             <?php drop_down_options('/DML/ViewPokemasterRatings.sql', 1, $sql_path, 'Choose Move ID', 'moveID'); ?>
             <label>Choose star rating</label>
             <select name = ratings>
-                <option value = '1star'>1</option>
-                <option value = '2star'>2</option>
-                <option value = '3star'>3</option>
-                <option value = '4star'>4</option>
-                <option value = '5star'>5</option>
+                <option value = '1'>1</option>
+                <option value = '2'>2</option>
+                <option value = '3'>3</option>
+                <option value = '4'>4</option>
+                <option value = '5'>5</option>
             </select>
             <br><br>
-            <input type="submit" value="InsertOwnedPokemon" name="Insert">
+            <input type="submit" value="InsertOwnedPokemon" name="InsertRating">
         </form>
         
     
