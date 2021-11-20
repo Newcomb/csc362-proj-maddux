@@ -10,30 +10,27 @@ error_reporting(E_ALL);
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">    
     <?php
+    include "menu.php";
     include "res_to_table.php";
     include "del_sel_checkbox.php";
     include "drop_down_options.php";
     // Log in to database using configured file
-    $login_path = dirname(dirname(__DIR__));
+    // $login_path = dirname(dirname(__DIR__));
 
-    // Get base of sql path
-    $sql_path = dirname(__DIR__);
-    $config = parse_ini_file($login_path .'/mysql.ini');
-    $dbname = 'pokemon_db';
-    $conn = new mysqli(
-            $config['mysqli.default_host'],
-            $config['mysqli.default_user'],
-            $config['mysqli.default_pw'],
-            $dbname);
+    // // Get base of sql path
+    // $sql_path = dirname(__DIR__);
+    // $config = parse_ini_file($login_path .'/mysql.ini');
+    // $dbname = 'pokemon_db';
+    // $conn = new mysqli(
+    //         $config['mysqli.default_host'],
+    //         $config['mysqli.default_user'],
+    //         $config['mysqli.default_pw'],
+    //         $dbname);
 
     ?>
 </head>
 <body>
-    <?php
-    //create menu
-    include 'menu.php';
-    ?>
-    <?php echo '<p>' . dirname(dirname(__DIR__)) . '</p>'?>
+
     <h1>Rate My Services</h1>
     <h3>Give new rating</h3>
     <form method="POST" action='rateMyServices.php'>
