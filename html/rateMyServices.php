@@ -50,7 +50,7 @@ error_reporting(E_ALL);
             <br><br>
             <input type="submit" value="InsertOwnedPokemon" name="Insert">
         </form>
-
+        
     
     <?php
 
