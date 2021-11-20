@@ -1,9 +1,16 @@
-<h1> Pokemasters </h1>
+
 
 <?php
-    include 'menu.php';
+    include 'menu.php';  
     include "res_to_table.php";
-   
+?>
+<head>
+    <body>
+        <h1>View Pokemasster Table</h1>
+    
+     </body>
+</head>
+<?php 
    // first we will check if the cookie has not been created 
     if(!isset($_COOKIE['dark_mode']))
     {
@@ -50,7 +57,7 @@
 
             }
 
-            header('Location: http://34.135.39.226/deleteFromTable.php', true, 303);
+            header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
             exit();
     
     }
@@ -68,11 +75,11 @@ if (!$conn = new mysqli($host, $user, $pass, $dbse)){
 }
 
 // Establish query for getting all records in the table 
-$sql_query = "SELECT pokemonmaster_id, pokemaster_first_name, pokemaster_last_name FROM pokemasters";
+$sql_query = "SELECT * FROM pokemasters";
 // Query the database with query statement
 $result = $conn->query($sql_query);
 //call function which will print the table
-res_to_table($result);
+res_to_table($result, $_SERVER['REQUEST_URI']);
 
 
 ?>
