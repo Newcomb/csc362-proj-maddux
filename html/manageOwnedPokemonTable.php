@@ -101,8 +101,6 @@ if (del_sel_checkbox("owned_pokemon", $sql_path . "/DML/DeleteOwnedPokemon.sql")
     ?>
 <body>
     <?php 
-    //create menu
-    include 'menu.php';
     ?>
     <?php echo '<p>' . dirname(dirname(__DIR__)) . '</p>'?>
     <h1>Manage Owned Pokemon</h1>
