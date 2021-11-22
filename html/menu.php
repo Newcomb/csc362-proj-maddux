@@ -26,7 +26,7 @@
                     <a href="managePokemonTable.php">Manage All Pokemon</a>
                     <a href="manageOwnedPokemonTable.php">Manage Owned Pokemon</a>
                         <div class="dropdown">
-                            <button class="dropbtn" id="viewdb">View Database Pages
+                            <button class="dropbtn" id="managedb">Manage Database Pages
                             <i class="fa fa-caret-down"></i>
                             </button>
                             <div class="dropdown-content">
@@ -35,6 +35,18 @@
                                 <a href="pokemasterRatingsTable.php">Pokemaster Ratings Table</a>
                                 <a href="movesTable.php">Moves Table</a>
                                 <a href="typesTable.php">Types Table</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn" id="viewdb">View Database Pages
+                            <i class="fa fa-caret-down"></i>
+                            </button>
+                            <div class="dropdown-content">
+                                <a href="viewPokedexTable.php">Pokedex Table</a>
+                                <a href="viewPokemasterTable.php">Pokemaster Table</a>
+                                <a href="viewPokemasterRatingsTable.php">Pokemaster Ratings Table</a>
+                                <a href="viewMovesTable.php">Moves Table</a>
+                                <a href="viewTypesTable.php">Types Table</a>
                             </div>
                         </div> 
                 </div>
