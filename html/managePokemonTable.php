@@ -18,7 +18,7 @@
         } else {
             setcookie('dark_mode', FALSE);
         }
-        header('Location: http://34.135.39.226/team/managePokemonTable.php', true, 303);
+        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
 
@@ -43,7 +43,7 @@
         $stmt->bind_param('s', $_POST['pokeName']);
 
         $stmt->execute();
-        header('Location: http://34.135.39.226/team/managePokemonTable.php', true, 303);
+        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
 
@@ -59,13 +59,13 @@
             $stmt->bind_param('ss', $_POST['newName'], $_POST['pokeID']); 
         }
         $stmt->execute();
-        header('Location: http://34.135.39.226/team/managePokemonTable.php', true, 303);
+        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
 
     // Delete all checked items
     if (del_sel_checkbox("pokedex", $sql_path . "/DML/DeletePokemon.sql")) {
-        header('Location: http://34.135.39.226/team/managePokemonTable.php', true, 303);
+        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
 
