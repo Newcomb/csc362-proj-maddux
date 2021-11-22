@@ -30,7 +30,7 @@ if(isset($_POST['toggle'])){
     } else {
         setcookie('dark_mode', FALSE);
     }
-    header('Location: http://34.135.39.226/team/manageOwnedPokemonTable.php', true, 303);
+    header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
     die();
 }
 
@@ -41,7 +41,7 @@ if (isset($_POST['Insert'])) {
     $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertOwnedPokemon.sql"));
     $stmt->bind_param('ii', $_POST['pokemasterID'], $_POST['pokeID']);
     $stmt->execute();
-    header('Location: http://34.135.39.226/team/manageOwnedPokemonTable.php', true, 303);
+    header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
     die();
 }
 
@@ -52,7 +52,7 @@ if (isset($_POST['Update'])) {
     $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateOwnedPokemonPokeID.sql"));
     $stmt->bind_param('ii', intval($_POST['newPokeID']), intval($_POST['ownedPokeID']));
     $stmt->execute();
-    header('Location: http://34.135.39.226/team/manageOwnedPokemonTable.php', true, 303);
+    header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
     die();
 }
 
@@ -63,19 +63,19 @@ if (isset($_POST['Update2'])){
     $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateOwnedPokemonOwner.sql"));
     $stmt->bind_param('ii', intval($_POST['pokemasterID2']),intval($_POST['ownedPokeID2']));
     $stmt->execute();
-    header('Location: http://34.135.39.226/team/manageOwnedPokemonTable.php', true, 303);
+    header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
     die();
 }
 
 if (isset($_POST['deleteAll'])){
     $conn->query(file_get_contents($sql_path . "/DML/TruncateOwnedPokemon.sql"));
-    header('Location: http://34.135.39.226/team/manageOwnedPokemonTable.php', true, 303);
+    header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
     die();
 }
 
 // Delete all checked items
 if (del_sel_checkbox("owned_pokemon", $sql_path . "/DML/DeleteOwnedPokemon.sql")) {
-    header('Location: http://34.135.39.226/team/manageOwnedPokemonTable.php', true, 303);
+    header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
     die();
 }
 
