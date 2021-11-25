@@ -13,6 +13,7 @@ function del_sel_checkbox_cpk($table, $fileName, $firstPart, $secondPart) {
     $record_rows = $result->num_rows;
 
     // Prepare the delete statement
+    // THIS DOESNT WORK AS IT IS SUPPOSED TOO!!!!
     $stmt = $conn->prepare(file_get_contents($fileName));
     $stmt->bind_param('ii', $idOne, $idTwo);
     // Loop through all the records in the table and check if their checkbox was clicked for deletion

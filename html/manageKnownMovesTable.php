@@ -52,7 +52,8 @@ error_reporting(E_ALL);
         die();
     }
     
-
+    // THIS DOES NOT WORK AT THE MOMENT IT DELETES ALL MVOES OF A POKEMON
+    
     // Delete all checked items
     if (del_sel_checkbox_cpk("known_moves", $sql_path . "/DML/DeleteKnownMoves.sql", 0, 1)) {
         header('Location: http://34.135.39.226/team/manageKnownMovesTable.php', true, 303);
