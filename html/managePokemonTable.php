@@ -6,8 +6,6 @@
 <?php 
     //create menu
     include 'menu.php';
-?>
-<?php 
     include "res_to_table.php";
     include "del_sel_checkbox.php";
     include "drop_down_options.php";

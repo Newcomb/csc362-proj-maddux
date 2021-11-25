@@ -40,3 +40,4 @@ SOURCE DML/ViewPokemasters.sql;
 SOURCE DML/ViewRatingCounts.sql;
 SOURCE DML/ViewTypes.sql;
 SOURCE DML/V_OwnedPokemonJoin.sql;
+SOURCE DML/V_Moves_Types_Join.sql;
