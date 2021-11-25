@@ -35,6 +35,10 @@
                                 <a href="viewPokemasterRatingsTable.php">Pokemaster Ratings Table</a>
                                 <a href="viewMovesTable.php">Moves Table</a>
                                 <a href="viewTypesTable.php">Types Table</a>
+                                <a href="viewTypesTable.php">PokemonTypes Table</a>
+                                <a href="viewTypesTable.php">KnownMoves Table</a>
+                                <a href="viewTypesTable.php">ForgottenMoves Table</a>
+                                <a href="viewTypesTable.php">RatingCounts Table</a>
                             </div>
                         </div> 
 
@@ -48,6 +52,10 @@
                             <a href="pokemasterRatingsTable.php">Pokemaster Ratings Table</a>
                             <a href="movesTable.php">Moves Table</a>
                             <a href="typesTable.php">Types Table</a>
+                            <a href="viewTypesTable.php">PokemonTypes Table</a>
+                            <a href="viewTypesTable.php">KnownMoves Table</a>
+                            <a href="viewTypesTable.php">ForgottenMoves Table</a>
+                            <a href="viewTypesTable.php">RatingCounts Table</a>
                         </div>
                     </div>
                 </div>
