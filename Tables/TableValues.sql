@@ -78,3 +78,8 @@ VALUES  ('Absorb', 0, 0, 4),
         ('Curse', 0, 0, 14),
         ('Dive', 1, 0, 3),
         ('Dragon Breath', 0, 0, 15);
+
+INSERT INTO known_moves (owned_pokemon_id, move_id)
+VALUES  (8, 8),
+        (8, 5),
+        (2, 5);
