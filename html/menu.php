@@ -35,10 +35,10 @@
                                 <a href="viewPokemasterRatingsTable.php">Pokemaster Ratings Table</a>
                                 <a href="viewMovesTable.php">Moves Table</a>
                                 <a href="viewTypesTable.php">Types Table</a>
-                                <a href="viewTypesTable.php">PokemonTypes Table</a>
-                                <a href="viewTypesTable.php">KnownMoves Table</a>
-                                <a href="viewTypesTable.php">ForgottenMoves Table</a>
-                                <a href="viewTypesTable.php">RatingCounts Table</a>
+                                <a href="viewPokemonTypesTable.php">PokemonTypes Table</a>
+                                <a href="viewKnownMovesTable.php">KnownMoves Table</a>
+                                <a href="viewForgottenMoves.php">ForgottenMoves Table</a>
+                                <a href="viewRatingCounts.php">RatingCounts Table</a>
                             </div>
                         </div> 
 
@@ -52,10 +52,10 @@
                             <a href="pokemasterRatingsTable.php">Pokemaster Ratings Table</a>
                             <a href="movesTable.php">Moves Table</a>
                             <a href="typesTable.php">Types Table</a>
-                            <a href="viewTypesTable.php">PokemonTypes Table</a>
-                            <a href="viewTypesTable.php">KnownMoves Table</a>
-                            <a href="viewTypesTable.php">ForgottenMoves Table</a>
-                            <a href="viewTypesTable.php">RatingCounts Table</a>
+                            <a href="pokemonTypesTable.php">PokemonTypes Table</a>
+                            <a href="knownMovesTable.php">KnownMoves Table</a>
+                            <a href="forgottenMovesTable.php">ForgottenMoves Table</a>
+                            <a href="ratingCountsTable.php">RatingCounts Table</a>
                         </div>
                     </div>
                 </div>
