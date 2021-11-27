@@ -71,7 +71,7 @@ error_reporting(E_ALL);
             -->
             <form method=POST>
                 <?php drop_down_options('/DML/ViewOwnedPokemon.sql', 0, $sql_path, 'Choose an Owned Pokemon', 'ownedPokeID'); ?>
-                <?php drop_down_options('/DML/ViewForgottenMoves.sql', 1, $sql_path, 'Choose a Move', 'moveID'); ?>
+                <?php drop_down_options('/DML/ViewMoves.sql', 1, $sql_path, 'Choose a Move', 'moveID'); ?>
                 <input type=submit value='A New Forgotten Move'/>
             </form>
         </p>
@@ -84,7 +84,7 @@ error_reporting(E_ALL);
 <?php
 
 // Establish query for getting all current moves. (I use the view here because it gives data that is useful to the person looking, not just a bunch of numbers)
-$sql_query =  "SELECT * FROM forgotten_moves";
+$sql_query =  "SELECT * FROM forgotten_moves_join";
 // The rest of this should just be copy and pasted
 // Query the database using the select statement
 $result = $conn->query($sql_query);
