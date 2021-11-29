@@ -33,7 +33,7 @@
         $stmt->bind_param('siii', $_POST['moveName'], $_POST['typeID'], $_POST['hidMoveNum'], $_POST['taughtStatNum']);
         // executes the prepared statement
         $stmt->execute();
-        header('Location: http://34.135.39.226/team/manageMovesTable.php', true, 303);
+        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
 
@@ -44,7 +44,7 @@
         // This also works just like the insert above with only si because there are two binded parameters one string and one integer
         $stmt->bind_param('si', $_POST['newMoveName'], $_POST['moveID']);
         $stmt->execute();
-        header('Location: http://34.135.39.226/team/manageMovesTable.php', true, 303);
+        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
     
@@ -54,7 +54,7 @@
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateMoveTaught.sql"));
         $stmt->bind_param('ii', $_POST['taughtStatNum2'], $_POST['moveID2']);
         $stmt->execute();
-        header('Location: http://34.135.39.226/team/manageMovesTable.php', true, 303);
+        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
 
@@ -64,7 +64,7 @@
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateHiddenMoveStatus.sql"));
         $stmt->bind_param('ii', $_POST['hidMoveNum2'], $_POST['moveID3']);
         $stmt->execute();
-        header('Location: http://34.135.39.226/team/manageMovesTable.php', true, 303);
+        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
     
@@ -74,13 +74,13 @@
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateMoveTypeID.sql"));
         $stmt->bind_param('ii', $_POST['typeID4'], $_POST['moveID4']);
         $stmt->execute();
-        header('Location: http://34.135.39.226/team/manageMovesTable.php', true, 303);
+        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
 
     // Delete all checked items
     if (del_sel_checkbox("moves", $sql_path . "/DML/DeleteMoves.sql")) {
-        header('Location: http://34.135.39.226/team/manageMovesTable.php', true, 303);
+        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
 
