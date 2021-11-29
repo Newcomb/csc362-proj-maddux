@@ -11,7 +11,8 @@ VALUES  ('Bulbasaur'),
         ('Blastoise'),
         ('Caterpie'),
         ('Metapod'),
-        ('Butterfree');
+        ('Butterfree'),
+        ('Misdreavus');
 
 INSERT INTO types (type_name)
 VALUES  ('Normal'),
@@ -50,7 +51,8 @@ VALUES  (1, 4),
         (10, 12),
         (11, 12),
         (12, 12),
-        (12, 10);
+        (12, 10),
+        (13, 14);
 
 INSERT INTO pokemasters (pokemaster_first_name, pokemaster_last_name)
 VALUES  ('Josh', 'West'),
@@ -66,7 +68,8 @@ VALUES  (1, 4),
         (3, 10),
         (3, 4),
         (4, 11),
-        (4, 8);
+        (4, 8),
+        (1, 13);
 
 INSERT INTO moves (move_name, hidden_move, taught_status, type_id)
 VALUES  ('Absorb', 0, 0, 4),
@@ -89,13 +92,16 @@ VALUES  ('Absorb', 0, 0, 4),
         ('Rock Slide', 0, 0, 13),
         ('Steel Wing', 0, 0, 17),
         ('Sacred Fire', 0, 0, 2),
-        ('Spider Web', 0, 0, 12);
+        ('Spider Web', 0, 0, 12),
+        ('Quick Attack', 0, 0, 1),
+        ('Headbutt', 0, 0, 1);
 
 INSERT INTO known_moves (owned_pokemon_id, move_id)
 VALUES  (8, 8),
         (1, 20),
         (8, 5),
-        (2, 5);
+        (2, 5),
+        (9, 7);
 
 INSERT INTO forgotten_moves (owned_pokemon_id, move_id)
 VALUES  (1, 5),
