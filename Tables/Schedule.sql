@@ -13,13 +13,8 @@
 /*Make the table*/
 CREATE TABLE schedule (
     move_id              INT NOT NULL,
-    when_taught          DATETIME,
+    when_taught          TINYINT(1) NOT NULL,
     teaching_duration    INT NOT NULL,
-    offered              BIT NOT NULL,
+    offered              TINYINT(1) NOT NULL,
     FOREIGN KEY (move_id) REFERENCES moves(move_id) ON DELETE RESTRICT
 );
-
-/*Fill the table with values (according to national pokedex)
-link: https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number*/
-/*INSERT INTO Schedule (MoveID, WhenTaught, TeachingDuration, Offered)
-VALUES();*/
