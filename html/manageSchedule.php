@@ -67,6 +67,22 @@ error_reporting(E_ALL);
         die();
     }
 
+    //SIMILAR UPDATE TO ONE ABOVE FOR when_taught; drop down for possible times
+    if (isset($_POST['timeID'])) {
+        if(is_numeric($_POST['timeID'])){
+            // Prepare the insert statement
+            $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateScheduleTimeGivenID.sql")); //Need to make SQL for this
+            $stmt->bind_param('ii', intval($_POST['newID']), intval($_POST['timeID']));
+        } else {
+            // Prepare the insert statement
+            //$stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateScheduleGivenName.sql")); //Need to make SQL for this
+            //$stmt->bind_param('ss', $_POST['newName'], $_POST['timeID']); 
+        }
+        $stmt->execute();
+        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
+        die();
+    }
+
     // Delete all checked items
     if (del_sel_checkbox("pokedex", $sql_path . "/DML/DeleteSchedule.sql")) {
         header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
@@ -100,9 +116,16 @@ error_reporting(E_ALL);
         </p>
     <h3>Update a schedule Move by Name</h3>
             <form method="POST">
-                <?php drop_down_options('/DML/ViewSchedule.sql', 1, $sql_path, 'Choose a Move to Replace', 'moveID'); ?>
-                <?php drop_down_options('/DML/ViewSchedule.sql', 1, $sql_path, 'Choose a New Move', 'newID'); //not showing; neither is submit?> 
+                <?php drop_down_options('/DML/ViewSchedule.sql', 0, $sql_path, 'Choose a Move to Replace', 'moveID'); ?>
+                <?php //drop_down_options('/DML/ViewSchedule.sql', 0, $sql_path, 'Choose a New Move', 'newID'); //not showing; neither is submit?> 
                 <input type=submit value='Update Move by ID'/>
+            </form>
+
+    <h3>Change when_taught</h3>
+            <form method="POST">
+                <input type=date name=timeID required/>
+                <?php// drop_down_options('/DML/ViewSchedule.sql', 1, $sql_path, 'Choose a Time to Replace','timeID');?>
+                <input type=submit value="Update when_taught"/>
             </form>
 </body>
 <?php

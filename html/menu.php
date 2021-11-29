@@ -47,15 +47,15 @@
                         <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="dropdown-content">
-                            <a href="pokedexTable.php">Pokedex Table</a>
-                            <a href="pokemasterTable.php">Pokemaster Table</a>
+                            <a href="managePokedexTable.php">Pokedex Table</a>
+                            <a href="managePokemastersTable.php">Pokemaster Table</a>
                             <a href="pokemasterRatingsTable.php">Pokemaster Ratings Table</a>
-                            <a href="movesTable.php">Moves Table</a>
-                            <a href="typesTable.php">Types Table</a>
-                            <a href="pokemonTypesTable.php">PokemonTypes Table</a>
-                            <a href="knownMovesTable.php">KnownMoves Table</a>
-                            <a href="forgottenMovesTable.php">ForgottenMoves Table</a>
-                            <a href="ratingCountsTable.php">RatingCounts Table</a>
+                            <a href="manageMovesTable.php">Moves Table</a>
+                            <a href="managePokemonTypesTable.php">Types Table</a>
+                            <a href="managePokemonTypesTable.php">PokemonTypes Table</a>
+                            <a href="manageKnownMovesTable.php">KnownMoves Table</a>
+                            <a href="manageForgottenMovesTable.php">ForgottenMoves Table</a>
+                            <a href="manageRatingCountsTable.php">RatingCounts Table</a>
                         </div>
                     </div>
                 </div>
