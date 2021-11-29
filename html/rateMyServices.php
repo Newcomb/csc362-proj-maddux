@@ -66,14 +66,19 @@ error_reporting(E_ALL);
             <input type="submit" value="Submit Rating" name="SubmitRating">
         </form>
         
-    
+    <?php
+    $sql_query = "SELECT * FROM pokemaster_ratings";
+    $result = $conn->query($sql_query);
+    res_to_table($result, $_SERVER['REQUEST_URI']);
+    ?>
+
     <?php
     // Establish query for getting all current instruments
-    $sql_query = "SELECT * FROM rating_counts";
-    // Query the database using the select statement
-    $result = $conn->query($sql_query);
-    //Print result on page
-    res_to_table($result, $_SERVER['REQUEST_URI']);
+    // $sql_query = "SELECT * FROM rating_counts";
+    // // Query the database using the select statement
+    // $result = $conn->query($sql_query);
+    // //Print result on page
+    // res_to_table($result, $_SERVER['REQUEST_URI']);
     ?>
 </body>
 </html>
