@@ -42,4 +42,5 @@ SOURCE DML/ViewTypes.sql;
 SOURCE DML/V_OwnedPokemonJoin.sql;
 SOURCE DML/V_Moves_Types_Join.sql;
 SOURCE DML/V_Known_Moves_Join.sql;
+SOURCE DML/V_Forgotten_Moves_Join.sql;
 SOURCE DML/V_Pokemon_Types_Join.sql;

@@ -77,9 +77,27 @@ VALUES  ('Absorb', 0, 0, 4),
         ('Charge Beam', 0, 0, 5),
         ('Curse', 0, 0, 14),
         ('Dive', 1, 0, 3),
-        ('Dragon Breath', 0, 0, 15);
+        ('Dragon Breath', 0, 0, 15),
+        ('Pound', 0, 0, 1),
+        ('Poison Sting', 0, 0, 8),
+        ('Water Gun', 0, 0, 3),
+        ('Hydro Beam', 0, 0, 3),
+        ('Peck', 0, 0, 10),
+        ('Confusion', 0, 0, 11),
+        ('Confuse Ray', 0, 0, 14),
+        ('Haze', 0, 0, 6),
+        ('Rock Slide', 0, 0, 13),
+        ('Steel Wing', 0, 0, 17),
+        ('Sacred Fire', 0, 0, 2),
+        ('Spider Web', 0, 0, 12);
 
 INSERT INTO known_moves (owned_pokemon_id, move_id)
 VALUES  (8, 8),
+        (1, 20),
         (8, 5),
         (2, 5);
+
+INSERT INTO forgotten_moves (owned_pokemon_id, move_id)
+VALUES  (1, 5),
+        (8, 10),
+        (2, 21);

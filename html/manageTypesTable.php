@@ -1,7 +1,3 @@
-<?php
-ini_set ("display_errors",1);
-error_reporting(E_ALL);
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +7,7 @@ error_reporting(E_ALL);
     //create menu (this just allows for us to use the functions in these files)
     include 'menu.php';
     include "res_to_table.php";
-    include "del_sel_checkbox_cpk.php";
+    include "del_sel_checkbox.php";
     include "drop_down_options.php";
 
 
@@ -30,61 +26,59 @@ error_reporting(E_ALL);
     $sql_path = dirname(__DIR__);
 
     // Insert a move )
-    if (isset($_POST['ownedPokeID'])) {
+    if (isset($_POST['typeName'])) {
         // Prepare the insert statement ($sql_path was the path we established above and it is concatenated to the string"/DML/InsertMoves...sql which will insert the move)
-        $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertForgottenMoves.sql"));
+        $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertTypes.sql"));
         // siii represents the submission of one string followed by three integers as $_POST['moveName] is string and $_POST['typeID] is an integer as long as the next two
-        $stmt->bind_param('ii', $_POST['ownedPokeID'], $_POST['moveID']);
+        $stmt->bind_param('s', $_POST['typeName']);
         // executes the prepared statement
         $stmt->execute();
-        header('Location: http://34.135.39.226/team/manageForgottenMovesTable.php', true, 303);
+        header('Location: http://34.135.39.226/team/manageTypesTable.php', true, 303);
         die();
     }
 
-    // Update a known moves move id
-    if (isset($_POST['newMoveID'])) {
+    // Update a moves taught status  
+    if (isset($_POST['newTypeName'])) {
         // Prepare the update statment (this works just like the insert statement above you just have to change the part of the link in quotes to the sql you want)
-        $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateForgottenMoves.sql"));
+        $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateTypes.sql"));
         // This also works just like the insert above with only si because there are two binded parameters one string and one integer
-        $stmt->bind_param('iii', $_POST['newMoveID'], $_POST['ownedPokeID2'], $_POST['moveID2']);
+        $stmt->bind_param('si', $_POST['newTypeName'], $_POST['typeID']);
         $stmt->execute();
-        header('Location: http://34.135.39.226/team/manageForgottenMovesTable.php', true, 303);
+        header('Location: http://34.135.39.226/team/manageTypesTable.php', true, 303);
         die();
     }
-    
-    // THIS DOES NOT WORK AT THE MOMENT IT DELETES ALL MVOES OF A POKEMON
-    
+
+
     // Delete all checked items
-    if (del_sel_checkbox_cpk("forgotten_moves", $sql_path . "/DML/DeleteForgottenMoves.sql", 0, 1)) {
-        header('Location: http://34.135.39.226/team/manageForgottenMovesTable.php', true, 303);
+    if (del_sel_checkbox("types", $sql_path . "/DML/DeleteTypes.sql")) {
+        header('Location: http://34.135.39.226/team/manageTypesTable.php', true, 303);
         die();
     }
 
     ?>
         <link rel="stylesheet" href="basic.css">
 
-    <h1>Manage Forgotten Moves</h1>
-    <h3>Add a Forgotten Move</h3>
+    <h1>Manage Types</h1>
+    <h3>Add a new Type</h3>
         <p>
-            <!--
-            These are like the forms in all other pages you adjust name values for different posts
-            -->
+
             <form method=POST>
-                <?php drop_down_options('/DML/ViewOwnedPokemon.sql', 0, $sql_path, 'Choose an Owned Pokemon', 'ownedPokeID'); ?>
-                <?php drop_down_options('/DML/ViewMoves.sql', 1, $sql_path, 'Choose a Move', 'moveID'); ?>
-                <input type=submit value='A New Forgotten Move'/>
+                <input type=text name=typeName placeholder='Enter type name...' required/>
+                <input type=submit value='Add New Move'/>
             </form>
         </p>
 
-        <!--
-          Dont know if this will be necessary given you arent supposed to be able to change primary keys
-         -->
-
+        <h3>Update an existing Type Name</h3>
+            <form method="POST">
+                <?php drop_down_options('/DML/ViewTypes.sql', 1, $sql_path, 'Choose a Type', 'typeID'); ?>
+                <input type=text name=newTypeName placeholder='Enter new type name...' required/>
+                <input type=submit value='Update Type Name'/>
+            </form>
 </body>
 <?php
 
-// Establish query for getting all current moves. (I use the view here because it gives data that is useful to the person looking, not just a bunch of numbers)
-$sql_query =  "SELECT * FROM forgotten_moves_join";
+// Establish query for getting all current types. (I use the view here because it gives data that is useful to the person looking, not just a bunch of numbers)
+$sql_query =  file_get_contents($sql_path . "/DML/ViewTypes.sql");
 // The rest of this should just be copy and pasted
 // Query the database using the select statement
 $result = $conn->query($sql_query);
