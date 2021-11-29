@@ -7,5 +7,5 @@ CREATE TABLE pokemaster_ratings (
     star_rating             INT CHECK (star_rating > 0 AND star_rating < 6),
     FOREIGN KEY (move_id) REFERENCES moves (move_id),
     FOREIGN KEY (pokemaster_id) REFERENCES pokemasters (pokemaster_id),
-    UNIQUE (pokemaster_id, move_id),
+    -- UNIQUE (pokemaster_id, move_id),
 );
