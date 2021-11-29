@@ -10,7 +10,7 @@
 
 /*Make the view table for schedule*/
 CREATE VIEW schedule AS
-SELECT move_id, when_taught, teaching_duration, offered, move_name, type_id, type_name
+SELECT schedule_id, move_id, when_taught, teaching_duration, offered, move_name, type_id, type_name
     FROM schedule INNER JOIN moves
         ON (move_id)
     FROM moves INNER JOIN types
