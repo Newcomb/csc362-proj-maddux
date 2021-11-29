@@ -53,7 +53,6 @@ if (isset($_POST['deleteAll'])){
     die();
 }
 */
-// THIS WILL ALSO NOT WORK BECAUSE THE FUNCTION wokrs need to change the res to table to include the keys
 // Delete all checked items
 if (del_sel_checkbox("pokemon_types", $sql_path . "/DML/DeletePokemonTypes.sql")) {
     header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
