@@ -36,7 +36,6 @@ error_reporting(E_ALL);
         header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }    
-        
 
     if (isset($_POST['SubmitRating'])) {
         // Prepare the delete statement
