@@ -19,6 +19,14 @@ h1, h2, h3{
         src: url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.woff") format("woff"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.svg#Pokemon") format("svg"); }
  }
 
+ /*Button Styles*/
+
+ /*Default Buttons*/
+ input {
+   background-color: lightgrey;
+   border-radius: 8px;
+   font-size: 95%;
+ }
  
  /* The navigation menu (adapted from w3.schools)*/
  .navbar {
