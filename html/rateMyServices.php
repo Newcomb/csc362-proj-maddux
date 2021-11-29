@@ -69,7 +69,7 @@ error_reporting(E_ALL);
     <?php
     $sql_query = "SELECT * FROM pokemaster_ratings";
     $result = $conn->query($sql_query);
-    res_to_table($result, $_SERVER['REQUEST_URI']);
+    res_to_table($result, 'rateMyServices.php');
     ?>
 
     <?php
