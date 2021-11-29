@@ -11,7 +11,7 @@ error_reporting(E_ALL);
     //create menu (this just allows for us to use the functions in these files)
     include 'menu.php';
     include "res_to_table.php";
-    include "del_sel_checkbox_cpk.php";
+    include "del_sel_checkbox.php";
     include "drop_down_options.php";
 
 
@@ -55,7 +55,7 @@ error_reporting(E_ALL);
     // THIS DOES NOT WORK AT THE MOMENT IT DELETES ALL MVOES OF A POKEMON
     
     // Delete all checked items
-    if (del_sel_checkbox_cpk("forgotten_moves", $sql_path . "/DML/DeleteForgottenMoves.sql", 0, 1)) {
+    if (del_sel_checkbox("forgotten_moves", $sql_path . "/DML/DeleteForgottenMoves.sql")) {
         header('Location: http://34.135.39.226/team/manageForgottenMovesTable.php', true, 303);
         die();
     }

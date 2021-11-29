@@ -10,8 +10,8 @@
 
 /*Make the table for pokemon types*/
 CREATE TABLE pokemon_types (
-    PRIMARY KEY (pokemon_types_id),
-    pokemon_types_id    INT NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (pokemon_type_id),
+    pokemon_type_id    INT NOT NULL AUTO_INCREMENT,
     pokemon_id          INT NOT NULL,
     type_id             INT NOT NULL,
     FOREIGN KEY (pokemon_id) REFERENCES pokedex(pokemon_id) ON DELETE RESTRICT,

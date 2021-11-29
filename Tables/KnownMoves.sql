@@ -1,7 +1,7 @@
 CREATE TABLE known_moves
 (
-    PRIMARY KEY (known_moves_id),
-    known_moves_id      INT NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (known_move_id),
+    known_move_id      INT NOT NULL AUTO_INCREMENT,
     owned_pokemon_id    INT NOT NULL,
     move_id             INT NOT NULL,
     FOREIGN KEY (owned_pokemon_id) REFERENCES owned_pokemon(owned_pokemon_id),

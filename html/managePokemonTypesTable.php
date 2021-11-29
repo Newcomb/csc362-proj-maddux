@@ -8,7 +8,7 @@ error_reporting(E_ALL);
     <?php
     include 'menu.php';
     include "res_to_table.php";
-    include "del_sel_checkbox_cpk.php";
+    include "del_sel_checkbox.php";
     include "drop_down_options.php";
     // Log in to database using configured file
     $login_path = dirname(dirname(__DIR__));
@@ -53,9 +53,9 @@ if (isset($_POST['deleteAll'])){
     die();
 }
 */
-// THIS WILL ALSO NOT WORK BECAUSE THE FUNCTION ISNT RIGHT
+// THIS WILL ALSO NOT WORK BECAUSE THE FUNCTION wokrs need to change the res to table to include the keys
 // Delete all checked items
-if (del_sel_checkbox_cpk("pokemon_types", $sql_path . "/DML/DeletePokemonTypes.sql", 0, 1)) {
+if (del_sel_checkbox("pokemon_types", $sql_path . "/DML/DeletePokemonTypes.sql")) {
     header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
     die();
 }

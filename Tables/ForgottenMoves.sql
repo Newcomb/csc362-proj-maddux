@@ -10,8 +10,8 @@
 
 /*Make the table*/
 CREATE TABLE forgotten_moves (
-    PRIMARY KEY (forgotten_moves_id),
-    forgotten_moves_id    INT NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (forgotten_move_id),
+    forgotten_move_id    INT NOT NULL AUTO_INCREMENT,
     owned_pokemon_id      INT NOT NULL,
     move_id              INT NOT NULL,
     FOREIGN KEY (owned_pokemon_id) REFERENCES owned_pokemon(owned_pokemon_id) ON DELETE RESTRICT,
