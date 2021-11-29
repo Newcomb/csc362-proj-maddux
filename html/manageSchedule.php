@@ -106,13 +106,20 @@ error_reporting(E_ALL);
 
 
     <h1>Manage Schedule</h1>
-    <h3>Add a new Move to Schedule</h3>
+    <h3>Add a New Move to Schedule by Name</h3>
         <p>
             <form method=POST>
                 <input type=text name=moveName placeholder='Enter name...' required/>
                 <input type=submit value='Add New Move to Schedule'/>
             </form>
         </p>
+    <h3>Add a New Move to Schedule by ID</h3>
+    <p>
+        <form method=POST>
+            <?php drop_down_options('/DML/ViewMoves.sql', 0, $sql_path, 'Choose a Move to Schedule', 'moveID'); ?>
+            <input type=submit value='Add New Move to Schedule'/>
+        </form>
+    </p>
     <h3>Update a schedule Move by Name</h3>
             <form method="POST">
                 <?php drop_down_options('/DML/ViewMoves.sql', 0, $sql_path, 'Choose a Move to Replace', 'moveID'); ?>
