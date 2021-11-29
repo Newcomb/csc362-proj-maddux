@@ -8,7 +8,7 @@ h1, h2, h3{
  
  /*Background color*/
  body{
-    background-color:rgb(69, 151, 202);
+    background-image: linear-gradient(to right, #71a0bd, #5f88d5);
  }
 
  /*Font Face*/

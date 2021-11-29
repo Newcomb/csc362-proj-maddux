@@ -82,6 +82,8 @@
     <?php
     }
     ?>
+
+
 </body>
 
 <?php
@@ -100,76 +102,7 @@ if (!$conn = new mysqli($host, $user, $pass, $dbase)){
 
     exit;
 }
-
 $reload = false;
-
-// Loop through all the records in the table and check if their checkbox was clicked for deletion
-for($i = 0; $i < $record_rows; $i++) {
-
-    $id = $records[$i][0];
-
-    //check if id is set to increment the num_checked
-    if(isset($_POST['checkbox' . $id])){
-
-       $_SESSION['num_checked'] = $_SESSION['num_checked'] + 1;
-
-        $reload = true;
-    }
-
-    //Check if delete all is set and increment the num_checked
-    if(isset($_POST['deleteAll'])){
-
-        $_SESSION['num_checked'] = $_SESSION['num_checked'] + 1;
-    }
-
-    // Delete the records
-    if(isset($_POST["checkbox" . $id]) && !$stmt->execute()) {
-
-        // Bind and execute the prepared statement
-        echo $conn->error();
-    }
-}
- 
-// If the checkbox for adding more values is checked then add values
-if(isset($_POST["reset"])) {
-
-    //change the contents of this query and it stills functions
-    $conn->query("INSERT INTO instruments (instrument_type)
-
-                        VALUES  ('Guitar'),
-
-                                ('Trumpet'),
-
-                                ('Flute'),
-
-                                ('Theramin'),
-
-                                ('Violin'),
-
-                                ('Tuba'),
-
-                                ('Melodica'),
-
-                                ('Trombone'),
-
-                                ('Keyboard')
-
-                 ");
-
-    // Header to prevent re adding values with the refresh of page after the
-    // initial post.
-    $reload = true;
-
-}
-
-// If the checkbox for deleting all the records is clicked then delte all records
-if(isset($_POST["deleteAll"])) {
-
-    $conn->query("DELETE FROM instruments"); //change the query and this still works
-
-    $reload = true;
-
-}
 
 // Check if cookie has been toggled and reset the page
 if(isset($_POST['togglemode'])){
@@ -182,7 +115,6 @@ if(isset($_POST['togglemode'])){
     }
 
     $reload = true;
-
 }
 
 //header
@@ -192,6 +124,8 @@ if($reload){
 } 
 
 // Query in order to get the table result
+$sql_query = "SELECT * FROM schedule";
+
 $stmt = $conn->prepare($sql_query);
 
 $stmt->bind_param();
@@ -200,10 +134,8 @@ $stmt->execute();
 
 $result = $stmt->get_result();
 
- 
-
 // Run function to establish the table
-res_to_table($result);
+viewTable($result);
 
 // Close the connection
 $conn->close();
