@@ -27,6 +27,17 @@ error_reporting(E_ALL);
             $config['mysqli.default_pw'],
             $dbname);
 
+    if(isset($_POST['toggle'])){
+        if($_COOKIE['dark_mode'] == FALSE){
+            setcookie('dark_mode', TRUE);
+        } else {
+            setcookie('dark_mode', FALSE);
+        }
+        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
+        die();
+    }    
+        
+
     if (isset($_POST['SubmitRating'])) {
         // Prepare the delete statement
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertPokemasterRatings.sql"));
@@ -39,18 +50,6 @@ error_reporting(E_ALL);
     ?>
 </head>
 <body>
-    <?php
-    if(isset($_POST['toggle'])){
-        if($_COOKIE['dark_mode'] == FALSE){
-            setcookie('dark_mode', TRUE);
-        } else {
-            setcookie('dark_mode', FALSE);
-        }
-        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
-        die();
-    }    
-
-    ?>
     <h1>Rate My Services</h1>
     <h3>Give new rating</h3>
     <form method="POST" action='rateMyServices.php'>
