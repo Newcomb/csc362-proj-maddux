@@ -54,7 +54,7 @@ error_reporting(E_ALL);
     <h1>Rate My Services</h1>
     <h3>Give new rating</h3>
     <form method="POST" action='rateMyServices.php'>
-            <?php drop_down_options('/DML/ViewPokemasters.sql', 0, $sql_path, 'Choose  ID', 'pokemasterID'); ?> 
+            <?php drop_down_options('/DML/ViewPokemasters.sql', 0, $sql_path, 'Choose PokemasterID', 'pokemasterID'); ?>
             <?php drop_down_options('/DML/ViewMoves.sql', 0, $sql_path, 'Choose Move ID', 'moveID'); ?>
             <label>Choose star rating</label>
             <select name = ratings>
