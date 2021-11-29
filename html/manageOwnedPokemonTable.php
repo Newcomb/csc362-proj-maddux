@@ -23,18 +23,6 @@ error_reporting(E_ALL);
             $config['mysqli.default_pw'],
             $dbname);
 
-// Check if cookie has been toggled and reset the page
-if(isset($_POST['toggle'])){
-    if($_COOKIE['dark_mode'] == FALSE){
-        setcookie('dark_mode', TRUE);
-    } else {
-        setcookie('dark_mode', FALSE);
-    }
-    header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
-    die();
-}
-
-
 // Insert an owned pokemon
 if (isset($_POST['Insert'])) {
     // Prepare the delete statement
@@ -83,26 +71,8 @@ if (del_sel_checkbox("owned_pokemon", $sql_path . "/DML/DeleteOwnedPokemon.sql")
  ?>
 </head>
 
-<?php 
-    //Check if the cookie is set and if not establish the cookie
-    if(!isset($_COOKIE['dark_mode'])){
-        setcookie('dark_mode', FALSE, time() + (20 * 365 * 24 * 60 * 60));
-    }
-    //Set style based on cookie
-    if ($_COOKIE['dark_mode']){
-    ?>
-        <link rel="stylesheet" href="darkmode.css">
-    <?php
-    } else {
-    ?>
-        <link rel="stylesheet" href="basic.css">
-    <?php
-    }
-    ?>
+
 <body>
-    <?php 
-    ?>
-    <?php echo '<p>' . dirname(dirname(__DIR__)) . '</p>'?>
     <h1>Manage Owned Pokemon</h1>
     <h3>Add a new Owned Pokemon</h3>
     <form method="POST" action='manageOwnedPokemonTable.php'>

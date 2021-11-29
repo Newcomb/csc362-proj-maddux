@@ -107,7 +107,7 @@ $sql_query =  file_get_contents($sql_path . "/DML/ViewPokedex.sql");
 $result = $conn->query($sql_query);
 echo '<p>Pokemon 1-12 unable to delete due to RESTRICT. Will crash page.</p>';
 //Print result on page
-res_to_table($result, 'managePokemonTable.php');
+res_to_table($result, 'managePokedexTable.php');
 $conn->close();
 ?>    
 </html>
