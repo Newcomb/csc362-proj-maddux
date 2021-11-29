@@ -40,9 +40,9 @@ error_reporting(E_ALL);
     if (isset($_POST['SubmitRating'])) {
         // Prepare the delete statement
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertPokemasterRatings.sql"));
-        $stmt->bind_param('iii', $_POST['pokemasterID'], $_POST['moveID'], $_POST['ratings']);
+        $stmt->bind_param('iii', intval($_POST['pokemasterID']), intval($_POST['moveID']), intval($_POST['ratings']));
         $stmt->execute();
-        header('Location: http://35.193.74.68/team/rateMyServices.php', true, 303);
+        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
 
@@ -66,14 +66,19 @@ error_reporting(E_ALL);
             <input type="submit" value="Submit Rating" name="SubmitRating">
         </form>
         
-    
+    <?php
+    $sql_query = "SELECT * FROM pokemaster_ratings";
+    $result = $conn->query($sql_query);
+    res_to_table($result, $_SERVER['REQUEST_URI']);
+    ?>
+
     <?php
     // Establish query for getting all current instruments
-    $sql_query = "SELECT * FROM rating_counts";
-    // Query the database using the select statement
-    $result = $conn->query($sql_query);
-    //Print result on page
-    res_to_table($result, $_SERVER['REQUEST_URI']);
+    // $sql_query = "SELECT * FROM rating_counts";
+    // // Query the database using the select statement
+    // $result = $conn->query($sql_query);
+    // //Print result on page
+    // res_to_table($result, $_SERVER['REQUEST_URI']);
     ?>
 </body>
 </html>
