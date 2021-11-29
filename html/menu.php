@@ -22,7 +22,7 @@
                 <button class="subnavbtn">Services <i class="fa fa-caret-down"></i></button>
                 <div class="subnav-content">
                     <a href="hiddenDeletion.php">Hidden Move Deletion</a>
-                    <a href="managePokemonTable.php">Manage All Pokemon</a>
+                    <a href="managePokedexTable.php">Manage All Pokemon</a>
                     <a href="manageOwnedPokemonTable.php">Manage Owned Pokemon</a>
 
                     <div class="dropdown">
