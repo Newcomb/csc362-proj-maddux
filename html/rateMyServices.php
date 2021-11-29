@@ -30,7 +30,7 @@ error_reporting(E_ALL);
     if (isset($_POST['SubmitRating'])) {
         // Prepare the delete statement
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertPokemasterRatings.sql"));
-        $stmt->bind_param('iii', $_POST['pokemasterID'], $_POST['moveID']);
+        $stmt->bind_param('iii', $_POST['pokemasterID'], $_POST['moveID'], $_POST['ratings']);
         $stmt->execute();
         header('Location: http://35.193.74.68/team/rateMyServices.php', true, 303);
         die();
