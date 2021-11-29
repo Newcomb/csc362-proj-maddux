@@ -27,19 +27,6 @@ error_reporting(E_ALL);
             $config['mysqli.default_pw'],
             $dbname);
 
-    if (isset($_POST['SubmitRating'])) {
-        // Prepare the delete statement
-        $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertPokemasterRatings.sql"));
-        $stmt->bind_param('iii', $_POST['pokemasterID'], $_POST['moveID']);
-        $stmt->execute();
-        header('Location: http://35.193.74.68/team/rateMyServices.php', true, 303);
-        die();
-    }
-
-    ?>
-</head>
-<body>
-    <?php
     if(isset($_POST['toggle'])){
         if($_COOKIE['dark_mode'] == FALSE){
             setcookie('dark_mode', TRUE);
@@ -50,7 +37,18 @@ error_reporting(E_ALL);
         die();
     }    
 
+    if (isset($_POST['SubmitRating'])) {
+        // Prepare the delete statement
+        $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertPokemasterRatings.sql"));
+        $stmt->bind_param('iii', $_POST['pokemasterID'], $_POST['moveID'], $_POST['ratings']);
+        $stmt->execute();
+        header('Location: http://35.193.74.68/team/rateMyServices.php', true, 303);
+        die();
+    }
+
     ?>
+</head>
+<body>
     <h1>Rate My Services</h1>
     <h3>Give new rating</h3>
     <form method="POST" action='rateMyServices.php'>
