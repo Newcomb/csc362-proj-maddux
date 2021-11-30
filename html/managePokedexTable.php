@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="basic.css">
 </head>
 <body>
 <?php 
@@ -9,16 +10,6 @@
     include "res_to_table.php";
     include "del_sel_checkbox.php";
     include "drop_down_options.php";
-    // Check if cookie has been toggled and reset the page
-    if(isset($_POST['toggle'])){
-        if($_COOKIE['dark_mode'] == FALSE){
-            setcookie('dark_mode', TRUE);
-        } else {
-            setcookie('dark_mode', FALSE);
-        }
-        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
-        die();
-    }
 
     // Log in to database using configured file
     $login_path = dirname(dirname(__DIR__));
@@ -71,16 +62,7 @@
     if(!isset($_COOKIE['dark_mode'])){
         setcookie('dark_mode', FALSE, time() + (20 * 365 * 24 * 60 * 60));
     }
-    //Set style based on cookie
-    if ($_COOKIE['dark_mode']){
-    ?>
-        <link rel="stylesheet" href="darkmode.css">
-    <?php
-    } else {
-    ?>
-        <link rel="stylesheet" href="basic.css">
-    <?php
-    }
+
     ?>
 
 
