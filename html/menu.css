@@ -1,5 +1,6 @@
  html{
     font-family: 'Roboto Condensed', sans-serif; 
+    
 }
 
 h1, h2, h3{
@@ -9,6 +10,7 @@ h1, h2, h3{
  /*Background color*/
  body{
     background-image: linear-gradient(to right, #71a0bd, #5f88d5);
+    font-size: 14pt;
  }
 
  /*Font Face*/
@@ -19,14 +21,44 @@ h1, h2, h3{
         src: url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.woff") format("woff"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.svg#Pokemon") format("svg"); }
  }
 
+ /*Table Styling*/
+ table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th, td, tr {
+  padding: 5px;
+  text-align: center;
+}
+
+thead {
+  font-weight: bold;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
  /*Button Styles*/
 
  /*Default Buttons*/
  input {
-   background-color: lightgrey;
+   /*background-color: lightgrey;*/
+   background-image: linear-gradient(lightgray, rgb(165, 164, 164));
    border-radius: 8px;
-   font-size: 95%;
+   font-size: 85%;
+   padding: 3pt;
  }
+
+ /*Default Select Dropdowns*/
+ select {
+  background-color: lightgrey;
+  border-radius: 8px;
+  font-size: 85%;
+ }
+
+ /*Bigger Checkboxes*/
+ input.largerCheckbox {
+  transform : scale(1.5);
+}
  
  /* The navigation menu (adapted from w3.schools)*/
  .navbar {
