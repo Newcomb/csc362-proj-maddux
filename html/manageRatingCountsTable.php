@@ -9,6 +9,7 @@ error_reporting(E_ALL);
 <?php 
     include 'menu.php';
     include "res_to_table.php";
+    include "drop_down_options.php";
 
 // Check if cookie has been toggled and reset the page
 if(isset($_POST['toggle'])){
@@ -60,8 +61,8 @@ $conn->close();
 <body>
     <h1>Manage Ratings Counts</h1>
     <h3>Add a new Rating Count</h3>
-    <form method="POST" action='manageRatingCounts.php'>
-            <?php drop_down_options('/DML/ViewMoves.sql', 0, $sql_path, 'Choose moveID', 'moveID'); ?>
+    <form method="POST" action='manageRatingCountsTable.php'>
+            <?php drop_down_options('/DML/ViewRatingsCounts.sql', 0, $sql_path, 'Choose moveID', 'moveID'); ?>
             <?php drop_down_options('/DML/ViewRatingsCounts.sql', 1, $sql_path, 'Choose a RatingCount', 'RatingCount'); ?>
 
             <br><br>
