@@ -15,6 +15,6 @@ CREATE TABLE owned_pokemon (
     pokemaster_id       INT NOT NULL,
     pokemon_id          INT NOT NULL,
     FOREIGN KEY (pokemaster_id) REFERENCES pokemasters(pokemaster_id) ON DELETE RESTRICT,
-    FOREIGN KEY (pokemon_id) REFERENCES pokedex(pokemon_id) ON DELETE RESTRICT;
+    FOREIGN KEY (pokemon_id) REFERENCES pokedex(pokemon_id) ON DELETE RESTRICT,
     UNIQUE(owned_pokemon_id)
 );
