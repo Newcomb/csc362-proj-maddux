@@ -4,6 +4,10 @@
 </head>
 <body>
 <?php 
+    // copy and paste this for error
+    if (!isset($_SESSION)){
+        session_start();
+    }
     //create menu (this just allows for us to use the functions in these files)
     include 'menu.php';
     include "res_to_table.php";
@@ -25,6 +29,15 @@
     // Get base of sql path (this should also be copied so that the functions know which folders to access)
     $sql_path = dirname(__DIR__);
 
+     // copy and paste this for errors
+     if(isset($_SESSION['error'])) {
+        foreach ($_SESSION['error'] as &$err) {
+                ?>
+                    <p><?php echo $err; ?></p>
+                <?php
+        }
+    }    
+
     // Insert a move )
     if (isset($_POST['moveName'])) {
         // Prepare the insert statement ($sql_path was the path we established above and it is concatenated to the string"/DML/InsertMoves...sql which will insert the move)
@@ -32,7 +45,11 @@
         // siii represents the submission of one string followed by three integers as $_POST['moveName] is string and $_POST['typeID] is an integer as long as the next two
         $stmt->bind_param('siii', $_POST['moveName'], $_POST['typeID'], $_POST['hidMoveNum'], $_POST['taughtStatNum']);
         // executes the prepared statement
-        $stmt->execute();
+        if(!$stmt->execute()){
+            $error_array = array('Error(s):');
+            array_push($error_array, $conn->error);
+            $_SESSION['error'] = $error_array;
+        }
         header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
@@ -43,7 +60,11 @@
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateMoveName.sql"));
         // This also works just like the insert above with only si because there are two binded parameters one string and one integer
         $stmt->bind_param('si', $_POST['newMoveName'], $_POST['moveID']);
-        $stmt->execute();
+        if(!$stmt->execute()){
+            $error_array = array('Error(s):');
+            array_push($error_array, $conn->error);
+            $_SESSION['error'] = $error_array;
+        }
         header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
@@ -53,7 +74,11 @@
         // Prepare the insert statement
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateMoveTaught.sql"));
         $stmt->bind_param('ii', $_POST['taughtStatNum2'], $_POST['moveID2']);
-        $stmt->execute();
+        if(!$stmt->execute()){
+            $error_array = array('Error(s):');
+            array_push($error_array, $conn->error);
+            $_SESSION['error'] = $error_array;
+        }
         header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
@@ -63,7 +88,11 @@
         // Prepare the insert statement
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateHiddenMoveStatus.sql"));
         $stmt->bind_param('ii', $_POST['hidMoveNum2'], $_POST['moveID3']);
-        $stmt->execute();
+        if(!$stmt->execute()){
+            $error_array = array('Error(s):');
+            array_push($error_array, $conn->error);
+            $_SESSION['error'] = $error_array;
+        }
         header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
@@ -73,7 +102,11 @@
         // Prepare the insert statement
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateMoveTypeID.sql"));
         $stmt->bind_param('ii', $_POST['typeID4'], $_POST['moveID4']);
-        $stmt->execute();
+        if(!$stmt->execute()){
+            $error_array = array('Error(s):');
+            array_push($error_array, $conn->error);
+            $_SESSION['error'] = $error_array;
+        }
         header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }

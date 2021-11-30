@@ -8,6 +8,10 @@ error_reporting(E_ALL);
 </head>
 <body>
 <?php 
+// copy and paste this for error
+if (!isset($_SESSION)){
+    session_start();
+}
     //create menu (this just allows for us to use the functions in these files)
     include 'menu.php';
     include "res_to_table.php";
@@ -29,6 +33,14 @@ error_reporting(E_ALL);
     // Get base of sql path (this should also be copied so that the functions know which folders to access)
     $sql_path = dirname(__DIR__);
 
+     // copy and paste this for errors
+     if(isset($_SESSION['error'])) {
+        foreach ($_SESSION['error'] as &$err) {
+                ?>
+                    <p><?php echo $err; ?></p>
+                <?php
+        }
+    }    
     // Insert a move )
     if (isset($_POST['ownedPokeID'])) {
         // Prepare the insert statement ($sql_path was the path we established above and it is concatenated to the string"/DML/InsertMoves...sql which will insert the move)
@@ -36,7 +48,11 @@ error_reporting(E_ALL);
         // siii represents the submission of one string followed by three integers as $_POST['moveName] is string and $_POST['typeID] is an integer as long as the next two
         $stmt->bind_param('ii', $_POST['ownedPokeID'], $_POST['moveID']);
         // executes the prepared statement
-        $stmt->execute();
+        if(!$stmt->execute()){
+            $error_array = array('Error(s):');
+            array_push($error_array, $conn->error);
+            $_SESSION['error'] = $error_array;
+        }
         header('Location: http://34.135.39.226/team/manageForgottenMovesTable.php', true, 303);
         die();
     }
@@ -47,12 +63,15 @@ error_reporting(E_ALL);
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateForgottenMoves.sql"));
         // This also works just like the insert above with only si because there are two binded parameters one string and one integer
         $stmt->bind_param('iii', $_POST['newMoveID'], $_POST['ownedPokeID2'], $_POST['moveID2']);
-        $stmt->execute();
+        if(!$stmt->execute()){
+            $error_array = array('Error(s):');
+            array_push($error_array, $conn->error);
+            $_SESSION['error'] = $error_array;
+        }
         header('Location: http://34.135.39.226/team/manageForgottenMovesTable.php', true, 303);
         die();
     }
     
-    // THIS DOES NOT WORK AT THE MOMENT IT DELETES ALL MVOES OF A POKEMON
     
     // Delete all checked items
     if (del_sel_checkbox("forgotten_moves", $sql_path . "/DML/DeleteForgottenMoves.sql")) {

@@ -14,7 +14,7 @@ CREATE TABLE pokedex (
     PRIMARY KEY (pokemon_id),
     pokemon_id   INT AUTO_INCREMENT,
     pokemon_name VARCHAR(12) NOT NULL,
-    UNIQUE(pokemon_id, pokemon_name)
+    CONSTRAINT pokemon_name_unique UNIQUE (pokemon_name)
 );
 
 /*Fill the table with values (according to national pokedex)
