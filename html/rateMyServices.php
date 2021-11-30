@@ -46,7 +46,7 @@ error_reporting(E_ALL);
         die();
     }
 
-    if (del_sel_checkbox("pokemasters", $sql_path . "/DML/DeletePokemasterRatings.sql")) {
+    if (del_sel_checkbox("pokemaster_ratings", $sql_path . "/DML/DeletePokemasterRatings.sql")) {
         header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
