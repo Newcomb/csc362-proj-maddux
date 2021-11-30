@@ -110,6 +110,27 @@ error_reporting(E_ALL);
         <p>
             <form method=POST>
                 <input type=text name=moveName placeholder='Enter name...' required/>
+
+                <label for=whenTaught>When will the move be taught?</label>
+                    <select name=whenTaught>
+                        <option value=0>Morning</option>
+                        <option value=1>Night</option>
+                    </select>
+
+                <label for=duration>How long will it take to teach?</label>
+                    <select name=duration>
+                        <option value=1>1 hr</option>
+                        <option value=2>2 hrs</option>
+                        <option value=3>3 hrs</option>
+                        <option value=4>4 hrs</option>
+                    </select>
+                
+                <label for=offered>Is the move currently offered?</label>
+                <select name=offered>
+                    <option value=1>Yes</option>
+                    <option value=0>No</option>
+                </select>
+                <br>
                 <input type=submit value='Add New Move to Schedule'/>
             </form>
         </p>
@@ -117,6 +138,7 @@ error_reporting(E_ALL);
     <p>
         <form method=POST>
             <?php drop_down_options('/DML/ViewMoves.sql', 0, $sql_path, 'Choose a Move to Schedule', 'moveID'); ?>
+            <br>
             <input type=submit value='Add New Move to Schedule'/>
         </form>
     </p>
@@ -124,6 +146,7 @@ error_reporting(E_ALL);
             <form method="POST">
                 <?php drop_down_options('/DML/ViewMoves.sql', 0, $sql_path, 'Choose a Move to Replace', 'moveID'); ?>
                 <?php drop_down_options('/DML/ViewMoves.sql', 0, $sql_path, 'Choose a New Move', 'newID'); //not showing; neither is submit?> 
+                <br>
                 <input type=submit value='Update Move by ID'/>
             </form>
 
@@ -131,22 +154,23 @@ error_reporting(E_ALL);
             <form method="POST">
                 <input type=date name=timeID required/>
                 <?php//drop_down_options('/DML/ViewSchedule.sql', 1, $sql_path, 'Choose a Time to Replace','timeID');?>
-                <label for=taughtStat>When will the move be taught?</label>
-                    <select name=taughtStatNum>
+                <label for=whenTaught>When will the move be taught?</label>
+                    <select name=whenTaught>
                         <option value=0>Morning</option>
                         <option value=1>Night</option>
                     </select>
+                <br>
                 <input type=submit value="Update when_taught"/>
             </form>
 </body>
 <?php
 
 // Establish query for getting all current instruments
-$sql_query =  file_get_contents($sql_path . "/DML/ViewMoveSchedule.sql");
+$sql_query =  "SELECT * FROM schedule";
 // Query the database using the select statement
 $result = $conn->query($sql_query);
 //Print result on page
-res_to_table($result,'manageSchedule.php');
+res_to_table($result, $_SERVER['REQUEST_URI']);
 $conn->close();
 ?>    
 </html>
