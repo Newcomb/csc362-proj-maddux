@@ -44,6 +44,7 @@ SOURCE DML/V_Moves_Types_Join.sql;
 SOURCE DML/V_Known_Moves_Join.sql;
 SOURCE DML/V_Forgotten_Moves_Join.sql;
 SOURCE DML/V_Pokemon_Types_Join.sql;
+SOURCE DML/V_Schedule.sql;
 
 
 -- Load Functions
@@ -55,3 +56,5 @@ SOURCE DML/T_Check_Type_Match_Or_Normal_Insert.sql;
 SOURCE DML/T_Stop_Hidden_Move_Update.sql;
 SOURCE DML/T_Check_Known_Moves_Min.sql;
 SOURCE DML/T_Check_Known_Moves_Max.sql;
+SOURCE DML/T_Remove_Forgotten_Move_If_Taught.sql;
+SOURCE DML/T_Delete_Known_Move_Add_Forgotten.sql;

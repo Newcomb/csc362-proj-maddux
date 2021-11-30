@@ -28,7 +28,9 @@ error_reporting(E_ALL);
 
     // Log in to database using configured file
     $login_path = dirname(dirname(__DIR__));
-    
+    // Get base of sql path
+    $sql_path = dirname(__DIR__);
+
     $config = parse_ini_file($login_path .'/mysql.ini');
     $dbname = 'pokemon_db';
     $conn = new mysqli(
@@ -36,9 +38,6 @@ error_reporting(E_ALL);
                 $config['mysqli.default_user'],
                 $config['mysqli.default_pw'],
                 $dbname);
-
-    // Get base of sql path
-    $sql_path = dirname(__DIR__);
 
     // Insert a move into schedule
     if (isset($_POST['moveName'])) {
@@ -107,24 +106,36 @@ error_reporting(E_ALL);
 
 
     <h1>Manage Schedule</h1>
-    <h3>Add a new Move to Schedule</h3>
+    <h3>Add a New Move to Schedule by Name</h3>
         <p>
             <form method=POST>
                 <input type=text name=moveName placeholder='Enter name...' required/>
                 <input type=submit value='Add New Move to Schedule'/>
             </form>
         </p>
+    <h3>Add a New Move to Schedule by ID</h3>
+    <p>
+        <form method=POST>
+            <?php drop_down_options('/DML/ViewMoves.sql', 0, $sql_path, 'Choose a Move to Schedule', 'moveID'); ?>
+            <input type=submit value='Add New Move to Schedule'/>
+        </form>
+    </p>
     <h3>Update a schedule Move by Name</h3>
             <form method="POST">
-                <?php drop_down_options('/DML/ViewSchedule.sql', 0, $sql_path, 'Choose a Move to Replace', 'moveID'); ?>
-                <?php //drop_down_options('/DML/ViewSchedule.sql', 0, $sql_path, 'Choose a New Move', 'newID'); //not showing; neither is submit?> 
+                <?php drop_down_options('/DML/ViewMoves.sql', 0, $sql_path, 'Choose a Move to Replace', 'moveID'); ?>
+                <?php drop_down_options('/DML/ViewMoves.sql', 0, $sql_path, 'Choose a New Move', 'newID'); //not showing; neither is submit?> 
                 <input type=submit value='Update Move by ID'/>
             </form>
 
     <h3>Change when_taught</h3>
             <form method="POST">
                 <input type=date name=timeID required/>
-                <?php// drop_down_options('/DML/ViewSchedule.sql', 1, $sql_path, 'Choose a Time to Replace','timeID');?>
+                <?php//drop_down_options('/DML/ViewSchedule.sql', 1, $sql_path, 'Choose a Time to Replace','timeID');?>
+                <label for=taughtStat>When will the move be taught?</label>
+                    <select name=taughtStatNum>
+                        <option value=0>Morning</option>
+                        <option value=1>Night</option>
+                    </select>
                 <input type=submit value="Update when_taught"/>
             </form>
 </body>
@@ -135,7 +146,7 @@ $sql_query =  file_get_contents($sql_path . "/DML/ViewMoveSchedule.sql");
 // Query the database using the select statement
 $result = $conn->query($sql_query);
 //Print result on page
-res_to_table($result, 'manageSchedule.php');
+res_to_table($result,'manageSchedule.php');
 $conn->close();
 ?>    
 </html>

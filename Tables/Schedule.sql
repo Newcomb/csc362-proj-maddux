@@ -12,9 +12,12 @@
 
 /*Make the table*/
 CREATE TABLE schedule (
+    schedule_id          INT NOT NULL AUTO_INCREMENT,
     move_id              INT NOT NULL,
     when_taught          TINYINT(1) NOT NULL,
     teaching_duration    INT NOT NULL,
     offered              TINYINT(1) NOT NULL,
-    FOREIGN KEY (move_id) REFERENCES moves(move_id) ON DELETE RESTRICT
+    PRIMARY KEY (schedule_id),
+    FOREIGN KEY (move_id) REFERENCES moves(move_id) ON DELETE RESTRICT,
+    UNIQUE (schedule_id, move_id)
 );
