@@ -14,7 +14,8 @@
 CREATE TABLE schedule (
     schedule_id          INT NOT NULL AUTO_INCREMENT,
     move_id              INT NOT NULL,
-    when_taught          TINYINT(1) NOT NULL,
+    date_taught          DATE NOT NULL,
+    time_taught          TINYINT(1) NOT NULL,
     teaching_duration    INT NOT NULL,
     offered              TINYINT(1) NOT NULL,
     PRIMARY KEY (schedule_id),
