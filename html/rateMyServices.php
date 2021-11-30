@@ -27,20 +27,11 @@ error_reporting(E_ALL);
             $config['mysqli.default_pw'],
             $dbname);
 
-    if(isset($_POST['toggle'])){
-        if($_COOKIE['dark_mode'] == FALSE){
-            setcookie('dark_mode', TRUE);
-        } else {
-            setcookie('dark_mode', FALSE);
-        }
-        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
-        die();
-    }    
 
     if (isset($_POST['SubmitRating'])) {
         // Prepare the delete statement
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertPokemasterRatings.sql"));
-        $stmt->bind_param('iii', intval($_POST['pokemasterID']), intval($_POST['moveName']), intval($_POST['ratings']));
+        $stmt->bind_param('iii', intval($_POST['pokemasterID']), intval($_POST['moveID']), intval($_POST['ratings']));
         $stmt->execute();
         header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
@@ -54,11 +45,11 @@ error_reporting(E_ALL);
     ?>
 </head>
 <body>
-    <h1>Rate Bill's Services</h1>
+    <h1>Rate My Services</h1>
     <h3>Give new rating</h3>
     <form method="POST" action='rateMyServices.php'>
             <?php drop_down_options('/DML/ViewPokemasters.sql', 0, $sql_path, 'Choose PokemasterID', 'pokemasterID'); ?>
-            <?php drop_down_options('/DML/ViewMoves.sql', 1, $sql_path, 'Choose Move Name', 'moveName'); ?>
+            <?php drop_down_options('/DML/ViewMoves.sql', 0, $sql_path, 'Choose Move Name', 'moveID'); ?>
             <label>Choose star rating</label>
             <select name = ratings>
                 <option value = '1'>1</option>
@@ -75,6 +66,7 @@ error_reporting(E_ALL);
     $sql_query = "SELECT * FROM pokemaster_ratings";
     $result = $conn->query($sql_query);
     res_to_table($result, $_SERVER['REQUEST_URI']);
+    $conn->close();
     ?>
 
     <?php
