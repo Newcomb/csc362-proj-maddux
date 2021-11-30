@@ -26,7 +26,6 @@ $host = "localhost";
 $user = "webuser";
 $pass = "mewtwo";
 $dbse = "pokemon_db";
-$sql_path = "/home/anazj/csc362-proj-maddux/html/manageRatingCountsTable.php";
 
 //Open mysqli connection and check for errors
 if (!$conn = new mysqli($host, $user, $pass, $dbse)){
@@ -35,13 +34,14 @@ if (!$conn = new mysqli($host, $user, $pass, $dbse)){
     exit;
 }
 
-
-
+$sql_path = "/home/anazj/csc362-proj-maddux/DML/InsertRatingCounts.sql";
+$sql_path2 = "/home/anazj/csc362-proj-maddux/DML/ViewMoves.sql";
 // Insert a ratings count 
 if (isset($_POST['Insert'])) {
     // Prepare the delete statement
-    $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertRatingCounts.sql"));
-    $stmt->bind_param('i',$_POST['RatingCount']);
+    $stmt = $conn->prepare(file_get_contents($sql_path) );
+    // access another sql path to be able to insert 
+    $stmt->bind_param('ii', $_POST['moveID'], intval($_POST['New rating']));
     $stmt->execute();
     header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
     die();
@@ -49,8 +49,10 @@ if (isset($_POST['Insert'])) {
 
 // Establish query for getting all current instruments
 $sql_query = "SELECT * FROM rating_counts";
+$sql_query2 = "SELECT *  FROM moves";
 // Query the database using the select statement
 $result = $conn->query($sql_query);
+$result2 = $conn->query($sql_query2);
 //Print result on page
 viewTable($result, $_SERVER['REQUEST_URI']);
 $conn->close();
@@ -64,8 +66,9 @@ $conn->close();
     <form method="POST" action='manageRatingCountsTable.php'>
             <input type="text" name="New Rating" placeholder="Enter New Rating">
             <input type="submit" value="InsertRatingCount" name="Insert">
-            <br><br>
           
+            <?php drop_down_options('/DML/ViewMoves.sql', 1, $sql_path2, 'Choose a moveID', 'moveID'); ?>
+            <br><br>
            
         </form>
 
