@@ -55,8 +55,8 @@ error_reporting(E_ALL);
         $reload = true;
     }
 
-    // Update a move in schedule
-    if (isset($_POST['moveID'])) {
+    // Update a move in schedule NOTE: CURRENTLY REPLACES ALL MOVE_ID W/ UPDATE
+    if (isset($_POST['moveID'])) { 
         if(is_numeric($_POST['moveID'])){
             // Prepare the insert statement
             $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateScheduleGivenID.sql")); 
@@ -71,6 +71,7 @@ error_reporting(E_ALL);
         $reload = true;
     }
 
+    //Update when_taught NOTE: ADD A DROPDOWN MENU FOR SCHEDULEID
     if (isset($_POST['timeID'])) {
         if(is_numeric($_POST['timeID'])){
             // Prepare the insert statement
