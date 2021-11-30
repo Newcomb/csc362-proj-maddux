@@ -1,2 +1,2 @@
-INSERT INTO rating_counts(move_id, ratings_count)
-VALUES (?, ?);
+INSERT INTO rating_count(sratings_count)
+VALUES (?);
