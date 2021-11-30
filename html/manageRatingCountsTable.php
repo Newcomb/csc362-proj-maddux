@@ -61,7 +61,9 @@ $conn->close();
     <h1>Manage Ratings Counts</h1>
     <h3>Add a new Rating Count</h3>
     <form method="POST" action='manageOwnedPokemonTable.php'>
-            <?php drop_down_options('/DML/ViewRatingsCount.sql', 0, $sql_path, 'Choose moveID', 'RatingCount'); ?>
+            <?php drop_down_options('/DML/ViewRatingsCount.sql', 0, $sql_path, 'Choose moveID', 'moveID'); ?>
+            <?php drop_down_options('/DML/ViewPokedex.sql', 1, $sql_path, 'Choose a PokemonID', 'RatingCount'); ?>
+
             <br><br>
             <input type="submit" value="InsertRatingCount" name="Insert">
         </form>
