@@ -40,7 +40,7 @@ error_reporting(E_ALL);
     if (isset($_POST['moveID'])) {
         // Prepare the insert statement
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertSchedule.sql"));
-        $stmt->bind_param('iiii', $_POST['moveID'],$_POST['whenTaught'], $_POST['duration'], $_POST['offered']);
+        $stmt->bind_param('iiii', $_POST['moveID'],$_POST['dateTaught'], $_POST['timeTaught'], $_POST['duration'], $_POST['offered']);
         $stmt->execute();
         $reload = true;
     }
@@ -52,26 +52,27 @@ error_reporting(E_ALL);
             $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateScheduleGivenID.sql")); 
             $stmt->bind_param('ii', intval($_POST['newID']), intval($_POST['moveID']));
         } 
-        else {
-            // Prepare the insert statement
-            //$stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateScheduleGivenName.sql")); //Need to make SQL for this
-            //$stmt->bind_param('ss', $_POST['newName'], $_POST['moveID']); 
-        }
         $stmt->execute();
         $reload = true;
     }
 
-    //Update when_taught NOTE: ADD A DROPDOWN MENU FOR SCHEDULEID
-    if (isset($_POST['timeID'])) {
-        if(is_numeric($_POST['timeID'])){
+    //Update date & time taught NOTE: ADD A DROPDOWN MENU FOR SCHEDULEID
+    if (isset($_POST['dateTaught'])) {
+        if(is_numeric($_POST['dateTaught'])){
             // Prepare the insert statement
-            $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateScheduleTimeGivenID.sql")); //Need to make SQL for this
+            $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateScheduleDateGivenID.sql")); //Need to make SQL for this
+            $stmt->bind_param('ii', intval($_POST['newDate']), intval($_POST['dateID']));
+        } 
+        $stmt->execute();
+        $reload = true;
+    }
+
+    if (isset($_POST['timeTaught'])) {
+        if(is_numeric($_POST['timeTaught'])){
+            // Prepare the insert statement
+            $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateScheduleTimeGivenID.sql")); 
             $stmt->bind_param('ii', intval($_POST['newID']), intval($_POST['timeID']));
-        } else {
-            // Prepare the insert statement
-            //$stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateScheduleGivenName.sql")); //Need to make SQL for this
-            //$stmt->bind_param('ss', $_POST['newName'], $_POST['timeID']); 
-        }
+        } 
         $stmt->execute();
         $reload = true;
     }
@@ -86,10 +87,10 @@ error_reporting(E_ALL);
     <h3>Add a New Move to Schedule by ID</h3>
         <p>
             <form method=POST>
-                <?php drop_down_options('/DML/ViewMoves.sql', 0, $sql_path, 'Choose a Move to add to schedule', 'moveID'); ?>
+                <?php drop_down_options('/DML/ViewMoves.sql', 1, $sql_path, 'Choose a Move to add to schedule', 'moveID'); ?>
 
-                <label for=whenTaught>When will the move be taught?</label>
-                    <select name=whenTaught>
+                <label for=timeTaught>When will the move be taught?</label>
+                    <select name=timeTaught>
                         <option value=0>Morning</option>
                         <option value=1>Night</option>
                     </select>
@@ -114,23 +115,23 @@ error_reporting(E_ALL);
     
     <h3>Update a schedule Move by ID</h3>
             <form method="POST">
-                <?php drop_down_options('/DML/ViewMoves.sql', 0, $sql_path, 'Choose a Move to Replace', 'moveID'); ?>
-                <?php drop_down_options('/DML/ViewMoves.sql', 0, $sql_path, 'Choose a New Move', 'newID'); //not showing; neither is submit?> 
+                <?php drop_down_options('/DML/ViewMoves.sql', 1, $sql_path, 'Choose a Move to Replace', 'moveID'); ?>
+                <?php drop_down_options('/DML/ViewMoves.sql', 1, $sql_path, 'Choose a New Move', 'newID'); //not showing; neither is submit?> 
                 <br>
                 <input type=submit value='Update Move by ID'/>
             </form>
 
-    <h3>Change when_taught</h3>
+    <h3>Change when taught</h3>
             <form method="POST">
-                <input type=date name=timeID required/> <?php // no longer date type?>
-                <?php //drop_down_options('/DML/ViewMoves.sql', 0, $sql_path, 'Choose a Time to Replace','timeID');?>
-                <label for=whenTaught>When will the move be taught?</label>
-                    <select name=whenTaught>
+                <input type=date name=dateTaught required/> 
+                <?php drop_down_options('/DML/ViewMoves.sql', 1, $sql_path, 'Choose a Time to Replace','timeID');?>
+                <label for=timeTaught>What time will the move be taught?</label>
+                    <select name=timeTaught>
                         <option value=0>Morning</option>
                         <option value=1>Night</option>
                     </select>
                 <br>
-                <input type=submit value="Update when_taught"/>
+                <input type=submit value="Update when taught"/>
             </form>
 </body>
 <?php
