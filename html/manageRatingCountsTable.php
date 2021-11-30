@@ -6,17 +6,10 @@ error_reporting(E_ALL);
 <html>
 <head>
 </head>
-<body>
 <?php 
     include 'menu.php';
-    include "res_to_table.php";    
-?>
-</head>
-<body>
-    <h1>Manage Ratings Counts Table</h1>
-    
-</body>
-<?php
+    include "res_to_table.php";
+
 // Check if cookie has been toggled and reset the page
 if(isset($_POST['toggle'])){
     if($_COOKIE['dark_mode'] == FALSE){
@@ -40,6 +33,19 @@ if (!$conn = new mysqli($host, $user, $pass, $dbse)){
     exit;
 }
 
+
+
+// Insert a ratings count 
+if (isset($_POST['Insert'])) {
+    // Prepare the delete statement
+    $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertRatingCounts.sql"));
+    $stmt->bind_param('ii', $_POST['moveID'], $_POST['RatingCount']);
+    $stmt->execute();
+    header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
+    die();
+}
+
+
 // Establish query for getting all current instruments
 $sql_query = "SELECT * FROM rating_counts";
 // Query the database using the select statement
@@ -47,5 +53,20 @@ $result = $conn->query($sql_query);
 //Print result on page
 res_to_table($result, $_SERVER['REQUEST_URI']);
 $conn->close();
-?>    
+?>
+
+</head>    
+
+<body>
+    <h1>Manage Ratings Counts</h1>
+    <h3>Add a new Rating Count</h3>
+    <form method="POST" action='manageOwnedPokemonTable.php'>
+            <?php drop_down_options('/DML/ViewRatingsCount.sql', 0, $sql_path, 'Choose moveID', 'RatingCount'); ?>
+            <br><br>
+            <input type="submit" value="InsertRatingCount" name="Insert">
+        </form>
+
+
+</body>
+
 </html>
