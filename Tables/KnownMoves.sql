@@ -6,5 +6,5 @@ CREATE TABLE known_moves
     move_id             INT NOT NULL,
     FOREIGN KEY (owned_pokemon_id) REFERENCES owned_pokemon(owned_pokemon_id),
     FOREIGN KEY (move_id) REFERENCES moves(move_id),
-    UNIQUE (owned_pokemon_id, move_id)
+    UNIQUE (known_move_id, owned_pokemon_id, move_id)
 );

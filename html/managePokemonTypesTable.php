@@ -65,7 +65,6 @@ if (del_sel_checkbox("pokemon_types", $sql_path . "/DML/DeletePokemonTypes.sql")
 <body>
     <?php 
     ?>
-    <?php echo '<p>' . dirname(dirname(__DIR__)) . '</p>'?>
     <h1>Manage Pokemon Types</h1>
     <h3>Add a new Pokemon Type Combination</h3>
     <form method="POST" action='managePokemonTypesTable.php'>

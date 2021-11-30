@@ -5,6 +5,10 @@
 </head>
 <body>
 <?php 
+// copy and paste this for error
+if (!isset($_SESSION)){
+    session_start();
+}
     //create menu
     include 'menu.php';
     include "res_to_table.php";
@@ -25,13 +29,26 @@
     // Get base of sql path
     $sql_path = dirname(__DIR__);
 
+       // copy and paste this for errors
+       if(isset($_SESSION['error'])) {
+        foreach ($_SESSION['error'] as &$err) {
+                ?>
+                    <p><?php echo $err; ?></p>
+                <?php
+        }
+    }    
+
     // Insert a pokemon
     if (isset($_POST['pokeName'])) {
         // Prepare the insert statement
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertPokemon.sql"));
         $stmt->bind_param('s', $_POST['pokeName']);
 
-        $stmt->execute();
+        if(!$stmt->execute()){
+            $error_array = array('Error(s):');
+            array_push($error_array, $conn->error);
+            $_SESSION['error'] = $error_array;
+        }
         header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
@@ -58,10 +75,6 @@
         die();
     }
 
-    //Check if the cookie is set and if not establish the cookie
-    if(!isset($_COOKIE['dark_mode'])){
-        setcookie('dark_mode', FALSE, time() + (20 * 365 * 24 * 60 * 60));
-    }
 
     ?>
 
@@ -87,7 +100,6 @@
 $sql_query =  file_get_contents($sql_path . "/DML/ViewPokedex.sql");
 // Query the database using the select statement
 $result = $conn->query($sql_query);
-echo '<p>Pokemon 1-12 unable to delete due to RESTRICT. Will crash page.</p>';
 //Print result on page
 res_to_table($result, 'managePokedexTable.php');
 $conn->close();
