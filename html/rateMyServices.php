@@ -27,15 +27,6 @@ error_reporting(E_ALL);
             $config['mysqli.default_pw'],
             $dbname);
 
-    if(isset($_POST['toggle'])){
-        if($_COOKIE['dark_mode'] == FALSE){
-            setcookie('dark_mode', TRUE);
-        } else {
-            setcookie('dark_mode', FALSE);
-        }
-        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
-        die();
-    }    
 
     if (isset($_POST['SubmitRating'])) {
         // Prepare the delete statement
@@ -75,6 +66,7 @@ error_reporting(E_ALL);
     $sql_query = "SELECT * FROM pokemaster_ratings";
     $result = $conn->query($sql_query);
     res_to_table($result, $_SERVER['REQUEST_URI']);
+    $conn->close();
     ?>
 
     <?php
