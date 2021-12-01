@@ -6,6 +6,10 @@ error_reporting(E_ALL);
 <html>
 <head>
     <?php
+    // copy and paste this for error
+    if (!isset($_SESSION)){
+        session_start();
+    }
     include 'menu.php';
     include "res_to_table.php";
     include "del_sel_checkbox.php";
@@ -23,12 +27,26 @@ error_reporting(E_ALL);
             $config['mysqli.default_pw'],
             $dbname);
 
+// copy and paste this for errors
+if(isset($_SESSION['error'])) {
+    foreach ($_SESSION['error'] as &$err) {
+            ?>
+                <p><?php echo $err; ?></p>
+            <?php
+    }
+}    
+
+
 // Insert an owned pokemon
 if (isset($_POST['Insert'])) {
     // Prepare the delete statement
     $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertOwnedPokemon.sql"));
     $stmt->bind_param('ii', $_POST['pokemasterID'], $_POST['pokeID']);
-    $stmt->execute();
+    if(!$stmt->execute()){
+        $error_array = array('Error(s):');
+        array_push($error_array, $conn->error);
+        $_SESSION['error'] = $error_array;
+    }
     header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
     die();
 }
@@ -39,7 +57,11 @@ if (isset($_POST['Update'])) {
     // Prepare the update statement
     $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateOwnedPokemonPokeID.sql"));
     $stmt->bind_param('ii', intval($_POST['newPokeID']), intval($_POST['ownedPokeID']));
-    $stmt->execute();
+    if(!$stmt->execute()){
+        $error_array = array('Error(s):');
+        array_push($error_array, $conn->error);
+        $_SESSION['error'] = $error_array;
+    }
     header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
     die();
 }
@@ -50,7 +72,11 @@ if (isset($_POST['Update2'])){
     // Prepare the update statement
     $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateOwnedPokemonOwner.sql"));
     $stmt->bind_param('ii', intval($_POST['pokemasterID2']),intval($_POST['ownedPokeID2']));
-    $stmt->execute();
+    if(!$stmt->execute()){
+        $error_array = array('Error(s):');
+        array_push($error_array, $conn->error);
+        $_SESSION['error'] = $error_array;
+    }
     header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
     die();
 }

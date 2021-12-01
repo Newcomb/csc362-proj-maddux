@@ -4,6 +4,10 @@
 </head>
 <body>
 <?php 
+// copy and paste this for error
+if (!isset($_SESSION)){
+    session_start();
+}
     //create menu (this just allows for us to use the functions in these files)
     include 'menu.php';
     include "res_to_table.php";
@@ -25,6 +29,15 @@
     // Get base of sql path (this should also be copied so that the functions know which folders to access)
     $sql_path = dirname(__DIR__);
 
+    // copy and paste this for errors
+    if(isset($_SESSION['error'])) {
+        foreach ($_SESSION['error'] as &$err) {
+                ?>
+                    <p><?php echo $err; ?></p>
+                <?php
+        }
+    }    
+
     // Insert a move )
     if (isset($_POST['typeName'])) {
         // Prepare the insert statement ($sql_path was the path we established above and it is concatenated to the string"/DML/InsertMoves...sql which will insert the move)
@@ -32,7 +45,11 @@
         // siii represents the submission of one string followed by three integers as $_POST['moveName] is string and $_POST['typeID] is an integer as long as the next two
         $stmt->bind_param('s', $_POST['typeName']);
         // executes the prepared statement
-        $stmt->execute();
+        if(!$stmt->execute()){
+            $error_array = array('Error(s):');
+            array_push($error_array, $conn->error);
+            $_SESSION['error'] = $error_array;
+        }
         header('Location: http://34.135.39.226/team/manageTypesTable.php', true, 303);
         die();
     }
@@ -43,7 +60,11 @@
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateTypes.sql"));
         // This also works just like the insert above with only si because there are two binded parameters one string and one integer
         $stmt->bind_param('si', $_POST['newTypeName'], $_POST['typeID']);
-        $stmt->execute();
+        if(!$stmt->execute()){
+            $error_array = array('Error(s):');
+            array_push($error_array, $conn->error);
+            $_SESSION['error'] = $error_array;
+        }
         header('Location: http://34.135.39.226/team/manageTypesTable.php', true, 303);
         die();
     }
