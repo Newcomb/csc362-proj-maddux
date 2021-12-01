@@ -117,7 +117,7 @@ error_reporting(E_ALL);
     
     <h3>Update a scheduled Move</h3>
             <form method="POST">
-                <?php drop_down_options('/DML/V_Schedule.sql', 0, $sql_path, 'Choose a schedule_id to Replace', 'scheduleID'); //THIS IS CAUSING PROBLEMS?>
+                <?php drop_down_options('/DML/ViewSchedule.sql', 0, $sql_path, 'Choose a schedule_id to Replace', 'scheduleID'); //THIS IS CAUSING PROBLEMS?>
                 <?php drop_down_options('/DML/ViewMoves.sql', 1, $sql_path, 'Choose a New Move', 'moveID'); ?> 
                 <br>
                 <input type=submit value='Update Move by ID'/>
@@ -126,7 +126,7 @@ error_reporting(E_ALL);
     <h3>Change when a Move is taught</h3>
             <form method="POST">
                <div>What day will the move be taught? <input type=date name=dateTaught required/></div>
-                <?php drop_down_options('/DML/ViewSchedules.sql', 3, $sql_path, 'Choose a Time to Replace','timeTaught');?>
+                <?php drop_down_options('/DML/ViewSchedule.sql', 3, $sql_path, 'Choose a Time to Replace','timeTaught');?>
                 <label for=timeTaught>What time will the move be taught?</label>
                     <select name=timeTaught>
                         <option value=0>Morning</option>
