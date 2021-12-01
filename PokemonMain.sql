@@ -63,3 +63,5 @@ SOURCE DML/T_Check_Type_Match_Or_Normal_Update.sql;
 SOURCE DML/T_Check_Type_Match_Or_Normal_Forgotten_Update.sql;
 SOURCE DML/T_Check_Type_Match_Or_Normal_Insert_Forgotten.sql;
 SOURCE DML/T_Pokemon_Types_Max.sql;
+SOURCE DML/T_Remove_Forgotten_Move_If_Taught_Update.sql;
+SOURCE DML/T_Update_Known_Move_Add_Forgotten.sql;

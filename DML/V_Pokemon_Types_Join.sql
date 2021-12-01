@@ -6,4 +6,5 @@ FROM pokemon_types
 INNER JOIN pokedex
 USING (pokemon_id)
 INNER JOIN types
-USING (type_id);
+USING (type_id)
+ORDER BY (pokemon_name);
