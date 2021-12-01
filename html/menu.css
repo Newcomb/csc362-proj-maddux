@@ -42,7 +42,7 @@ thead {
  /*Default Buttons*/
  input {
    /*background-color: lightgrey;*/
-   background-image: linear-gradient(lightgray, rgb(165, 164, 164));
+   background-color: lightgrey;
    border-radius: 8px;
    font-size: 85%;
    padding: 3pt;
