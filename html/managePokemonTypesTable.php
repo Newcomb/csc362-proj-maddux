@@ -56,7 +56,7 @@ if (isset($_POST['Update'])) {
 
     // Prepare the update statement
     $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdatePokemasterFirstName.sql"));
-    $stmt->bind_param('si', $_POST['firstName2'], $_POST['pokemasterID']);
+    $stmt->bind_param('si', htmlspecialchars($_POST['firstName2']), $_POST['pokemasterID']);
     if(!$stmt->execute()){
         $error_array = array('Error(s):');
         array_push($error_array, $conn->error);
