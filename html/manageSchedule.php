@@ -36,11 +36,23 @@ error_reporting(E_ALL);
         exit();
     } 
 
+    // copy and paste this for error
+    if (!isset($_SESSION)){
+        session_start();
+    }
+    // copy and paste this for errors
+    if(isset($_SESSION['error'])) {
+        foreach ($_SESSION['error'] as &$err) {
+                ?>
+                    <p><?php echo $err; ?></p>
+                <?php
+        }
+    }  
+
     // Insert a move into schedule
     if (isset($_POST['Insert'])) {
         // Prepare the insert statement
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertSchedule.sql"));
-        echo file_get_contents($sql_path . "/DML/InsertSchedule.sql");
         $stmt->bind_param('isiii', $_POST['moveID'], $_POST['dateTaught'], $_POST['timeTaught'], $_POST['duration'], $_POST['offered']);
         $reload = true;
     }
