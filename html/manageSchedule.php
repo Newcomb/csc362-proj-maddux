@@ -35,29 +35,51 @@ error_reporting(E_ALL);
         header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         exit();
     }
+    // copy and paste this for error
+if (!isset($_SESSION)){
+    session_start();
+}
+ // copy and paste this for errors
+ if(isset($_SESSION['error'])) {
+    foreach ($_SESSION['error'] as &$err) {
+            ?>
+                <p><?php echo $err; ?></p>
+            <?php
+    }
+}  
 
     // Insert a move into schedule
-    if (isset($_POST['moveID'])) {
+    if (isset($_POST['Insert'])) {
         // Prepare the insert statement
+        echo 'here';
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertSchedule.sql"));
-        $stmt->bind_param('iiiii', $_POST['moveID'], $_POST['dateTaught'], $_POST['timeTaught'], $_POST['duration'], $_POST['offered']);
-        $stmt->execute();
+        echo file_get_contents($sql_path . "/DML/InsertSchedule.sql");
+        $stmt->bind_param('isiii', $_POST['moveID'], $_POST['dateTaught'], $_POST['timeTaught'], $_POST['duration'], $_POST['offered']);
+        if(!$stmt->execute()){
+            echo 'crap';
+            $error_array = array('Error(s):');
+            array_push($error_array, $conn->error);
+            $_SESSION['error'] = $error_array;
+        }
         $reload = true;
     }
 
     // Update a move in schedule
-    if (isset($_POST['moveID'])) { 
+    if (isset($_POST['Update'])) { 
         if(is_numeric($_POST['moveID'])){
+            //as long as scheduleID is unique (none with same id)
+            if($_POST['scheduleID']) { 
             // Prepare the insert statement
             $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateScheduleGivenID.sql")); 
-            $stmt->bind_param('ii', intval($_POST['scheduleID']), intval($_POST['moveID'])); //something wrong with scheduleID
+            $stmt->bind_param('ii', intval($_POST['moveID']), intval($_POST['scheduleID'])); //something wrong with scheduleID
+            }
         } 
         $stmt->execute();
         $reload = true;
     }
 
     //Update date & time taught
-    if (isset($_POST['dateTaught'])) {
+    if (isset($_POST['Update2'])) {
         if(is_numeric($_POST['dateTaught'])){
             // Prepare the insert statement
             $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateScheduleDateGivenID.sql")); //Need to make SQL for this
@@ -67,7 +89,7 @@ error_reporting(E_ALL);
         $reload = true;
     }
 
-    if (isset($_POST['timeTaught'])) {
+    if (isset($_POST['Update3'])) {
         if(is_numeric($_POST['timeTaught'])){
             // Prepare the insert statement
             $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateScheduleTimeGivenID.sql")); 
@@ -111,7 +133,7 @@ error_reporting(E_ALL);
                     <option value=0>No</option>
                 </select>
                 <br>
-                <input type=submit value='Add New Move to Schedule'/>
+                <input type=submit value='Add New Move to Schedule' name='Insert'/>
             </form>
         </p>
     
@@ -120,7 +142,7 @@ error_reporting(E_ALL);
                 <?php drop_down_options('/DML/ViewSchedule.sql', 0, $sql_path, 'Choose a schedule_id to Replace', 'scheduleID'); //THIS IS CAUSING PROBLEMS?>
                 <?php drop_down_options('/DML/ViewMoves.sql', 1, $sql_path, 'Choose a New Move', 'moveID'); ?> 
                 <br>
-                <input type=submit value='Update Move by ID'/>
+                <input type=submit value='Update Move by ID' name='Update'/>
             </form>
 
     <h3>Change when a Move is taught</h3>
@@ -134,7 +156,7 @@ error_reporting(E_ALL);
                         <option value=1>Night</option>
                     </select>
                 <br>
-                <input type=submit value="Update when taught"/>
+                <input type=submit value="Update when taught" name='Update2'/>
             </form>
 </body>
 <?php
