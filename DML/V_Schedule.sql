@@ -9,9 +9,10 @@
 */
 
 /*Make the view table for schedule*/
+DROP VIEW IF EXISTS schedule_join;
 CREATE VIEW schedule_join AS
 SELECT schedule_id, move_id, date_taught, time_taught, teaching_duration, offered, move_name, type_id, type_name
     FROM schedule INNER JOIN moves
-        ON (move_id)
-    FROM moves INNER JOIN types
-        ON (type_id);
+        USING (move_id)
+    INNER JOIN types
+        USING (type_id);
