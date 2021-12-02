@@ -6,5 +6,6 @@ CREATE TABLE moves
     hidden_move     TINYINT(1) NOT NULL,
     taught_status   TINYINT(1) NOT NULL,
     type_id         INT NOT NULL,
-    FOREIGN KEY (type_id) REFERENCES types (type_id) ON DELETE RESTRICT
+    FOREIGN KEY (type_id) REFERENCES types (type_id) ON DELETE RESTRICT,
+    CONSTRAINT move_name_unique UNIQUE(move_name)
 )

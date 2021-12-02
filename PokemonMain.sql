@@ -50,6 +50,7 @@ SOURCE DML/V_Schedule.sql;
 -- Load Functions
 SOURCE DML/F_Get_Owned_Pokemon_Type.sql;
 SOURCE DML/F_Get_Move_Type.sql;
+SOURCE DML/F_Check_If_Hidden.sql;
 
 -- Load Triggers
 SOURCE DML/T_Check_Type_Match_Or_Normal_Insert.sql;
@@ -58,3 +59,9 @@ SOURCE DML/T_Check_Known_Moves_Min.sql;
 SOURCE DML/T_Check_Known_Moves_Max.sql;
 SOURCE DML/T_Remove_Forgotten_Move_If_Taught.sql;
 SOURCE DML/T_Delete_Known_Move_Add_Forgotten.sql;
+SOURCE DML/T_Check_Type_Match_Or_Normal_Update.sql;
+SOURCE DML/T_Check_Type_Match_Or_Normal_Forgotten_Update.sql;
+SOURCE DML/T_Check_Type_Match_Or_Normal_Insert_Forgotten.sql;
+SOURCE DML/T_Pokemon_Types_Max.sql;
+SOURCE DML/T_Remove_Forgotten_Move_If_Taught_Update.sql;
+SOURCE DML/T_Update_Known_Move_Add_Forgotten.sql;

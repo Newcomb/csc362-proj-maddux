@@ -50,9 +50,6 @@ function res_to_table($res,$path) {
     <p><input type="checkbox"  name="deleteAll" class="largerCheckbox"/>Delete all records</p>
     <input type="submit" value="Delete Selected Records"/><br><br>
     </form>
-    <form action=<?php echo $path ?> method=POST>
-        <input type="submit" name="toggle" value="Toggle Light/Dark Mode"/>
-    </form> 
 <?php
 }
 ?>

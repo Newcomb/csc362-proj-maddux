@@ -6,4 +6,5 @@ FROM known_moves
 INNER JOIN moves USING (move_id)
 INNER JOIN types USING (type_id)
 INNER JOIN owned_pokemon USING (owned_pokemon_id)
-INNER JOIN pokedex USING (pokemon_id);
+INNER JOIN pokedex USING (pokemon_id)
+ORDER BY (owned_pokemon_id);;

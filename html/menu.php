@@ -51,7 +51,7 @@
                             <a href="managePokemastersTable.php">Pokemaster Table</a>
                             <a href="pokemasterRatingsTable.php">Pokemaster Ratings Table</a>
                             <a href="manageMovesTable.php">Moves Table</a>
-                            <a href="managePokemonTypesTable.php">Types Table</a>
+                            <a href="manageTypesTable.php">Types Table</a>
                             <a href="managePokemonTypesTable.php">PokemonTypes Table</a>
                             <a href="manageKnownMovesTable.php">KnownMoves Table</a>
                             <a href="manageForgottenMovesTable.php">ForgottenMoves Table</a>
