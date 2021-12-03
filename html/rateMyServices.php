@@ -69,7 +69,7 @@ error_reporting(E_ALL);
         </form>
         
     <?php
-    $sql_query = "SELECT pokemaster_rating_id, pokemaster_id, move_id, star_rating FROM pokemaster_ratings";
+    $sql_query = "SELECT pokemaster_rating_id, pokemaster_id, move_name, star_rating FROM pokemaster_ratings INNER JOIN moves USING (move_id)";
     $result = $conn->query($sql_query);
     res_to_table($result, $_SERVER['REQUEST_URI']);
     $conn->close();
