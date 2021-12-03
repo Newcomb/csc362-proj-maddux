@@ -159,7 +159,7 @@ if (!isset($_SESSION)){
 <?php
 
 // Establish query for getting all current instruments
-$sql_query =  "SELECT * FROM schedule";
+$sql_query =  "SELECT * FROM schedule_join";
 // Query the database using the select statement
 $result = $conn->query($sql_query);
 //Print result on page
