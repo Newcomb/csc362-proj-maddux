@@ -64,7 +64,11 @@ if (!isset($_SESSION)){
             $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdatePokedexGivenName.sql"));
             $stmt->bind_param('ss', $_POST['newName'], $_POST['pokeID']); 
         }
-        $stmt->execute();
+        if(!$stmt->execute()){
+            $error_array = array('Error(s):');
+            array_push($error_array, $conn->error);
+            $_SESSION['error'] = $error_array;
+        }
         header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }

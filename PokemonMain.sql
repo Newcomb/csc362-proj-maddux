@@ -45,6 +45,8 @@ SOURCE DML/V_Known_Moves_Join.sql;
 SOURCE DML/V_Forgotten_Moves_Join.sql;
 SOURCE DML/V_Pokemon_Types_Join.sql;
 SOURCE DML/V_Schedule.sql;
+SOURCE DML/V_Pokedex.sql;
+
 
 
 -- Load Functions
@@ -65,3 +67,4 @@ SOURCE DML/T_Check_Type_Match_Or_Normal_Insert_Forgotten.sql;
 SOURCE DML/T_Pokemon_Types_Max.sql;
 SOURCE DML/T_Remove_Forgotten_Move_If_Taught_Update.sql;
 SOURCE DML/T_Update_Known_Move_Add_Forgotten.sql;
+SOURCE DML/T_Check_Delete_Pokemon_Type.sql;

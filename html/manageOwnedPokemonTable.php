@@ -51,22 +51,6 @@ if (isset($_POST['Insert'])) {
     die();
 }
 
-// Update an owned pokemons pokemon id
-if (isset($_POST['Update'])) {
-
-    // Prepare the update statement
-    $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateOwnedPokemonPokeID.sql"));
-    $stmt->bind_param('ii', intval($_POST['newPokeID']), intval($_POST['ownedPokeID']));
-    if(!$stmt->execute()){
-        $error_array = array('Error(s):');
-        array_push($error_array, $conn->error);
-        $_SESSION['error'] = $error_array;
-    }
-    header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
-    die();
-}
-
-
 // Update an owned pokemons pokemaster id
 if (isset($_POST['Update2'])){
     // Prepare the update statement
@@ -103,19 +87,11 @@ if (del_sel_checkbox("owned_pokemon", $sql_path . "/DML/DeleteOwnedPokemon.sql")
     <h3>Add a new Owned Pokemon</h3>
     <form method="POST" action='manageOwnedPokemonTable.php'>
             <?php drop_down_options('/DML/ViewPokemasters.sql', 0, $sql_path, 'Choose PokemasterID', 'pokemasterID'); ?>
-            <?php drop_down_options('/DML/ViewPokedex.sql', 1, $sql_path, 'Choose a PokemonID', 'pokeID'); ?>
+            <?php drop_down_options('/DML/ViewPokedex.sql', 1, $sql_path, 'Choose a Pokemon', 'pokeID'); ?>
             <br><br>
             <input type="submit" value="InsertOwnedPokemon" name="Insert">
         </form>
         
-    <h3>Update an existing Owned Pokemon's Pokemon ID</h3>
-        <form method="POST" action='manageOwnedPokemonTable.php'>
-            <?php drop_down_options('/DML/ViewOwnedPokemon.sql', 0, $sql_path, 'Choose an OwnedPokemonID', 'ownedPokeID'); ?>
-            <?php drop_down_options('/DML/ViewPokedex.sql', 1, $sql_path, 'Choose a PokemonID', 'newPokeID'); ?>
-            <br><br>
-            <input type="submit" value="UpdatePokemonID" name="Update">
-        </form>
-
         <h3>Update an existing Owned Pokemon's Pokemaster</h3>
         <form method="POST" action='manageOwnedPokemonTable.php'> 
             <?php drop_down_options('/DML/ViewOwnedPokemon.sql', 0, $sql_path, 'Choose an OwnedPokemonID', 'ownedPokeID2'); ?>
@@ -132,7 +108,7 @@ if (del_sel_checkbox("owned_pokemon", $sql_path . "/DML/DeleteOwnedPokemon.sql")
 <?php
 
 // Establish query for getting all current instruments
-$sql_query = "SELECT * FROM owned_pokemon_join";
+$sql_query = file_get_contents($sql_path . "/DML/ViewOwnedPokemon.sql");
 // Query the database using the select statement
 $result = $conn->query($sql_query);
 //Print result on page
