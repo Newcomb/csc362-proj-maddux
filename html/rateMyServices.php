@@ -8,7 +8,10 @@ error_reporting(E_ALL);
     <!--Pokemon Font Link-->
     <link href="//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon" rel="stylesheet" type="text/css"/>
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">   
+    
+</head>
+<body>
     <?php
     include "menu.php";
     include "res_to_table.php";
@@ -27,27 +30,30 @@ error_reporting(E_ALL);
             $config['mysqli.default_pw'],
             $dbname);
 
+    $reload = false;
+    if ($reload) {
+        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
+        die();
+    }
 
     if (isset($_POST['SubmitRating'])) {
         // Prepare the delete statement
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertPokemasterRatings.sql"));
         $stmt->bind_param('iii', intval($_POST['pokemasterID']), intval($_POST['moveID']), intval($_POST['ratings']));
         $stmt->execute();
-        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
-        die();
+        $reload = true;
     }
 
+    $reload = false;
     if (del_sel_checkbox("pokemaster_ratings", $sql_path . "/DML/DeletePokemasterRatings.sql")) {
-        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
-        die();
+        $reload = true;
     }
 
     ?>
-</head>
-<body>
+
     <h1>Rate My Services</h1>
     <h3>Give new rating</h3>
-    <form method="POST" action='rateMyServices.php'>
+    <form method="POST" >
             <?php drop_down_options('/DML/ViewPokemasters.sql', 0, $sql_path, 'Choose PokemasterID', 'pokemasterID'); ?>
             <?php drop_down_options('/DML/ViewMoves.sql', 1, $sql_path, 'Choose Move Name', 'moveID'); ?>
             <label>Choose star rating</label>
@@ -63,7 +69,7 @@ error_reporting(E_ALL);
         </form>
         
     <?php
-    $sql_query = "SELECT * FROM pokemaster_ratings";
+    $sql_query = "SELECT pokemaster_rating_id AS 'Rating ID', pokemaster_id AS 'Trainer ID', move_name AS 'Move', star_rating AS 'Stars' FROM pokemaster_ratings INNER JOIN moves USING (move_id)";
     $result = $conn->query($sql_query);
     res_to_table($result, $_SERVER['REQUEST_URI']);
     $conn->close();

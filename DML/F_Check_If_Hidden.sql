@@ -2,4 +2,4 @@
 DROP FUNCTION IF EXISTS getHiddenStat;
 CREATE FUNCTION getHiddenStat (moveID INT) 
 RETURNS INT
-RETURN (SELECT hidden_move FROM moves WHERE (move_id = moveID));
+RETURN (SELECT COUNT(hidden_move) FROM moves WHERE (move_id = moveID AND hidden_move = 1));

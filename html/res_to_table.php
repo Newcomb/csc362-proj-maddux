@@ -47,7 +47,7 @@ function res_to_table($res,$path) {
 ?>
     </tbody>
     </table>
-    <p><input type="checkbox"  name="deleteAll" class="largerCheckbox"/>Delete all records</p>
+    <!-- <p><input type="checkbox"  name="deleteAll" class="largerCheckbox"/>Delete all records</p> -->
     <input type="submit" value="Delete Selected Records"/><br><br>
     </form>
 <?php

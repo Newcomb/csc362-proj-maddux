@@ -5,7 +5,7 @@ CREATE TRIGGER check_type_match_or_normal_insert_forgotten
     BEFORE INSERT ON forgotten_moves
     FOR EACH ROW
 BEGIN
-    IF ((getOwnedPokemonType(NEW.owned_pokemon_id) != getMoveType(NEW.move_id) AND (getMoveType(NEW.move_id) != 1 ))) THEN 
+    IF ((SELECT getMoveType(NEW.move_id) NOT IN ((SELECT type_id FROM owned_pokemon INNER JOIN pokemon_types USING (pokemon_id) WHERE (owned_pokemon_id = NEW.owned_pokemon_id)))) AND (getMoveType(NEW.move_id) != 1 )) THEN 
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Cannot Insert: Types and moves must match unless the move is normal';
     END IF;
  END; //

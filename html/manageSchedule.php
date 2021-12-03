@@ -51,16 +51,13 @@ if (!isset($_SESSION)){
     // Insert a move into schedule
     if (isset($_POST['Insert'])) {
         // Prepare the insert statement
-        echo 'here';
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertSchedule.sql"));
-        echo file_get_contents($sql_path . "/DML/InsertSchedule.sql");
         $stmt->bind_param('isiii', $_POST['moveID'], $_POST['dateTaught'], $_POST['timeTaught'], $_POST['duration'], $_POST['offered']);
-        /*if(!$stmt->execute()){
-            echo 'crap';
+        if(!$stmt->execute()){
             $error_array = array('Error(s):');
             array_push($error_array, $conn->error);
             $_SESSION['error'] = $error_array;
-        }*/
+        }
         $reload = true;
     }
 
@@ -162,7 +159,7 @@ if (!isset($_SESSION)){
 <?php
 
 // Establish query for getting all current instruments
-$sql_query =  "SELECT * FROM schedule";
+$sql_query =  "SELECT * FROM schedule_join";
 // Query the database using the select statement
 $result = $conn->query($sql_query);
 //Print result on page

@@ -53,7 +53,7 @@ if (!isset($_SESSION)){
             array_push($error_array, $conn->error);
             $_SESSION['error'] = $error_array;
         }
-        header('Location: http://34.135.39.226/team/manageForgottenMovesTable.php', true, 303);
+        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
 
@@ -68,14 +68,14 @@ if (!isset($_SESSION)){
             array_push($error_array, $conn->error);
             $_SESSION['error'] = $error_array;
         }
-        header('Location: http://34.135.39.226/team/manageForgottenMovesTable.php', true, 303);
+        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
     
     
     // Delete all checked items
     if (del_sel_checkbox("forgotten_moves", $sql_path . "/DML/DeleteForgottenMoves.sql")) {
-        header('Location: http://34.135.39.226/team/manageForgottenMovesTable.php', true, 303);
+        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
 

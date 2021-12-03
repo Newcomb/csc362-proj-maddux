@@ -56,7 +56,7 @@ if (!isset($_SESSION)){
             $_SESSION['error'] = $error_array;
         }
         // TO HERE 
-        header('Location: http://34.135.39.226/team/manageKnownMovesTable.php', true, 303);
+        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
 
@@ -71,7 +71,7 @@ if (!isset($_SESSION)){
             array_push($error_array, $conn->error);
             $_SESSION['error'] = $error_array;
         }
-        header('Location: http://34.135.39.226/team/manageKnownMovesTable.php', true, 303);
+        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
     
@@ -79,7 +79,7 @@ if (!isset($_SESSION)){
     
     // Delete all checked items
     if (del_sel_checkbox("known_moves", $sql_path . "/DML/DeleteKnownMoves.sql")) {
-        header('Location: http://34.135.39.226/team/manageKnownMovesTable.php', true, 303);
+        header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
 
