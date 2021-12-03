@@ -108,7 +108,7 @@ if (del_sel_checkbox("owned_pokemon", $sql_path . "/DML/DeleteOwnedPokemon.sql")
 <?php
 
 // Establish query for getting all current instruments
-$sql_query = file_get_contents($sql_path . "/DML/ViewOwnedPokemon.sql");
+$sql_query = 'SELECT * FROM owned_pokemon_join';
 // Query the database using the select statement
 $result = $conn->query($sql_query);
 //Print result on page

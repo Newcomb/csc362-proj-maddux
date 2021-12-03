@@ -6,7 +6,7 @@ CREATE TRIGGER prevent_transfer_of_hidden
     FOR EACH ROW
 BEGIN
     IF (SELECT COUNT(hidden_move) FROM moves WHERE (move_id = NEW.move_id AND hidden_move = 1)) != 0 THEN 
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Deletion completed but the move was not inserted to forgotten moves because it was a hidden move';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Cannot Insert: This is a hidden move.';
     END IF;
  END; //
 DELIMITER ;
