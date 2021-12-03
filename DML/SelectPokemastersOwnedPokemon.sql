@@ -1,0 +1,1 @@
+SELECT * FROM owned_pokemon WHERE (pokemaster_id = ?);
