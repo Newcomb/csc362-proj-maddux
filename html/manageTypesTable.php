@@ -54,6 +54,7 @@ if (!isset($_SESSION)){
         die();
     }
 
+    /* SHOULD NOT BE ALLOWED BECAUSE VALIDATION TABLE
     // Update a moves taught status  
     if (isset($_POST['newTypeName'])) {
         // Prepare the update statment (this works just like the insert statement above you just have to change the part of the link in quotes to the sql you want)
@@ -68,7 +69,7 @@ if (!isset($_SESSION)){
         header('Location: http://34.135.39.226/team/manageTypesTable.php', true, 303);
         die();
     }
-
+    */
 
     // Delete all checked items
     if (del_sel_checkbox("types", $sql_path . "/DML/DeleteTypes.sql")) {
@@ -88,13 +89,14 @@ if (!isset($_SESSION)){
                 <input type=submit value='Add New Move'/>
             </form>
         </p>
-
+        <!--
         <h3>Update an existing Type Name</h3>
             <form method="POST">
-                <?php drop_down_options('/DML/ViewTypes.sql', 1, $sql_path, 'Choose a Type', 'typeID'); ?>
+                <?php //drop_down_options('/DML/ViewTypes.sql', 1, $sql_path, 'Choose a Type', 'typeID'); ?>
                 <input type=text name=newTypeName placeholder='Enter new type name...' required/>
                 <input type=submit value='Update Type Name'/>
             </form>
+-->
 </body>
 <?php
 

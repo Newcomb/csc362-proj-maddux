@@ -1,24 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php
-    //Check if the cookie is set and if not establish the cookie
-    if(!isset($_COOKIE['darkmode'])){
-        setcookie('darkmode', false, time());
-    }
-
-    //Set style based on cookie
-    if ($_COOKIE['darkmode']){
-    ?>
-        <link rel="stylesheet" href="darkmode.css">
-    <?php
-    } 
-    else {
-    ?>
-        <link rel="stylesheet" href="menu.css">
-    <?php
-    }
-    ?>
+    <link rel="stylesheet" href="menu.css">
+    
     <!--Pokemon Font Link-->
     <link href="//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon" rel="stylesheet" type="text/css"/>
 
@@ -29,93 +13,31 @@
     <?php
     //Create menu
     include "menu.php";
+    include "viewTable.php";
     ?>
+    <h1>Welcome to Bill's Move Tutoring Site!</h1>
+    <img src="pokeball.png" alt="Pokeball" style="float:center;width:33%;height:33%;">
+    <!-- Source above claimed to be open source -->
     <!-- END of main HTML -->
-    <?php
-    //Start a session if user logged in
-    session_start();
-    //Set session variables
-    if(isset($_POST['username']) && !isset($_SESSION['user'])){
-        $_SESSION['user'] = $_POST['username'];
-        $_SESSION['num_checked'] = 0;
-        $_SESSION['start_time'] = time();
-
-        $reload = true;
-    }
-
-    //check if time limit has expired or if the user has logged out
-    if((isset($_SESSION['start_time']) && (time() - $_SESSION['start_time'] > 1800)) || (isset($_POST['logout']))){
-
-        session_unset();
-        session_destroy();
-        $reload = true;
-    }
-
-    //Check if session is set by user to decide whether or not to have login text box
-    if (!isset($_SESSION['user'])){
-    ?>
-
-    <h3>Remember my session:
-        <form method=POST>
-            <input type=text name=username placeholder='Enter name...'/>
-            <input type=submit value='Remember Me'/>
-        </form>
-    </h3>
-
-    <form action="menu.php" method=POST>
-        <input type="submit" name="togglemode" value="Toggle Light/Dark Mode"/>
-    </form>
-
-    <?php
-    } 
-    else {
-        //If set welcome the user
-        echo "<p> Welcome " . $_SESSION['user'] . "!</p>";
-        //Create new dropdown option to view user's pokemon
-    ?>
-        
-    </div>
-
-    <form method=POST>
-        <input type=submit name='logout' value='Log Out'/>
-    </form>
-    <?php
-    }
-    ?>
-
-
+    
 </body>
 
 <?php
 //Instantiate mysqli data
-$host = "localhost"; //CHANGE ME
-$user = "joshw";
-$pass = "lion362";
-$dbase = "pokemon_db";
+// Log in to database using configured file
+$login_path = dirname(dirname(__DIR__));
+// Get base of sql path
+$sql_path = dirname(__DIR__);
 
-//Open mysqli connection and check for errors
-if (!$conn = new mysqli($host, $user, $pass, $dbase)){
+$config = parse_ini_file($login_path .'/mysql.ini');
+$dbname = 'pokemon_db';
+$conn = new mysqli(
+            $config['mysqli.default_host'],
+            $config['mysqli.default_user'],
+            $config['mysqli.default_pw'],
+            $dbname);
 
-    echo "Error: Failed to make a MySQL connection: " . "<br>";
-
-    echo "Errno: $conn->connect_errno; i.e. $conn->connect_error \n";
-
-    exit;
-}
 $reload = false;
-
-// Check if cookie has been toggled and reset the page
-if(isset($_POST['togglemode'])){
-
-    if($_COOKIE['darkmode'] == FALSE){
-        setcookie('darkmode', TRUE);
-    } 
-    else {
-        setcookie('darkmode', FALSE);
-    }
-
-    $reload = true;
-}
 
 //header
 if($reload){ 
@@ -126,16 +48,10 @@ if($reload){
 // Query in order to get the table result
 $sql_query = "SELECT * FROM schedule";
 
-$stmt = $conn->prepare($sql_query);
-
-$stmt->bind_param();
-
-$stmt->execute();
-
-$result = $stmt->get_result();
+$result = $conn->query($sql_query);
 
 // Run function to establish the table
-viewTable($result);
+viewTable($result, $_SERVER['REQUEST_URI']);
 
 // Close the connection
 $conn->close();
