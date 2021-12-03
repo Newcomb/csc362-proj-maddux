@@ -46,7 +46,7 @@ SOURCE DML/V_Forgotten_Moves_Join.sql;
 SOURCE DML/V_Pokemon_Types_Join.sql;
 SOURCE DML/V_Schedule.sql;
 SOURCE DML/V_Pokedex.sql;
-
+SOURCE DML/V_CountRating.sql;
 
 
 -- Load Functions
