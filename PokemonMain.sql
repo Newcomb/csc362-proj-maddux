@@ -33,7 +33,6 @@ SOURCE Tables/TableValues.sql;
 -- Generate views
 SOURCE DML/ViewForgottenMoves.sql;
 SOURCE DML/ViewKnownMoves.sql;
-SOURCE DML/ViewOwnedPokemon.sql;
 SOURCE DML/ViewPokedex.sql;
 SOURCE DML/ViewPokemasterRatings.sql;
 SOURCE DML/ViewPokemasters.sql;
