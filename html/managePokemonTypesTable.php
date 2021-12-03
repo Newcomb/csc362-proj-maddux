@@ -110,7 +110,7 @@ if (del_sel_checkbox("pokemon_types", $sql_path . "/DML/DeletePokemonTypes.sql")
 <?php
 
 // Establish query for getting all current instruments
-$sql_query = "SELECT * FROM pokemon_types_join";
+$sql_query = file_get_contents($sql_path . "/DML/ViewPokemonTypes.sql");
 // Query the database using the select statement
 $result = $conn->query($sql_query);
 //Print result on page

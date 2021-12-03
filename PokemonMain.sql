@@ -68,3 +68,4 @@ SOURCE DML/T_Pokemon_Types_Max.sql;
 SOURCE DML/T_Remove_Forgotten_Move_If_Taught_Update.sql;
 SOURCE DML/T_Update_Known_Move_Add_Forgotten.sql;
 SOURCE DML/T_Check_Delete_Pokemon_Type.sql;
+SOURCE DML/T_Prevent_Transfer_Of_Hidden_Moves_To_Forgotten.sql;
