@@ -98,7 +98,6 @@ if (del_sel_checkbox("pokemasters", $sql_path . "/DML/DeletePokemasters.sql")) {
 <body>
     <?php 
     ?>
-    <?php echo '<p>' . dirname(dirname(__DIR__)) . '</p>'?>
     <h1>Manage Pokemasters</h1>
     <h3>Add a new Pokemaster</h3>
     <form method="POST" action='managePokemastersTable.php'>
@@ -116,7 +115,7 @@ if (del_sel_checkbox("pokemasters", $sql_path . "/DML/DeletePokemasters.sql")) {
             <input type="submit" value="UpdateFirstName" name="Update">
         </form>
 
-        <h3>Update an existing Owned Pokemon's Pokemaster</h3>
+        <h3>Update Pokemasters Last Name</h3>
         <form method="POST" action='managePokemastersTable.php'> 
             <?php drop_down_options('/DML/ViewPokemasters.sql', 0, $sql_path, 'Choose a Pokemaster ID', 'pokemasterID2'); ?>
             <input type=text name=lastName2 placeholder='Enter last name...' required/>

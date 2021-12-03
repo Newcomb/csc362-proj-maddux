@@ -83,7 +83,8 @@
         die();
     }
 
-    // Update move hidden status
+    /*  THESE COMMENTED OUT UPDATES MESS WITH FOREIGN KEY CONSTRAINTS SO THEY ARE NOT ALLOWED
+    Update move hidden status
     if (isset($_POST['moveID3'])) {
         // Prepare the insert statement
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateHiddenMoveStatus.sql"));
@@ -96,6 +97,7 @@
         header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
+    
     
     // Update move type
     if (isset($_POST['moveID4'])) {
@@ -110,6 +112,7 @@
         header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
         die();
     }
+    */
 
     // Delete all checked items
     if (del_sel_checkbox("moves", $sql_path . "/DML/DeleteMoves.sql")) {
@@ -179,10 +182,10 @@
                     </select>
                 <input type=submit value='Update Moves Teaching Status'/>
             </form>
-
+    <!--
     <h3>Update an existing Moves Hidden Move Status</h3>
             <form method="POST">
-                <?php drop_down_options('/DML/ViewMoves.sql', 1, $sql_path, 'Choose a Move', 'moveID3'); ?>
+                <?php //drop_down_options('/DML/ViewMoves.sql', 1, $sql_path, 'Choose a Move', 'moveID3'); ?>
                 <label for=taughtStat>Update Hidden Move Status?</label>
                     <select name=hidMoveNum2>
                         <option value=1>Yes</option>
@@ -193,10 +196,11 @@
 
     <h3>Update an existing Moves Type</h3>
             <form method="POST">
-                <?php drop_down_options('/DML/ViewMoves.sql', 1, $sql_path, 'Choose a Move', 'moveID4'); ?>
-                <?php drop_down_options('/DML/ViewTypes.sql', 1, $sql_path, 'Choose a Type', 'typeID4'); ?>
+                <?php //drop_down_options('/DML/ViewMoves.sql', 1, $sql_path, 'Choose a Move', 'moveID4'); ?>
+                <?php //drop_down_options('/DML/ViewTypes.sql', 1, $sql_path, 'Choose a Type', 'typeID4'); ?>
                 <input type=submit value='Update Move Type'/>
             </form>
+        -->
 </body>
 <?php
 
