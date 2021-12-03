@@ -21,27 +21,27 @@ if(isset($_POST['toggle'])){
     header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
     die();
 }
+    // Log in to database using configured file (this should be copied in every php page to log in)
+    $login_path = dirname(dirname(__DIR__));
+    
+    $config = parse_ini_file($login_path .'/mysql.ini');
+    $dbname = 'pokemon_db';
+    $conn = new mysqli(
+                $config['mysqli.default_host'],
+                $config['mysqli.default_user'],
+                $config['mysqli.default_pw'],
+                $dbname);
 
-$host = "localhost";
-$user = "webuser";
-$pass = "mewtwo";
-$dbse = "pokemon_db";
-
-//Open mysqli connection and check for errors
-if (!$conn = new mysqli($host, $user, $pass, $dbse)){
-    echo "Error: Failed to make a MySQL connection: " . "<br>";
-    echo "Errno: $conn->connect_errno; i.e. $conn->connect_error \n";
-    exit;
-}
-
-$sql_path = "/home/anazj/csc362-proj-maddux/DML/InsertRatingCounts.sql";
-$sql_path2 = "/home/anazj/csc362-proj-maddux/DML/ViewMoves.sql";
+    // Get base of sql path (this should also be copied so that the functions know which folders to access)
+    $sql_path = dirname(__DIR__);
+   
 // Insert a ratings count 
 if (isset($_POST['Insert'])) {
+    
     // Prepare the delete statement
-    $stmt = $conn->prepare(file_get_contents($sql_path) );
+    $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertRatingCounts.sql") );
     // access another sql path to be able to insert 
-    $stmt->bind_param('ii', $_POST['moveID'], intval($_POST['New rating']));
+    $stmt->bind_param('ii', $_POST['moveID'], settype($_POST['New Rating'], 'int') );
     $stmt->execute();
     header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
     die();
@@ -49,13 +49,11 @@ if (isset($_POST['Insert'])) {
 
 // Establish query for getting all current instruments
 $sql_query = "SELECT * FROM rating_counts";
-$sql_query2 = "SELECT *  FROM moves";
 // Query the database using the select statement
 $result = $conn->query($sql_query);
-$result2 = $conn->query($sql_query2);
 //Print result on page
 viewTable($result, $_SERVER['REQUEST_URI']);
-$conn->close();
+
 ?>
 
 </head>    
@@ -65,14 +63,42 @@ $conn->close();
     <h3>Add a new Rating Count</h3>
     <form method="POST" action='manageRatingCountsTable.php'>
             <input type="text" name="New Rating" placeholder="Enter New Rating">
-            <input type="submit" value="InsertRatingCount" name="Insert">
-          
-            <?php drop_down_options('/DML/ViewMoves.sql', 1, $sql_path2, 'Choose a moveID', 'moveID'); ?>
-            <br><br>
-           
-        </form>
+            <input type="submit" value="InsertRatingCount" name="Insert"> <br><br>
+            <?php drop_down_options('/DML/ViewMoves.sql', 1, $sql_path, 'Choose a moveID', 'moveID'); ?>
+            
 
+        </form>
+   
 
 </body>
 
 </html>
+
+<?php 
+
+//  $sql = "SELECT move_id FROM moves;";
+//  $result2 = $conn->query($sql);
+//  viewTable($result2, $_SERVER['REQUEST_URI']);
+
+
+ 
+//  $sql3="SELECT COUNT(*) FROM ratings_counts;";
+//  $result3 = $conn->query($sql3);
+ 
+
+//  for ($x = 0; $x < $result3; $x++) {
+//     $sql2="SELECT COUNT(move_id) FROM rating_counts WHERE move_id= $x;";
+//      $result4 = $conn->query($sql2);
+//     printf("The count is: %d <br>" , $x );
+//   }
+
+// foreach($result2 as $dbrow) 
+// { 
+//         echo " " . "<br>";
+//         echo implode($dbrow) ;
+     
+
+// }
+
+$conn->close();
+?>
