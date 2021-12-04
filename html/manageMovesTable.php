@@ -43,7 +43,7 @@
         // Prepare the insert statement ($sql_path was the path we established above and it is concatenated to the string"/DML/InsertMoves...sql which will insert the move)
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertMoveStatusGiven.sql"));
         // siii represents the submission of one string followed by three integers as $_POST['moveName] is string and $_POST['typeID] is an integer as long as the next two
-        $stmt->bind_param('siii', htmlspecialchars($_POST['moveName']), $_POST['typeID'], $_POST['hidMoveNum'], $_POST['taughtStatNum']);
+        $stmt->bind_param('siii', htmlspecialchars($_POST['moveName']), htmlspecialchars(intval($_POST['typeID'])), htmlspecialchars(intval($_POST['hidMoveNum'])), htmlspecialchars(intval($_POST['taughtStatNum'])));
         // executes the prepared statement
         if(!$stmt->execute()){
             $error_array = array('Error(s):');
@@ -59,7 +59,7 @@
         // Prepare the update statment (this works just like the insert statement above you just have to change the part of the link in quotes to the sql you want)
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateMoveName.sql"));
         // This also works just like the insert above with only si because there are two binded parameters one string and one integer
-        $stmt->bind_param('si', $_POST['newMoveName'], $_POST['moveID']);
+        $stmt->bind_param('si', htmlspecialchars($_POST['newMoveName']), htmlspecialchars(intval($_POST['moveID'])));
         if(!$stmt->execute()){
             $error_array = array('Error(s):');
             array_push($error_array, $conn->error);
@@ -73,7 +73,7 @@
     if (isset($_POST['moveID2'])) {
         // Prepare the insert statement
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateMoveTaught.sql"));
-        $stmt->bind_param('ii', $_POST['taughtStatNum2'], $_POST['moveID2']);
+        $stmt->bind_param('ii', htmlspecialchars(intval($_POST['taughtStatNum2'])), htmlspecialchars(intval($_POST['moveID2'])));
         if(!$stmt->execute()){
             $error_array = array('Error(s):');
             array_push($error_array, $conn->error);

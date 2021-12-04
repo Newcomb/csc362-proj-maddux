@@ -1,0 +1,2 @@
+-- Calls trade
+trade(?, ?);

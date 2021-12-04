@@ -58,11 +58,11 @@ if (!isset($_SESSION)){
         if(is_numeric($_POST['pokeID'])){
             // Prepare the insert statement
             $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdatePokedexGivenID.sql"));
-            $stmt->bind_param('si', htmlspecialchars($_POST['newName']), intval($_POST['pokeID']));
+            $stmt->bind_param('si', htmlspecialchars($_POST['newName']), htmlspecialchars(intval($_POST['pokeID'])));
         } else {
             // Prepare the insert statement
             $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdatePokedexGivenName.sql"));
-            $stmt->bind_param('ss', htmlspecialchars($_POST['newName']), $_POST['pokeID']); 
+            $stmt->bind_param('ss', htmlspecialchars($_POST['newName']), htmlspecialchars($_POST['pokeID'])); 
         }
         if(!$stmt->execute()){
             $error_array = array('Error(s):');

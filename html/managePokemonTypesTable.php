@@ -41,7 +41,7 @@ if(isset($_SESSION['error'])) {
 if (isset($_POST['Insert'])) {
     // Prepare the delete statement
     $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertPokemonTypes.sql"));
-    $stmt->bind_param('ii', $_POST['pokemonID'], $_POST['typeID']);
+    $stmt->bind_param('ii', htmlspecialchars(intval($_POST['pokemonID'])), htmlspecialchars(intval($_POST['typeID'])));
     if(!$stmt->execute()){
         $error_array = array('Error(s):');
         array_push($error_array, $conn->error);
@@ -51,20 +51,20 @@ if (isset($_POST['Insert'])) {
     die();
 }
 
-// Update an owned pokemons pokemon id
-if (isset($_POST['Update'])) {
+// // Update an owned pokemons pokemon id
+// if (isset($_POST['Update'])) {
 
-    // Prepare the update statement
-    $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdatePokemasterFirstName.sql"));
-    $stmt->bind_param('si', htmlspecialchars($_POST['firstName2']), $_POST['pokemasterID']);
-    if(!$stmt->execute()){
-        $error_array = array('Error(s):');
-        array_push($error_array, $conn->error);
-        $_SESSION['error'] = $error_array;
-    }
-    header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
-    die();
-}
+//     // Prepare the update statement
+//     $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdatePokemasterFirstName.sql"));
+//     $stmt->bind_param('si', htmlspecialchars($_POST['firstName2']), htmlspecialchars(intval($_POST['pokemasterID'])));
+//     if(!$stmt->execute()){
+//         $error_array = array('Error(s):');
+//         array_push($error_array, $conn->error);
+//         $_SESSION['error'] = $error_array;
+//     }
+//     header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
+//     die();
+// }
 
 
 /*

@@ -12,8 +12,8 @@
 CREATE TABLE pokemasters (
     PRIMARY KEY               (pokemaster_id),
     pokemaster_id             INT AUTO_INCREMENT,
-    pokemaster_first_name     VARCHAR(50),
-    pokemaster_last_name      VARCHAR(50)
+    pokemaster_first_name     VARCHAR(50) NOT NULL,
+    pokemaster_last_name      VARCHAR(50) NOT NULL
 );
 
 -- INSERT INTO pokemasters (pokemaster_first_name)

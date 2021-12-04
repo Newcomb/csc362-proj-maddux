@@ -49,10 +49,12 @@ if (!isset($_SESSION)){
 }  
 
     // Insert a move into schedule  , $_POST['duration'], $_POST['offered']
+    // FOR SOME REASON USING htmlspecialchars and intval here also calls for a notice even though it works 
+    
     if (isset($_POST['Insert'])) {
         // Prepare the insert statement
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertSchedule.sql"));
-        $stmt->bind_param('isi', $_POST['moveID'], $_POST['dateTaught'], $_POST['timeTaught']);
+        $stmt->bind_param('isi', htmlspecialchars(intval($_POST['moveID'])), htmlspecialchars($_POST['dateTaught']), htmlspecialchars(intval($_POST['timeTaught'])));
         if(!$stmt->execute()){
             $error_array = array('Error(s):');
             array_push($error_array, $conn->error);
@@ -68,7 +70,7 @@ if (!isset($_SESSION)){
             if($_POST['scheduleID']) { 
             // Prepare the insert statement
             $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateScheduleGivenID.sql")); 
-            $stmt->bind_param('ii', intval($_POST['moveID']), intval($_POST['scheduleID'])); //something wrong with scheduleID
+            $stmt->bind_param('ii', htmlspecialchars(intval($_POST['moveID'])), htmlspecialchars(intval($_POST['scheduleID']))); //something wrong with scheduleID
             }
         } 
         $stmt->execute();
@@ -79,7 +81,7 @@ if (!isset($_SESSION)){
     if (isset($_POST['Update2'])) {
             // Prepare the insert statement
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateScheduleDateGivenID.sql")); //Need to make SQL for this
-        $stmt->bind_param('si', $_POST['dateTaught'], $_POST['scheduleID']);
+        $stmt->bind_param('si', htmlspecialchars($_POST['dateTaught']), htmlspecialchars(intval($_POST['schedID'])));
         if(!$stmt->execute()){
             $error_array = array('Error(s):');
             array_push($error_array, $conn->error);
@@ -146,7 +148,7 @@ if (!isset($_SESSION)){
 
     <h3>Change when a Move is taught</h3>
             <form method="POST">
-                <?php drop_down_options('/DML/ViewSchedule.sql', 0, $sql_path, 'Choose a schedule_id to Replace', 'scheduleID'); //THIS IS CAUSING PROBLEMS?>
+                <?php drop_down_options('/DML/ViewSchedule.sql', 0, $sql_path, 'Choose a schedule_id to Replace', 'schedID'); //THIS IS CAUSING PROBLEMS?>
                <div>What day will the move be taught? <input type=date name=dateTaught required/></div>
                 <!-- <?php //drop_down_options('/DML/ViewSchedule.sql', 3, $sql_path, 'Choose a Time to Replace','timeTaught');?>
                 <label for=timeTaught>What time will the move be taught?</label>

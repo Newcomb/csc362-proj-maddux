@@ -43,7 +43,7 @@ if (!isset($_SESSION)){
         // Prepare the insert statement ($sql_path was the path we established above and it is concatenated to the string"/DML/InsertMoves...sql which will insert the move)
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertTypes.sql"));
         // siii represents the submission of one string followed by three integers as $_POST['moveName] is string and $_POST['typeID] is an integer as long as the next two
-        $stmt->bind_param('s', $_POST['typeName']);
+        $stmt->bind_param('s', htmlspecialchars($_POST['typeName']));
         // executes the prepared statement
         if(!$stmt->execute()){
             $error_array = array('Error(s):');

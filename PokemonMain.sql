@@ -52,6 +52,10 @@ SOURCE DML/V_CountRating.sql;
 SOURCE DML/F_Get_Owned_Pokemon_Type.sql;
 SOURCE DML/F_Get_Move_Type.sql;
 SOURCE DML/F_Check_If_Hidden.sql;
+SOURCE DML/F_Get_Trainer_id.sql;
+
+-- Load Procedures
+SOURCE DML/P_Trade_Pokemon.sql;
 
 -- Load Triggers
 SOURCE DML/T_Check_Type_Match_Or_Normal_Insert.sql;

@@ -49,7 +49,6 @@
                         <div class="dropdown-content">
                             <a href="managePokedexTable.php">Pokedex Table</a>
                             <a href="managePokemastersTable.php">Pokemaster Table</a>
-                            <a href="pokemasterRatingsTable.php">Pokemaster Ratings Table</a>
                             <a href="manageMovesTable.php">Moves Table</a>
                             <a href="manageTypesTable.php">Types Table</a>
                             <a href="managePokemonTypesTable.php">PokemonTypes Table</a>

@@ -65,6 +65,21 @@ if (isset($_POST['Update2'])){
     die();
 }
 
+// Update an owned pokemons pokemaster id
+// Attempted but did not get this working (errors with user priveleges then binding param issues)
+// if (isset($_POST['Trade'])){
+//     // Prepare the update statement
+//     $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/Call_Trade.sql"));
+//     $stmt->bind_param('ii', $_POST['ownedPokeID3'],$_POST['ownedPokeID2']);
+//     if(!$stmt->execute()){
+//         $error_array = array('Error(s):');
+//         array_push($error_array, $conn->error);
+//         $_SESSION['error'] = $error_array;
+//     }
+//     header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
+//     die();
+// }
+
 if (isset($_POST['deleteAll'])){
     $conn->query(file_get_contents($sql_path . "/DML/TruncateOwnedPokemon.sql"));
     header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
@@ -85,15 +100,23 @@ if (del_sel_checkbox("owned_pokemon", $sql_path . "/DML/DeleteOwnedPokemon.sql")
 <body>
     <h1>Manage Owned Pokemon</h1>
     <h3>Add a new Owned Pokemon</h3>
-    <form method="POST" action='manageOwnedPokemonTable.php'>
+    <form method="POST">
             <?php drop_down_options('/DML/ViewPokemasters.sql', 0, $sql_path, 'Choose PokemasterID', 'pokemasterID'); ?>
             <?php drop_down_options('/DML/ViewPokedex.sql', 1, $sql_path, 'Choose a Pokemon', 'pokeID'); ?>
             <br><br>
             <input type="submit" value="InsertOwnedPokemon" name="Insert">
         </form>
         
+        <!-- <h3>Trade Pokemon</h3>
+        <form method="POST"> 
+            <?php //drop_down_options('/DML/ViewOwnedPokemon.sql', 0, $sql_path, 'Choose an OwnedPokemonID', 'ownedPokeID2'); ?>
+            <?php //drop_down_options('/DML/ViewOwnedPokemon.sql', 0, $sql_path, 'Choose a PokemasterID', 'ownedPokeID3'); ?>
+            <br><br>
+            <input type="submit" value="UpdatePokemasterID" name="Trade">
+        </form> -->
+
         <h3>Update an existing Owned Pokemon's Pokemaster</h3>
-        <form method="POST" action='manageOwnedPokemonTable.php'> 
+        <form method="POST"> 
             <?php drop_down_options('/DML/ViewOwnedPokemon.sql', 0, $sql_path, 'Choose an OwnedPokemonID', 'ownedPokeID2'); ?>
             <?php drop_down_options('/DML/ViewPokemasters.sql', 0, $sql_path, 'Choose a PokemasterID', 'pokemasterID2'); ?>
             <br><br>

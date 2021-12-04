@@ -47,7 +47,7 @@ if (!isset($_SESSION)){
         // Prepare the insert statement ($sql_path was the path we established above and it is concatenated to the string"/DML/InsertMoves...sql which will insert the move)
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertKnownMoves.sql"));
         // siii represents the submission of one string followed by three integers as $_POST['moveName] is string and $_POST['typeID] is an integer as long as the next two
-        $stmt->bind_param('ii', $_POST['ownedPokeID'], $_POST['moveID']);
+        $stmt->bind_param('ii', htmlspecialchars(intval($_POST['ownedPokeID'])), htmlspecialchars(intval($_POST['moveID'])));
         // executes the prepared statement
         // COPY AND PASTE THIS FOR ERRORS !!!!!!
         if(!$stmt->execute()){
@@ -64,8 +64,8 @@ if (!isset($_SESSION)){
     if (isset($_POST['newMoveID'])) {
         // Prepare the update statment (this works just like the insert statement above you just have to change the part of the link in quotes to the sql you want)
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateKnownMoves.sql"));
-        // This also works just like the insert above with only si because there are two binded parameters one string and one integer
-        $stmt->bind_param('iii', $_POST['newMoveID'], $_POST['ownedPokeID2'], $_POST['moveID2']);
+        // This also works just like the insert above with only si because there are two binded parameters one string and one integer (FOR SOME UNKOWN REASON ADDING htmlspecialchars and intval to moveID2 breaks it)
+        $stmt->bind_param('iii', htmlspecialchars(intval($_POST['newMoveID'])), htmlspecialchars(intval($_POST['ownedPokeID2'])), $_POST['moveID2']);
         if(!$stmt->execute()){
             $error_array = array('Error(s):');
             array_push($error_array, $conn->error);
