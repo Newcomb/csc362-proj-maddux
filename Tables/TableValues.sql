@@ -107,3 +107,14 @@ INSERT INTO forgotten_moves (owned_pokemon_id, move_id)
 VALUES  (1, 5),
         (8, 10),
         (2, 21);
+
+INSERT INTO pokemaster_ratings (pokemaster_id, move_id, star_rating)
+VALUES  (1, 1, 3),
+        (2, 1, 4),
+        (3, 1, 3),
+        (4, 2, 5),
+        (1, 2, 3);
+
+INSERT INTO schedule (move_id, date_taught, time_taught)
+VALUES  (1 , '2021-12-23', 1);
+

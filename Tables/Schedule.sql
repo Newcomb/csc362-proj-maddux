@@ -16,8 +16,8 @@ CREATE TABLE schedule (
     move_id              INT NOT NULL,
     date_taught          DATE NOT NULL,
     time_taught          TINYINT(1) NOT NULL,
-    teaching_duration    INT NOT NULL,
-    offered              TINYINT(1) NOT NULL,
+    -- teaching_duration    INT NOT NULL,
+    -- offered              TINYINT(1) NOT NULL,
     PRIMARY KEY (schedule_id),
     FOREIGN KEY (move_id) REFERENCES moves(move_id) ON DELETE RESTRICT,
     CONSTRAINT entry_already_booked UNIQUE (date_taught, time_taught)

@@ -48,11 +48,11 @@ if (!isset($_SESSION)){
     }
 }  
 
-    // Insert a move into schedule
+    // Insert a move into schedule  , $_POST['duration'], $_POST['offered']
     if (isset($_POST['Insert'])) {
         // Prepare the insert statement
         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/InsertSchedule.sql"));
-        $stmt->bind_param('isiii', $_POST['moveID'], $_POST['dateTaught'], $_POST['timeTaught'], $_POST['duration'], $_POST['offered']);
+        $stmt->bind_param('isi', $_POST['moveID'], $_POST['dateTaught'], $_POST['timeTaught']);
         if(!$stmt->execute()){
             $error_array = array('Error(s):');
             array_push($error_array, $conn->error);
@@ -77,24 +77,26 @@ if (!isset($_SESSION)){
 
     //Update date & time taught
     if (isset($_POST['Update2'])) {
-        if(is_numeric($_POST['dateTaught'])){
             // Prepare the insert statement
-            $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateScheduleDateGivenID.sql")); //Need to make SQL for this
-            $stmt->bind_param('ii', intval($_POST['newDate']), intval($_POST['dateID']));
-        } 
-        $stmt->execute();
+        $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateScheduleDateGivenID.sql")); //Need to make SQL for this
+        $stmt->bind_param('si', $_POST['dateTaught'], $_POST['scheduleID']);
+        if(!$stmt->execute()){
+            $error_array = array('Error(s):');
+            array_push($error_array, $conn->error);
+            $_SESSION['error'] = $error_array;
+        }
         $reload = true;
     }
 
-    if (isset($_POST['Update3'])) {
-        if(is_numeric($_POST['timeTaught'])){
-            // Prepare the insert statement
-            $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateScheduleTimeGivenID.sql")); 
-            $stmt->bind_param('ii', intval($_POST['moveID']), intval($_POST['timeTaught']));
-        } 
-        $stmt->execute();
-        $reload = true;
-    }
+    // if (isset($_POST['Update3'])) {
+    //     if(is_numeric($_POST['timeTaught'])){
+    //         // Prepare the insert statement
+    //         $stmt = $conn->prepare(file_get_contents($sql_path . "/DML/UpdateScheduleTimeGivenID.sql")); 
+    //         $stmt->bind_param('ii', intval($_POST['moveID']), intval($_POST['timeTaught']));
+    //     } 
+    //     $stmt->execute();
+    //     $reload = true;
+    // }
 
     // Delete all checked items
     if (del_sel_checkbox("schedule", $sql_path . "/DML/DeleteSchedule.sql")) {
@@ -116,7 +118,7 @@ if (!isset($_SESSION)){
                         <option value=1>Night</option>
                     </select>
 
-                <label for=duration>How long will it take to teach?</label>
+                <!-- <label for=duration>How long will it take to teach?</label>
                     <select name=duration>
                         <option value=1>1 hr</option>
                         <option value=2>2 hrs</option>
@@ -127,7 +129,7 @@ if (!isset($_SESSION)){
                 <label for=offered>Is the move currently offered?</label>
                 <select name=offered>
                     <option value=1>Yes</option>
-                    <option value=0>No</option>
+                    <option value=0>No</option> -->
                 </select>
                 <br>
                 <input type=submit value='Add New Move to Schedule' name='Insert'/>
@@ -146,12 +148,12 @@ if (!isset($_SESSION)){
             <form method="POST">
                 <?php drop_down_options('/DML/ViewSchedule.sql', 0, $sql_path, 'Choose a schedule_id to Replace', 'scheduleID'); //THIS IS CAUSING PROBLEMS?>
                <div>What day will the move be taught? <input type=date name=dateTaught required/></div>
-                <?php drop_down_options('/DML/ViewSchedule.sql', 3, $sql_path, 'Choose a Time to Replace','timeTaught');?>
+                <!-- <?php //drop_down_options('/DML/ViewSchedule.sql', 3, $sql_path, 'Choose a Time to Replace','timeTaught');?>
                 <label for=timeTaught>What time will the move be taught?</label>
                     <select name=timeTaught>
                         <option value=0>Morning</option>
                         <option value=1>Night</option>
-                    </select>
+                    </select> -->
                 <br>
                 <input type=submit value="Update when taught" name='Update2'/>
             </form>

@@ -5,9 +5,6 @@ function viewTable($res,$path) {
     $num_cols = $res->field_count;
     $resar = $res->fetch_all();
     ?>
-    <p>
-    <?php echo $num_cols; ?> columns, <?php echo $num_rows; ?> rows.
-    </p>
     <form action=<?php echo $path ?> method=POST>
         <table>
         <thead>

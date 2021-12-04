@@ -19,8 +19,7 @@
     <img src="pokeball.png" alt="Pokeball" style="float:center;width:33%;height:33%;">
     <!-- Source above claimed to be open source -->
     <!-- END of main HTML -->
-    
-</body>
+    <h3>Scheduled Moves</h3>
 
 <?php
 //Instantiate mysqli data
@@ -46,13 +45,25 @@ if($reload){
 } 
 
 // Query in order to get the table result
-$sql_query = "SELECT * FROM schedule";
+$sql_query = "SELECT * FROM schedule_join";
 
 $result = $conn->query($sql_query);
 
 // Run function to establish the table
 viewTable($result, $_SERVER['REQUEST_URI']);
 
+
+
+?>
+<h3>Popular Moves</h3>
+<?php
+// Query in order to get the table result
+$sql_query = "SELECT * FROM Count_Rating";
+
+$res = $conn->query($sql_query);
+
+// Run function to establish the table
+viewTable($res, $_SERVER['REQUEST_URI']);
 // Close the connection
 $conn->close();
 
